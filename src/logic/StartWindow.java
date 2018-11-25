@@ -104,7 +104,7 @@ private static final Font LABEL_FONT = Font.font("Arial", 22);
 			  	knightBtn.setVisible(true);
 				cowgirlBtn.setVisible(true);
 				gc.setGlobalAlpha(1-animationTick/30.);
-				gc.setFill(Color.BISQUE);
+				gc.setFill(Color.color(0.8, 0.8, 0.8, 0.9));
 				gc.fillRect(0, 0, 950, 600);
 				gc.setGlobalAlpha(1);
 				gc.drawImage(selecthero, 0, 0);
