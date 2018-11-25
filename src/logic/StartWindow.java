@@ -1,6 +1,7 @@
 package logic;
 
 import java.awt.event.MouseEvent;
+import java.time.Duration;
 
 import logic.GameWindow;
 import javafx.animation.KeyFrame;
@@ -9,6 +10,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -25,7 +28,8 @@ public class StartWindow {
 	private Image pbutton = new Image("pbutton.png");
 	private Image pbuttonfade = new Image("pbuttonfade.png");
 	private int check= 0;
-	
+	private TextField nameField;
+	private Button backBtn,startBtn,knightBtn,cowgirlBtn;
 	public StartWindow(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		bg = new Canvas(950,600);
@@ -38,13 +42,13 @@ public class StartWindow {
 		setBackground();
 		addCanvasEventHandler();
 		
-<<<<<<< HEAD
+
 		root.getChildren().addAll(bg);
 		Scene scene = new Scene(root);
 		bg.requestFocus();
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("TuaThaiKraiGorDai");
-||||||| merged common ancestors
+
 		nameField = new TextField();
 	    nameField.setMaxWidth(380);
 	    nameField.setMinWidth(380);
@@ -120,7 +124,7 @@ public class StartWindow {
 		screenloop.getKeyFrames().add(kf);
 		
 		root.getChildren().addAll(canvas, nameField, backBtn, startBtn,knightBtn,cowgirlBtn);
-=======
+		
 		nameField = new TextField();
 	    nameField.setMaxWidth(380);
 	    nameField.setMinWidth(380);
@@ -196,7 +200,7 @@ public class StartWindow {
 		screenloop.getKeyFrames().add(kf);
 		
 		root.getChildren().addAll(canvas, nameField, backBtn, startBtn,knightBtn,cowgirlBtn);
->>>>>>> 9eb7354f06e81ecfa780bfa0a3e328c32d1398cc
+
 	}
 	private boolean isOnPlayButton(javafx.scene.input.MouseEvent e) {
 		return e.getX() >= 390 && e.getX() < 460 && e.getY() >= 420 && e.getY() < 520;

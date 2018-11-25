@@ -1,6 +1,13 @@
 package logic;
 import share.IRenderable;
 import share.RenderableHolder;
+import character.Knight;
+import character.Cowgirls;
+import java.awt.event.KeyEvent;
+import java.util.Random;
+import character.Minion1;
+import character.Minion2;
+import character.Minion3;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -12,12 +19,19 @@ import javafx.stage.Stage;
 public class GameWindow extends Canvas {
 	private Scene scene;
 	private Stage primaryStage;
+	private Knight knight;
+	private Cowgirls cowgirls;
 	private GraphicsContext gc;
-	private int frame;
+	private int f;
+	private Minion1 minion1;
+	private Minion2 minion2;
+	private Minion3 minion3;
 	private String control;
 	private char c;
-	private AnimationTimer gamewindowanimation;
-	
+	private boolean alreadyAddBoss;
+	private boolean allBossDead;
+	private static AnimationTimer gamewindowanimation;
+	private boolean gameEnd = false;
 	public GameWindow(Stage primaryStage) {
 		setWidth(950);
 		setHeight(600);
@@ -30,11 +44,13 @@ public class GameWindow extends Canvas {
 		
 	}
 	public void drawGameWinDow() {	
-		frame = 0;
+		f = 0;
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
 			updateDetail();
-			//updateState();
+			updateState();
+			updateSong();
+			isGameEnd;
 			}
 		};
 	}
@@ -43,41 +59,139 @@ public void addMoving(GraphicsContext gc) {
 		
 
 		if (KeyEvent.getCode() == KeyCode.RIGHT) {
+			control+="k";
+			c='k';
+			System.out.println(control);
+		}
+		if (KeyEvent.getCode() == KeyCode.UP) {
+			control+="u";
+			c='u';
+			System.out.println(control);
+			
+		}
+		
+		if (KeyEvent.getCode() == KeyCode.DOWN) {
+			control += "j";
+			c = 'j';
+			System.out.println(control);
+			
+		}if (KeyEvent.getCode() == KeyCode.LEFT) {
+			control += "h";
+			c = 'h';
+			System.out.println(control);
+		}
+		if (KeyEvent.getCode() == KeyCode.D) {
 			control+="d";
 			c='d';
 			System.out.println(control);
 		}
-		if (KeyEvent.getCode() == KeyCode.UP) {
+		if (KeyEvent.getCode() == KeyCode.W) {
 			control+="w";
 			c='w';
 			System.out.println(control);
 			
 		}
 		
+		if (KeyEvent.getCode() == KeyCode.S) {
+			control += "s";
+			c = 's';
+			System.out.println(control);
+			
+		}if (KeyEvent.getCode() == KeyCode.A) {
+			control += "a";
+			c = 'a';
+			System.out.println(control);
+		}
+		
 		});
 	this.setOnKeyReleased((KeyEvent) -> {
 		
 		if (KeyEvent.getCode() == KeyCode.RIGHT) {
-			control = control.replace("d", "");
+			control = control.replace("k", "");
 			RenderableHolder.getinstance().updatePos(control);
 		}
 		if (KeyEvent.getCode() == KeyCode.UP) {
+			control = control.replace("u", "");
+			RenderableHolder.getinstance().updatePos(control);
+		}if (KeyEvent.getCode() == KeyCode.DOWN) {
+			control = control.replace("j","");
+			RenderableHolder.getinstance().updatePos(control);
+		}if (KeyEvent.getCode() == KeyCode.LEFT) {
+			control = control.replace("h","");
+			RenderableHolder.getinstance().updatePos(control);
+		}
+
+		if (KeyEvent.getCode() == KeyCode.D) {
+			control = control.replace("d", "");
+			RenderableHolder.getinstance().updatePos(control);
+		}
+		if (KeyEvent.getCode() == KeyCode.W) {
 			control = control.replace("w", "");
+			RenderableHolder.getinstance().updatePos(control);
+		}if (KeyEvent.getCode() == KeyCode.S) {
+			control = control.replace("s","");
+			RenderableHolder.getinstance().updatePos(control);
+		}if (KeyEvent.getCode() == KeyCode.A) {
+			control = control.replace("a","");
 			RenderableHolder.getinstance().updatePos(control);
 		}
 		
 	});
 	
 }
+public static AnimationTimer getGamewindowanimation() {
+	return gamewindowanimation;
+}
 	public void updateDetail() {
-	frame++;
+	f++;
 	
 }
+	public void addKnight() {
+		knight = new Knight();
+		RenderableHolder.getinstance().add(knight);
+	}
+	public void addCowgirls() {
+		cowgirls = new Cowgirls();
+		RenderableHolder.getinstance().add(cowgirls);
+	}
+	public void addMinion() {
+		Random rand = new Random();
+		int value = rand.nextInt(3);
+		if (value==0) {
+			minion1 = new Minion1();
+			RenderableHolder.getinstance().add(minion1);
+		}
+		if (value==1) {
+			minion2 = new Minion2();
+			RenderableHolder.getinstance().add(minion2);
+		}
+		if (value==2) {
+			minion3 = new Minion3();
+			RenderableHolder.getinstance().add(minion3);
+		}
+	}
 	public void addAll() {
-	//addGameScreen();
-	//addKnight();
+	addGameScreen();
+	addKnight();
+	addCowgirls();
+	addMinion();
 	
 }
+	public void isGameEnd() {
+		if (Knight.getHp()==0 && Cowgirls.getHp()==0) {
+			RenderableHolder.getinstance().clearList();
+			gamewindowanimation.stop();
+			GameOverScene.startAnimation(gc);
+			
+			gameEnd = true;
+			
+		}
+		if (alreadyAddBoss && allBossDead) {
+			RenderableHolder.getinstance().clearList();
+			gamewindowanimation.stop();
+			GameWinnerScene.startAnimation(gc);
+		}
+	}
 		
 }
 
