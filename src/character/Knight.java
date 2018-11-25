@@ -6,8 +6,8 @@ import share.Entity;
 import share.IRenderable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-
-public class Knight extends Entity implements IRenderable {
+//change data in character and Knight
+public class Knight extends Character {
 	private List<Image> left = new ArrayList<>();
 	private List<Image> up = new ArrayList<>();
 	private List<Image> down = new ArrayList<>();
@@ -24,7 +24,6 @@ public class Knight extends Entity implements IRenderable {
 	
 	private String name,classCh;
 	public Knight(){
-		super(200,200);
 		for (int i=1;i<5;i++) {
 			left.add(new Image("left_"+i+".png"));
 			up.add(new Image("up_"+i+".png"));
@@ -33,7 +32,7 @@ public class Knight extends Entity implements IRenderable {
 		}
 		}
 	public Knight(double HP,double mana,double armor,double attack,String name,String classCh,int Level) {
-			super(200,200);
+			super();
 			for (int i=1;i<5;i++) {
 				left.add(new Image("left_"+i+".png"));
 				up.add(new Image("up_"+i+".png"));
@@ -72,12 +71,7 @@ public class Knight extends Entity implements IRenderable {
 	public void setLeft(List<Image> left) {
 		this.left = left;
 	}
-	public List<Image> getJump() {
-		return jump;
-	}
-	public void setJump(List<Image> jump) {
-		this.jump = jump;
-	}
+	
 	public int getSpeed() {
 		return speed;
 	}
