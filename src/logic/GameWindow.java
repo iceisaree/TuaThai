@@ -8,6 +8,7 @@ import java.util.Random;
 import character.Minion1;
 import character.Minion2;
 import character.Minion3;
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -32,6 +33,9 @@ public class GameWindow extends Canvas {
 	private boolean allBossDead;
 	private static AnimationTimer gamewindowanimation;
 	private boolean gameEnd = false;
+	private PlayerDetail playerDetail;
+	Random rand = new Random();
+	int value = rand.nextInt(3);
 	public GameWindow(Stage primaryStage) {
 		setWidth(950);
 		setHeight(600);
@@ -47,13 +51,16 @@ public class GameWindow extends Canvas {
 		f = 0;
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
-			updateDetail();
-			updateState();
-			updateSong();
+			upPlayerDetail();
+			changeSong();
 			isGameEnd;
 			}
 		};
 	}
+	public void upPlayerDetail() {
+		
+	}
+	
 public void addMoving(GraphicsContext gc) {
 	this.setOnKeyPressed((KeyEvent) -> {
 		
@@ -155,8 +162,7 @@ public static AnimationTimer getGamewindowanimation() {
 		RenderableHolder.getinstance().add(cowgirls);
 	}
 	public void addMinion() {
-		Random rand = new Random();
-		int value = rand.nextInt(3);
+		//add more minion
 		if (value==0) {
 			minion1 = new Minion1();
 			RenderableHolder.getinstance().add(minion1);
@@ -171,12 +177,16 @@ public static AnimationTimer getGamewindowanimation() {
 		}
 	}
 	public void addAll() {
-	addGameScreen();
+	addPlayerDetail();
 	addKnight();
 	addCowgirls();
 	addMinion();
 	
 }
+	public void addPlayerDetail() {
+		playerDetail = new PlayerDetail();
+		RenderableHolder.getinstance().add(playerDetail);
+	}
 	public void isGameEnd() {
 		if (Knight.getHp()==0 && Cowgirls.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
@@ -191,6 +201,46 @@ public static AnimationTimer getGamewindowanimation() {
 			gamewindowanimation.stop();
 			GameWinnerScene.startAnimation(gc);
 		}
+	}
+	//add getLevel in cowgirls and set attack in knight and cowgirls
+	public void setState() {
+		if (knight.getLevel()+cowgirls.getLevel()<5) {
+			knight.setSpeed(3);
+			knight.setAttack();
+			cowgirls.setSpeed(2);
+			cowgirls.setAttack();
+			minion1.setDamage(10);
+			minion2.setDamage(20);
+			minion3.setDamage(40);
+		}
+		if (knight.getLevel()+cowgirls.getLevel()<10) {
+			knight.setSpeed(3);
+			knight.setAttack();
+			cowgirls.setSpeed(2);
+			cowgirls.setAttack();
+			minion1.setDamage(10);
+			minion2.setDamage(20);
+			minion3.setDamage(40);
+		}
+		if (knight.getLevel()+cowgirls.getLevel()<15) {
+			knight.setSpeed(3);
+			knight.setAttack();
+			cowgirls.setSpeed(2);
+			cowgirls.setAttack();
+			minion1.setDamage(10);
+			minion2.setDamage(20);
+			minion3.setDamage(40);
+		}
+		if (knight.getLevel()+cowgirls.getLevel()<20) {
+			knight.setSpeed(3);
+			knight.setAttack();
+			cowgirls.setSpeed(2);
+			cowgirls.setAttack();
+			minion1.setDamage(10);
+			minion2.setDamage(20);
+			minion3.setDamage(40);
+		}
+		
 	}
 		
 }

@@ -1,5 +1,9 @@
 package character;
-public class Character{
+
+import share.Entity;
+import share.IRenderable;
+
+public class Character extends Entity implements IRenderable{
 	protected double HP,mana,armor,max_HP,max_MANA,max_ARMOR,damage,exp,max_this_level_up;
 	protected int [] indexExp = {10,50,200,800,3200,3200,3400,3800,4000,4200,3000,2000,1000,500,200};
 
@@ -7,6 +11,7 @@ public class Character{
 	protected int Level;
 	protected boolean isDead;
 	public Character(double HP,double mana,double armor,double damage,String name,String classCh,int Level) {
+		super(0,0);
 		this.HP = HP;
 		this.mana = mana;
 		this.armor = armor;
