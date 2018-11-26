@@ -3,6 +3,7 @@ package character;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import share.Entity;
 import share.IRenderable;
@@ -55,6 +56,21 @@ public class Cowgirls extends Entity implements IRenderable{
 	}
 	public static double getHp() {
 		return Hp;
+	}
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean isVisible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public void updatePos() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

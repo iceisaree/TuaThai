@@ -11,4 +11,9 @@ public class Minion1 extends Monster {
 	public void special() {
 		
 	}
+	@Override
+	public boolean isVisible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

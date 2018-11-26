@@ -12,4 +12,9 @@ public class Minion3 extends Monster {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean isVisible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

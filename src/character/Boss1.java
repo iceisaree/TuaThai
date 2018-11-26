@@ -15,6 +15,11 @@ public class Boss1 extends Monster {
 			this.setDamage(this.Damage*02);
 		}
 	}
+	@Override
+	public boolean isVisible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 }

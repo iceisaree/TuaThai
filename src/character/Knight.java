@@ -8,10 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 //change data in character and Knight
 public class Knight extends Character {
-	private List<Image> left = new ArrayList<>();
-	private List<Image> up = new ArrayList<>();
-	private List<Image> down = new ArrayList<>();
-	private List<Image> right = new ArrayList<>();
+	
 	private int speed = 4;
 	private static double Hp;
 	private double mana;
@@ -31,8 +28,9 @@ public class Knight extends Character {
 			right.add(new Image("right_"+i+".png"));
 		}
 		}
+	// fix in form Character
 	public Knight(double HP,double mana,double armor,double attack,String name,String classCh,int Level) {
-			super();
+			super()
 			for (int i=1;i<5;i++) {
 				left.add(new Image("left_"+i+".png"));
 				up.add(new Image("up_"+i+".png"));
