@@ -3,7 +3,11 @@ package logic;
 import javafx.scene.canvas.GraphicsContext;
 
 public class GameOverScene {
-	public void draw(GraphicsContext gc) {
-		
+	public static void draw(GraphicsContext gc) {
+		gc.fillText("GameOver,press ENTER to start new game", 300, 200);
 	}
+	public static void startAniamtion(GraphicsContext gc) {
+		draw(gc);
+	}
+
 }
