@@ -19,6 +19,7 @@ public class StartWindow {
 	private static final Font LABEL_FONT = Font.font("Arial", 22);
 	private Stage primaryStage;
 	private Canvas bg;
+	
 	private GraphicsContext gc;
 	public Image background = new Image("forest.png");
 	private Image name = new Image("name3.png");

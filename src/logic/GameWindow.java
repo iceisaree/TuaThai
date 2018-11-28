@@ -13,6 +13,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -27,6 +28,7 @@ public class GameWindow extends Canvas {
 	private Minion1 minion1;
 	private Minion2 minion2;
 	private Minion3 minion3;
+	public Image background = new Image("desert.png");
 	private String control;
 	private char c;
 	private boolean alreadyAddBoss;
@@ -47,14 +49,17 @@ public class GameWindow extends Canvas {
 		this.primaryStage.setScene(scene);
 		
 	}
-	public void drawGameWinDow() {	
+	public void drawGameWinDow() {
+		addMoving(gc);
 		f = 0;
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
 			upPlayerDetail();
+			updateState();
 			
 			}
 		};
+		gamewindowanimation.start();
 	}
 	public void upPlayerDetail() {
 		
@@ -150,6 +155,13 @@ public static AnimationTimer getGamewindowanimation() {
 }
 	public void updateDetail() {
 	f++;
+	if ((f%600)<500) {
+		if (f%60==0) {
+			for (int i=0;i<10;i++) addMinion();
+		}
+	}
+	RenderableHolder.getinstance().remove();
+	RenderableHolder.getinstance().draw(gc);
 	
 }
 	public void addKnight() {
@@ -240,6 +252,12 @@ public static AnimationTimer getGamewindowanimation() {
 			minion3.setDamage(40);
 		}
 		
+	}
+	// add updateState for rander window
+	// add background stage
+	public void updateState() {
+		gc.drawImage(background, 0, 0);
+	
 	}
 		
 }
