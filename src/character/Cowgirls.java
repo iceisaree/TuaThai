@@ -2,13 +2,12 @@ package character;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import share.Entity;
 import share.IRenderable;
-
-public class Cowgirls extends Entity implements IRenderable{
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+//change data in character and Knight
+public class Cowgirls extends Character {
 	
 	private int speed = 4;
 	private static double Hp;
@@ -17,60 +16,120 @@ public class Cowgirls extends Entity implements IRenderable{
 	private double attack;
 	private int Level;
 	private int timeOfPics = 0;
-	public Image knightPic;
+	public Image cowgirlsPic;
 	private String control;
-	private List<Image> left = new ArrayList<>();
-	private List<Image> up = new ArrayList<>();
-	private List<Image> down = new ArrayList<>();
-	private List<Image> right = new ArrayList<>();
-	public Cowgirls(){
-		super(400,400);
-		for (int i=1;i<5;i++) {
-			left.add(new Image("left_"+i+".png"));
-			up.add(new Image("up_"+i+".png"));
-			down.add(new Image("down_"+i+".png"));
-			right.add(new Image("right_"+i+".png"));
-		}
-	}
-	public Cowgirls(double HP,double mana,double armor,double attack,String name,String classCh,int Level) {
-		super(400,400);
-		for (int i=1;i<5;i++) {
-			left.add(new Image("left_"+i+".png"));
-			up.add(new Image("up_"+i+".png"));
-			down.add(new Image("down_"+i+".png"));
-			right.add(new Image("right_"+i+".png"));
-		}
-	}
 	
-	public boolean isCanAttack() {
+	private String name,classCh;
+	public Cowgirls(String name){
+		super(true,100,50,100,20,name,1);
+		for (int i=1;i<5;i++) {
+			left.add(new Image("left_"+i+".png"));
+			up.add(new Image("up_"+i+".png"));
+			down.add(new Image("down_"+i+".png"));
+			right.add(new Image("right_"+i+".png"));
+		}
+		}
+	// fix in form Character
+	public Cowgirls(double HP,double mana,double armor,double attack,String name,int Level) {
+			super(true,HP,mana,armor,attack,name,Level);
+			for (int i=1;i<5;i++) {
+				left.add(new Image("left_"+i+".png"));
+				up.add(new Image("up_"+i+".png"));
+				down.add(new Image("down_"+i+".png"));
+				right.add(new Image("right_"+i+".png"));
+			}
+		}
+	public void setCowgirls() {
+		cowgirlsPic = left.get(0);
+	}
+	public void draw(GraphicsContext gc) {
+		timeOfPics++;
+		if(timeOfPics>=30) timeOfPics = 0; 
+		gc.drawImage(cowgirlsPic, 0, 410);
+	}
+	public void updatePos() {
+		if (control.contains("a")) if(x>=35) {
+			x+=speed;
+			cowgirlsPic = left.get(timeOfPics/10);
+		}
+		if (control.contains("s")) if (y+90<=460) {
+			y+=speed;
+			cowgirlsPic = up.get(timeOfPics/10);
+		}
+	}
+	public boolean isVisible() {
 		return true;
 	}
+	public void setControl(String control) {
+		this.control = control;
+	}
+	public static double getHp() {return Hp;}
+	public List<Image> getLeft() {
+		return left;
+	}
+	public void setLeft(List<Image> left) {
+		this.left = left;
+	}
 	
-	public boolean LevelUp() {
-		if (super.canLevelUp()) {
-			super.setLevelup();
-			return true;
-		}else {
-			return false;
-		}
+	public int getSpeed() {
+		return speed;
 	}
-	public static double getHp() {
-		return Hp;
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
-	@Override
-	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+	public double getMana() {
+		return mana;
 	}
-	@Override
-	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		return false;
+	public void setMana(double mana) {
+		this.mana = mana;
 	}
-	@Override
-	public void updatePos() {
-		// TODO Auto-generated method stub
-		
+	public double getArmor() {
+		return armor;
+	}
+	public void setArmor(double armor) {
+		this.armor = armor;
+	}
+	public double getAttack() {
+		return attack;
+	}
+	public void setAttack(double attack) {
+		this.attack = attack;
+	}
+	public int getLevel() {
+		return Level;
+	}
+	public void setLevel(int level) {
+		Level = level;
+	}
+	public int getTimeOfPics() {
+		return timeOfPics;
+	}
+	public void setTimeOfPics(int timeOfPics) {
+		this.timeOfPics = timeOfPics;
+	}
+	public Image getCowgirlsPic() {
+		return cowgirlsPic;
+	}
+	public void setCowgirlsPic(Image cowgirlsPic) {
+		this.cowgirlsPic = cowgirlsPic;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getClassCh() {
+		return classCh;
+	}
+	public void setClassCh(String classCh) {
+		this.classCh = classCh;
+	}
+	public String getControl() {
+		return control;
+	}
+	public void setHp(double hp) {
+		Hp = hp;
 	}
 	
 	

@@ -24,7 +24,7 @@ public class Character extends Entity implements IRenderable{
 	protected List<Image> down = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
 	
-	public Character(boolean isKngiht,double HP,double mana,double armor,double damage,String name,int Level) {
+	public Character(boolean isKnight,double HP,double mana,double armor,double damage,String name,int Level) {
 		super(0,0);
 		this.isKnight = isKnight;
 		this.HP = HP;
@@ -213,9 +213,7 @@ public class Character extends Entity implements IRenderable{
 			}
 		}
 	}
-	
-	
-	
-	
-	
+	}
 }
+	
+

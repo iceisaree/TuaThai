@@ -16,10 +16,10 @@ public class Monster extends Entity{
 	protected String Name;
 	protected double speed;
 	protected boolean isVisible = true;
-	private List<Image> left = new ArrayList<>();
-	private List<Image> up = new ArrayList<>();
-	private List<Image> down = new ArrayList<>();
-	private List<Image> right = new ArrayList<>();
+	protected List<Image> left = new ArrayList<>();
+	protected List<Image> up = new ArrayList<>();
+	protected List<Image> down = new ArrayList<>();
+	protected List<Image> right = new ArrayList<>();
 	private Character character;
 	protected Image monsterPic;
 	protected boolean isDead;
@@ -36,6 +36,7 @@ public class Monster extends Entity{
 		this.MaxHP = hp;
 		this.exp = 100;
 		int way = rand.nextInt(8)+1;
+		
 		// set sponde monster different pos
 		//case 1-4 for fix x
 		//case 5-8 for fix y 
@@ -118,7 +119,7 @@ public class Monster extends Entity{
 	public void takedDamage(double damage) {
 		if (damage<=0) return;
 		HP -= (damage);
-		if (HP<=0) this.isDead = true;
+		if (HP<=0) this.isVisible = true;
 	}
 	public double getExp() {
 		return exp;
@@ -127,9 +128,12 @@ public class Monster extends Entity{
 		return speed;
 	}
 	public void updatePos() {
-		x += getSpeed()*knight.getLevel();
-		y += getSpeed()*knight.getLevel();
-		if (HP==0) isVisible = false;
+		x += getSpeed()*character.getLevel()*calculateCos(character.getX(),character.getY());
+		y += getSpeed()*character.getLevel()*calculateSin(character.getX(),character.getY());
+		boolean isCharacterAttacked;
+		isCharacterAttacked = character.attackPos((int) x,(int)y);
+		// change HP minus for change damage
+		if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;

@@ -52,8 +52,7 @@ public class GameWindow extends Canvas {
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
 			upPlayerDetail();
-			changeSong();
-			isGameEnd;
+			
 			}
 		};
 	}
@@ -154,11 +153,11 @@ public static AnimationTimer getGamewindowanimation() {
 	
 }
 	public void addKnight() {
-		knight = new Knight();
+		knight = new Knight("knight");
 		RenderableHolder.getinstance().add(knight);
 	}
 	public void addCowgirls() {
-		cowgirls = new Cowgirls();
+		cowgirls = new Cowgirls("cowgirls");
 		RenderableHolder.getinstance().add(cowgirls);
 	}
 	public void addMinion() {
@@ -206,36 +205,36 @@ public static AnimationTimer getGamewindowanimation() {
 	public void setState() {
 		if (knight.getLevel()+cowgirls.getLevel()<5) {
 			knight.setSpeed(3);
-			knight.setAttack();
+			//knight.setAttack();
 			cowgirls.setSpeed(2);
-			cowgirls.setAttack();
+			//cowgirls.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
 		}
 		if (knight.getLevel()+cowgirls.getLevel()<10) {
 			knight.setSpeed(3);
-			knight.setAttack();
+			//knight.setAttack();
 			cowgirls.setSpeed(2);
-			cowgirls.setAttack();
+			//cowgirls.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
 		}
 		if (knight.getLevel()+cowgirls.getLevel()<15) {
 			knight.setSpeed(3);
-			knight.setAttack();
+			//knight.setAttack();
 			cowgirls.setSpeed(2);
-			cowgirls.setAttack();
+			//cowgirls.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
 		}
 		if (knight.getLevel()+cowgirls.getLevel()<20) {
 			knight.setSpeed(3);
-			knight.setAttack();
+			//knight.setAttack();
 			cowgirls.setSpeed(2);
-			cowgirls.setAttack();
+			//cowgirls.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
