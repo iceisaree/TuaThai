@@ -24,7 +24,7 @@ public class Character extends Entity implements IRenderable{
 	protected List<Image> down = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
 	
-	public Character(boolean isKngiht,double HP,double mana,double armor,double damage,String name,String classCh,int Level) {
+	public Character(boolean isKngiht,double HP,double mana,double armor,double damage,String name,int Level) {
 		super(0,0);
 		this.isKnight = isKnight;
 		this.HP = HP;
@@ -32,7 +32,7 @@ public class Character extends Entity implements IRenderable{
 		this.armor = armor;
 		this.damage = damage;
 		this.name = name;
-		this.classCh = classCh;
+		
 		this.Level = Level;
 		this.isDead = false;
 		this.exp = 0;
@@ -46,9 +46,16 @@ public class Character extends Entity implements IRenderable{
 		HP -= (damage-armor);
 		if (HP<=0) this.isDead = true;
 	}
-	public void attackPos(int x,int y) {
+	public boolean attackPos(int xIn,int yIn) {
 		
+		// 10 have to change by charcter pic 
+		if (Math.abs(this.x-xIn)<=10 && Math.abs(this.y-yIn)<=100) {
+			HP--;
+			return true;
+		}else return false;
 	}
+		
+	
 	public void attackMonster(Monster other) {
 		if (!other.isDead) {
 			other.takedDamage(damage);

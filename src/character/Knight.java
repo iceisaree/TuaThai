@@ -20,7 +20,8 @@ public class Knight extends Character {
 	private String control;
 	
 	private String name,classCh;
-	public Knight(){
+	public Knight(String name){
+		super(true,100,50,100,20,name,1);
 		for (int i=1;i<5;i++) {
 			left.add(new Image("left_"+i+".png"));
 			up.add(new Image("up_"+i+".png"));
@@ -29,8 +30,8 @@ public class Knight extends Character {
 		}
 		}
 	// fix in form Character
-	public Knight(double HP,double mana,double armor,double attack,String name,String classCh,int Level) {
-			super()
+	public Knight(double HP,double mana,double armor,double attack,String name,int Level) {
+			super(true,HP,mana,armor,attack,name,Level);
 			for (int i=1;i<5;i++) {
 				left.add(new Image("left_"+i+".png"));
 				up.add(new Image("up_"+i+".png"));
@@ -53,7 +54,7 @@ public class Knight extends Character {
 		}
 		if (control.contains("s")) if (y+90<=460) {
 			y+=speed;
-			knightPic = jump.get(timeOfPics/10);
+			knightPic = up.get(timeOfPics/10);
 		}
 	}
 	public boolean isVisible() {
