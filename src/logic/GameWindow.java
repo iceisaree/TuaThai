@@ -56,16 +56,19 @@ public class GameWindow extends Canvas {
 		
 		this.primaryStage.setScene(scene);
 		addAll();
+		addKnight();
 		requestFocus();
 	}
+	// if add addAll() in drawGameWindow it will be bug in thread
 	public void drawGameWinDow() {
 		addMoving(gc);
 		f = 0;
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
 			upPlayerDetail();
-			addBackground();
-			addAll();
+			
+			//addBackground();
+			
 			}
 		};
 		gamewindowanimation.start();

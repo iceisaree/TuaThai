@@ -28,6 +28,7 @@ public class Knight extends Character {
 			down.add(new Image("down_("+i+").png"));
 			right.add(new Image("right_("+i+").png"));
 		}
+		setKnight();
 		}
 	// fix in form Character
 	public Knight(double HP,double mana,double armor,double attack,String name,int Level) {
@@ -38,14 +39,15 @@ public class Knight extends Character {
 				down.add(new Image("down_"+i+".png"));
 				right.add(new Image("right_"+i+".png"));
 			}
+			setKnight();
 		}
 	public void setKnight() {
-		knightPic = left.get(0);
+		
 	}
 	public void draw(GraphicsContext gc) {
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
-		gc.drawImage(knightPic, 0, 410);
+		gc.drawImage(knightPic, 0, 0);
 	}
 	public void updatePos() {
 		if (control.contains("a")) if(x>=35) {

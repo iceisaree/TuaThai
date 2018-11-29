@@ -22,6 +22,7 @@ public class RenderableHolder {
 	
 	public void add(IRenderable i) {
 		listRender.add(i);
+		System.out.println(i);
 	}
 	public void updatePos(String control) {
 		for (IRenderable e:listRender) {
