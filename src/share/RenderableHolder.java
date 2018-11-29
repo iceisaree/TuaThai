@@ -30,6 +30,10 @@ public class RenderableHolder {
 				((Knight)e).setControl(control);
 				((Knight)e).updatePos();
 			}
+			if (e instanceof Cowgirls) {
+				((Cowgirls)e).setControl(control);
+				((Cowgirls)e).updatePos();
+			}
 			if (e instanceof Monster) {
 				((Monster) e).updatePos();
 			}
@@ -37,6 +41,7 @@ public class RenderableHolder {
 		}
 	}
 	public void draw(GraphicsContext gc) {
+		
 		for (int i=0;i<listRender.size();i++) {
 			System.out.println("this is draw in renderableHolder");
 			listRender.get(i).draw(gc);
@@ -46,6 +51,7 @@ public class RenderableHolder {
 	public void remove() {
 		int n = listRender.size();
 		for (int i=n-1;i>=0;i--) {
+			System.out.println("This is in remove");
 			if (listRender.get(i).isVisible() == false) {
 				listRender.remove(i);
 			}

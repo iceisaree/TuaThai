@@ -8,13 +8,13 @@ public abstract class Entity implements IRenderable {
 		this.y = y;
 	}
 	public double getX() {
-		return this.x;
+		return x;
 	}
 	public void setX(double x) {
 		this.x = x;
 	}
 	public double getY() {
-		return this.y;
+		return y;
 	}
 	public void setY(double y) {
 		this.y = y;

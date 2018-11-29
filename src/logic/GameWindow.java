@@ -33,7 +33,7 @@ public class GameWindow extends Canvas {
 	private Minion1 minion1;
 	private Minion2 minion2;
 	private Minion3 minion3;
-	public Image background = new Image("Dead000.png");
+
 	private String control="";
 	private char c;
 	private String image_path = "file:image/character/cowboy/Dead__001.png";
@@ -60,13 +60,14 @@ public class GameWindow extends Canvas {
 		requestFocus();
 	}
 	// if add addAll() in drawGameWindow it will be bug in thread
-	public void drawGameWinDow() {
+	public void drawGameWindow() {
 		addMoving(gc);
 		f = 0;
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
-			upPlayerDetail();
 			updateDetail();
+			upPlayerDetail();
+			
 			//addBackground();
 			
 			}
@@ -169,17 +170,27 @@ public static AnimationTimer getGamewindowanimation() {
 
 
 	public void updateDetail() {
-	f++;
-	System.out.println("this is updat detail");
-	if ((f%600)<500) {
-		if (f%60==0) {
-			for (int i=0;i<10;i++) addMinion();
-		}
+		f++;
+		System.out.println("this is update detail");
+		System.out.println("this is frame : "+ f);
+		if ((f%600)<500)
+			{
+				if (f%60 ==0) {
+					for(int i = 0 ; i<10 ; i++);
+				}
+				// add item by time
+				
+			}
+			RenderableHolder.getinstance().remove();
+			RenderableHolder.getinstance().draw(gc);
+			
+			
+			
+			
+		
+			RenderableHolder.getinstance().updatePos(control);
+
 	}
-	RenderableHolder.getinstance().remove();
-	RenderableHolder.getinstance().draw(gc);
-	RenderableHolder.getinstance().updatePos(control);
-}
 	public void addKnight() {
 		knight = new Knight("knight");
 		RenderableHolder.getinstance().add(knight);
@@ -212,7 +223,7 @@ public static AnimationTimer getGamewindowanimation() {
 	addKnight();
 	addCowgirls();
 	//addMinion();
-	//addMinion2();
+	addMinion2();
 	addBackground();
 	
 }
@@ -278,8 +289,8 @@ public static AnimationTimer getGamewindowanimation() {
 	// add updateState for rander window
 	// add background stage
 	public void addBackground() {
-		Image imagenew = new Image("forest.png");
-		Image imagek = new Image("left_(3).png");
+		Image imagenew = new Image("winter.png");
+
 		gc.drawImage(imagenew, 0, 0);
 		//gc.drawImage(imagek,0,0);
 	

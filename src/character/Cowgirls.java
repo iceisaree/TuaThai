@@ -7,8 +7,12 @@ import share.IRenderable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 //change data in character and Knight
-public class Cowgirls extends Character {
+public class Cowgirls extends Entity implements IRenderable {
 	
+	public Cowgirls(double x, double y) {
+		super(x, y);
+		// TODO Auto-generated constructor stub
+	}
 	private int speed = 4;
 	private static double Hp;
 	private double mana;
@@ -16,45 +20,60 @@ public class Cowgirls extends Character {
 	private double attack;
 	private int Level;
 	private int timeOfPics = 0;
-	public Image cowgirlsPic;
+	public Image knightPic = new Image("desert.png");
 	private String control;
+	private List<Image> left = new ArrayList<>();
+	private List<Image> right = new ArrayList<>();
+	private List<Image> up = new ArrayList<>();
+	private List<Image> down = new ArrayList<>();
 	
 	private String name,classCh;
 	public Cowgirls(String name){
-		super(true,100,50,100,20,name,1);
+		super(0,0);
 		for (int i=1;i<5;i++) {
-			left.add(new Image("left_("+i+").png"));
-			up.add(new Image("up_("+i+").png"));
-			down.add(new Image("down_("+i+").png"));
-			right.add(new Image("right_("+i+").png"));
+			left.add(new Image("cowgirl_Right ("+i+").png",70,80, false, false));
+			up.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
+			down.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
+			right.add(new Image("cowgirl_Right ("+i+").png",70,80,false,false));
 		}
+		setKnight();
 		}
 	// fix in form Character
 	public Cowgirls(double HP,double mana,double armor,double attack,String name,int Level) {
-			super(true,HP,mana,armor,attack,name,Level);
+			super(0,0);
 			for (int i=1;i<5;i++) {
-				left.add(new Image("left_"+i+".png"));
-				up.add(new Image("up_"+i+".png"));
-				down.add(new Image("down_"+i+".png"));
-				right.add(new Image("right_"+i+".png"));
+				left.add(new Image("knight_Right ("+i+").png",70,80,false,false));
+				up.add(new Image("knight_up("+i+").png",70,80,false,false));
+				down.add(new Image("knight_up("+i+").png",70,80,false,false));
+				right.add(new Image("knight_Right("+i+").png",70,80,false,false));
 			}
+			setKnight();
 		}
-	public void setCowgirls() {
-		cowgirlsPic = left.get(0);
+	public void setKnight() {
+		knightPic = right.get(0);
 	}
 	public void draw(GraphicsContext gc) {
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
-		gc.drawImage(cowgirlsPic, 0, 410);
+		System.out.println("This is in knight draw");
+		gc.drawImage(knightPic, x, y);
 	}
 	public void updatePos() {
-		if (control.contains("a")) if(x>=35) {
-			x+=speed;
-			cowgirlsPic = left.get(timeOfPics/10);
+		if (control.contains("h")) if(x>=35) {
+			x-=speed;
+			knightPic = left.get(timeOfPics/10);
 		}
-		if (control.contains("s")) if (y+90<=460) {
+		if (control.contains("j")) if (y+90<=600) {
 			y+=speed;
-			cowgirlsPic = up.get(timeOfPics/10);
+			knightPic = up.get(timeOfPics/10);
+		}
+		if (control.contains("u")) if(y>=0) {
+			y-=speed;
+			knightPic = down.get(timeOfPics/10);
+		}
+		if (control.contains("k")) if (x+90<=950) {
+			x+=speed;
+			knightPic = right.get(timeOfPics/10);
 		}
 	}
 	public boolean isVisible() {
@@ -107,11 +126,11 @@ public class Cowgirls extends Character {
 	public void setTimeOfPics(int timeOfPics) {
 		this.timeOfPics = timeOfPics;
 	}
-	public Image getCowgirlsPic() {
-		return cowgirlsPic;
+	public Image getKnightPic() {
+		return knightPic;
 	}
-	public void setCowgirlsPic(Image cowgirlsPic) {
-		this.cowgirlsPic = cowgirlsPic;
+	public void setKnightPic(Image knightPic) {
+		this.knightPic = knightPic;
 	}
 	public String getName() {
 		return name;
@@ -119,17 +138,20 @@ public class Cowgirls extends Character {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getClassCh() {
-		return classCh;
-	}
-	public void setClassCh(String classCh) {
-		this.classCh = classCh;
-	}
+	
 	public String getControl() {
 		return control;
 	}
 	public void setHp(double hp) {
 		Hp = hp;
+	}
+public boolean attackPos(int xIn,int yIn) {
+		
+		// 10 have to change by charcter pic 
+		if (Math.abs(this.x-xIn)<=10 && Math.abs(this.y-yIn)<=100) {
+			Hp--;
+			return true;
+		}else return false;
 	}
 	
 	

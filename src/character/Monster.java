@@ -37,12 +37,7 @@ public class Monster extends Entity{
 		this.MaxHP = hp;
 		this.exp = 100;
 		int way = rand.nextInt(8)+1;
-		for (int i=1; i<4; i++) {
-			left.add(new Image("zombie_left ("+i+").png"));
-			right.add(new Image("zombie_right ("+i+").png"));
-			down.add(new Image("zombie_down ("+i+").png"));
-			up.add(new Image("zombie_up ("+i+").png"));
-		}
+	
 		
 		// set sponde monster different pos
 		//case 1-4 for fix x
@@ -118,7 +113,7 @@ public class Monster extends Entity{
 		gc.drawImage(monsterPic, x, y);
 	}
 	public void setImage() {
-		monsterPic = down.get(0);
+		
 	}
 	
 	public void hit(Character o) {
@@ -143,7 +138,7 @@ public class Monster extends Entity{
 		boolean isCharacterAttacked;
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		// change HP minus for change damage
-		if (isCharacterAttacked) takedDamage(character.getAttack());
+		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;

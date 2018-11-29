@@ -158,6 +158,7 @@ public class Character extends Entity implements IRenderable{
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
 	@Override
 	public void updatePos() {
 		// TODO Auto-generated method stub

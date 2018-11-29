@@ -69,7 +69,7 @@ public class StartWindow {
 		bg.setOnMouseClicked(e -> {
 			if (isOnPlayButton(e)) {
 				GameWindow game = new GameWindow(primaryStage);
-				game.drawGameWinDow();
+				game.drawGameWindow();
 			}
 			
 		});
