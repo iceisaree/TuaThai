@@ -1,10 +1,14 @@
 package logic;
+
 import share.IRenderable;
 import share.RenderableHolder;
 import character.Knight;
 import character.Cowgirls;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+
+import com.sun.javafx.tk.PlatformImage;
+
 import character.Minion1;
 import character.Minion2;
 import character.Minion3;
@@ -14,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -28,9 +33,11 @@ public class GameWindow extends Canvas {
 	private Minion1 minion1;
 	private Minion2 minion2;
 	private Minion3 minion3;
-	public Image background = new Image("desert.png");
-	private String control;
+	public Image background = new Image("Dead000.png");
+	private String control="";
 	private char c;
+	private String image_path = "file:image/character/cowboy/Dead__001.png";
+	
 	private boolean alreadyAddBoss;
 	private boolean allBossDead;
 	private static AnimationTimer gamewindowanimation;
@@ -46,8 +53,10 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		this.primaryStage.setScene(scene);
 		
+		this.primaryStage.setScene(scene);
+		addAll();
+		requestFocus();
 	}
 	public void drawGameWinDow() {
 		addMoving(gc);
@@ -55,8 +64,8 @@ public class GameWindow extends Canvas {
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
 			upPlayerDetail();
-			updateState();
-			
+			addBackground();
+			addAll();
 			}
 		};
 		gamewindowanimation.start();
@@ -174,24 +183,29 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	public void addMinion() {
 		//add more minion
-		if (value==0) {
+		/*if (value==0) {
 			minion1 = new Minion1();
 			RenderableHolder.getinstance().add(minion1);
-		}
+		}*/
 		if (value==1) {
-			minion2 = new Minion2();
+			minion2 = new Minion2(knight);
 			RenderableHolder.getinstance().add(minion2);
 		}
-		if (value==2) {
+		/*if (value==2) {
 			minion3 = new Minion3();
 			RenderableHolder.getinstance().add(minion3);
-		}
+		}*/
+	}
+	public void addMinion2() {
+		minion2 = new Minion2(knight);
+		RenderableHolder.getinstance().add(minion2);
 	}
 	public void addAll() {
 	addPlayerDetail();
 	addKnight();
 	addCowgirls();
 	addMinion();
+	addMinion2();
 	
 }
 	public void addPlayerDetail() {
@@ -255,8 +269,10 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	// add updateState for rander window
 	// add background stage
-	public void updateState() {
-		gc.drawImage(background, 0, 0);
+	public void addBackground() {
+		Image imagenew = new Image("forest.png");
+		
+		gc.drawImage(imagenew, 0, 0);
 	
 	}
 		

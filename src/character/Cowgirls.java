@@ -23,10 +23,10 @@ public class Cowgirls extends Character {
 	public Cowgirls(String name){
 		super(true,100,50,100,20,name,1);
 		for (int i=1;i<5;i++) {
-			left.add(new Image("left_"+i+".png"));
-			up.add(new Image("up_"+i+".png"));
-			down.add(new Image("down_"+i+".png"));
-			right.add(new Image("right_"+i+".png"));
+			left.add(new Image("left_("+i+").png"));
+			up.add(new Image("up_("+i+").png"));
+			down.add(new Image("down_("+i+").png"));
+			right.add(new Image("right_("+i+").png"));
 		}
 		}
 	// fix in form Character

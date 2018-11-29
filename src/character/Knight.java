@@ -16,17 +16,17 @@ public class Knight extends Character {
 	private double attack;
 	private int Level;
 	private int timeOfPics = 0;
-	public Image knightPic;
+	public Image knightPic = new Image("desert.png");
 	private String control;
 	
 	private String name,classCh;
 	public Knight(String name){
 		super(true,100,50,100,20,name,1);
 		for (int i=1;i<5;i++) {
-			left.add(new Image("left_"+i+".png"));
-			up.add(new Image("up_"+i+".png"));
-			down.add(new Image("down_"+i+".png"));
-			right.add(new Image("right_"+i+".png"));
+			left.add(new Image("left_("+i+").png"));
+			up.add(new Image("up_("+i+").png"));
+			down.add(new Image("down_("+i+").png"));
+			right.add(new Image("right_("+i+").png"));
 		}
 		}
 	// fix in form Character
@@ -55,6 +55,14 @@ public class Knight extends Character {
 		if (control.contains("s")) if (y+90<=460) {
 			y+=speed;
 			knightPic = up.get(timeOfPics/10);
+		}
+		if (control.contains("w")) if(x>=35) {
+			x+=speed;
+			knightPic = down.get(timeOfPics/10);
+		}
+		if (control.contains("d")) if (y+90<=460) {
+			y+=speed;
+			knightPic = right.get(timeOfPics/10);
 		}
 	}
 	public boolean isVisible() {

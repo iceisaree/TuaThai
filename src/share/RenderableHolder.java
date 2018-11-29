@@ -2,7 +2,7 @@ package share;
 
 import java.util.List;
 import java.util.ArrayList;
-
+import character.*;
 import character.Character;
 import character.Knight;
 import character.Monster;
@@ -29,6 +29,10 @@ public class RenderableHolder {
 				((Knight)e).setControl(control);
 				((Knight)e).updatePos();
 			}
+			if (e instanceof Monster) {
+				((Monster) e).updatePos();
+			}
+			
 		}
 	}
 	public void draw(GraphicsContext gc) {

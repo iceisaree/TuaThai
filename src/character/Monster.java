@@ -27,7 +27,8 @@ public class Monster extends Entity{
 	protected double exp;
 	protected Random rand = new Random();
 	protected Knight knight;
-	public Monster(double hp, double damage, String name) {
+	public Monster(double hp, double damage, String name,Knight knight) {
+		
 		super(0,0);
 		this.HP=hp;
 		this.Damage=damage;
@@ -36,6 +37,12 @@ public class Monster extends Entity{
 		this.MaxHP = hp;
 		this.exp = 100;
 		int way = rand.nextInt(8)+1;
+		for (int i=1; i<4; i++) {
+			left.add(new Image("zombie_left ("+i+").png"));
+			right.add(new Image("zombie_right ("+i+").png"));
+			down.add(new Image("zombie_down ("+i+").png"));
+			up.add(new Image("zombie_up ("+i+").png"));
+		}
 		
 		// set sponde monster different pos
 		//case 1-4 for fix x
@@ -71,6 +78,7 @@ public class Monster extends Entity{
 		setImage();
 		setX(x);
 		setY(y);
+		this.knight = knight;
 		
 	}
 	
@@ -128,10 +136,12 @@ public class Monster extends Entity{
 		return speed;
 	}
 	public void updatePos() {
-		x += getSpeed()*character.getLevel()*calculateCos(character.getX(),character.getY());
-		y += getSpeed()*character.getLevel()*calculateSin(character.getX(),character.getY());
+		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
+		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+		x += getSpeed();
+		y += getSpeed();
 		boolean isCharacterAttacked;
-		isCharacterAttacked = character.attackPos((int) x,(int)y);
+		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
@@ -148,6 +158,9 @@ public class Monster extends Entity{
 		double cha = Math.sqrt((k*k)+(c*c));
 		double cos = c/cha;
 		return cos;
+	}
+	public void setVisible(boolean visible) {
+		this.isVisible = visible;
 	}
 	@Override
 	public boolean isVisible() {
