@@ -11,7 +11,7 @@ import javafx.scene.canvas.GraphicsContext;
 public class RenderableHolder {
 	private static final RenderableHolder render = new RenderableHolder();
 	private List<IRenderable> listRender;
-	private String control="";
+	
 	public RenderableHolder() {
 		listRender = new ArrayList<>();
 		
@@ -38,6 +38,7 @@ public class RenderableHolder {
 	}
 	public void draw(GraphicsContext gc) {
 		for (int i=0;i<listRender.size();i++) {
+			System.out.println("this is draw in renderableHolder");
 			listRender.get(i).draw(gc);
 		}
 	}

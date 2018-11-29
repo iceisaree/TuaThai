@@ -23,10 +23,10 @@ public class Knight extends Character {
 	public Knight(String name){
 		super(true,100,50,100,20,name,1);
 		for (int i=1;i<5;i++) {
-			left.add(new Image("left_("+i+").png"));
-			up.add(new Image("up_("+i+").png"));
-			down.add(new Image("down_("+i+").png"));
-			right.add(new Image("right_("+i+").png"));
+			left.add(new Image("left_("+i+").png",55,65,false,false));
+			up.add(new Image("up_("+i+").png",55,65,false,false));
+			down.add(new Image("down_("+i+").png",55,65,false,false));
+			right.add(new Image("right_("+i+").png",55,65,false,false));
 		}
 		setKnight();
 		}
@@ -34,10 +34,10 @@ public class Knight extends Character {
 	public Knight(double HP,double mana,double armor,double attack,String name,int Level) {
 			super(true,HP,mana,armor,attack,name,Level);
 			for (int i=1;i<5;i++) {
-				left.add(new Image("left_"+i+".png"));
-				up.add(new Image("up_"+i+".png"));
-				down.add(new Image("down_"+i+".png"));
-				right.add(new Image("right_"+i+".png"));
+				left.add(new Image("left_"+i+".png",55,65,false,false));
+				up.add(new Image("up_"+i+".png",55,65,false,false));
+				down.add(new Image("down_"+i+".png",55,65,false,false));
+				right.add(new Image("right_"+i+".png",55,65,false,false));
 			}
 			setKnight();
 		}
@@ -47,23 +47,23 @@ public class Knight extends Character {
 	public void draw(GraphicsContext gc) {
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
-		gc.drawImage(knightPic, 0, 0);
+		gc.drawImage(knightPic, x, y);
 	}
 	public void updatePos() {
 		if (control.contains("a")) if(x>=35) {
-			x+=speed;
+			x-=speed;
 			knightPic = left.get(timeOfPics/10);
 		}
-		if (control.contains("s")) if (y+90<=460) {
+		if (control.contains("s")) if (y+90<=600) {
 			y+=speed;
 			knightPic = up.get(timeOfPics/10);
 		}
-		if (control.contains("w")) if(x>=35) {
-			x+=speed;
+		if (control.contains("w")) if(y>=0) {
+			y-=speed;
 			knightPic = down.get(timeOfPics/10);
 		}
-		if (control.contains("d")) if (y+90<=460) {
-			y+=speed;
+		if (control.contains("d")) if (x+90<=950) {
+			x+=speed;
 			knightPic = right.get(timeOfPics/10);
 		}
 	}

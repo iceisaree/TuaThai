@@ -56,7 +56,7 @@ public class GameWindow extends Canvas {
 		
 		this.primaryStage.setScene(scene);
 		addAll();
-		addKnight();
+		
 		requestFocus();
 	}
 	// if add addAll() in drawGameWindow it will be bug in thread
@@ -66,7 +66,7 @@ public class GameWindow extends Canvas {
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
 			upPlayerDetail();
-			
+			updateDetail();
 			//addBackground();
 			
 			}
@@ -165,8 +165,12 @@ public void addMoving(GraphicsContext gc) {
 public static AnimationTimer getGamewindowanimation() {
 	return gamewindowanimation;
 }
+
+
+
 	public void updateDetail() {
 	f++;
+	System.out.println("this is updat detail");
 	if ((f%600)<500) {
 		if (f%60==0) {
 			for (int i=0;i<10;i++) addMinion();
@@ -174,7 +178,7 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	RenderableHolder.getinstance().remove();
 	RenderableHolder.getinstance().draw(gc);
-	
+	RenderableHolder.getinstance().updatePos(control);
 }
 	public void addKnight() {
 		knight = new Knight("knight");
@@ -207,8 +211,9 @@ public static AnimationTimer getGamewindowanimation() {
 	addPlayerDetail();
 	addKnight();
 	addCowgirls();
-	addMinion();
-	addMinion2();
+	//addMinion();
+	//addMinion2();
+	addBackground();
 	
 }
 	public void addPlayerDetail() {
@@ -274,8 +279,9 @@ public static AnimationTimer getGamewindowanimation() {
 	// add background stage
 	public void addBackground() {
 		Image imagenew = new Image("forest.png");
-		
+		Image imagek = new Image("left_(3).png");
 		gc.drawImage(imagenew, 0, 0);
+		//gc.drawImage(imagek,0,0);
 	
 	}
 		
