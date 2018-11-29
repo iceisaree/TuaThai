@@ -182,6 +182,7 @@ public static AnimationTimer getGamewindowanimation() {
 				
 			}
 			RenderableHolder.getinstance().remove();
+			addBackground();
 			RenderableHolder.getinstance().draw(gc);
 			
 			

@@ -16,6 +16,8 @@ public class Cowgirls extends Entity implements IRenderable {
 	private int speed = 4;
 	private static double Hp;
 	private double mana;
+	private int skill1Count;
+
 	private double armor;
 	private double attack;
 	private int Level;
@@ -31,7 +33,7 @@ public class Cowgirls extends Entity implements IRenderable {
 	public Cowgirls(String name){
 		super(0,0);
 		for (int i=1;i<5;i++) {
-			left.add(new Image("cowgirl_Right ("+i+").png",70,80, false, false));
+			left.add(new Image("cowgirl_Right ("+i+").png",100,80, false, false));
 			up.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
 			down.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
 			right.add(new Image("cowgirl_Right ("+i+").png",70,80,false,false));
