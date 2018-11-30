@@ -29,7 +29,7 @@ public class Knight extends Entity implements IRenderable {
 	private List<Image> up = new ArrayList<>();
 	private List<Image> down = new ArrayList<>();
 	
-	private String name,classCh;
+	private String name;
 	public Knight(String name){
 		super(0,0);
 		for (int i=1;i<5;i++) {

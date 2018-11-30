@@ -6,8 +6,8 @@ public class Minion2 extends Monster {
 	public Image zombiePic;
 	
 	
-	public Minion2(double hp, int attack,Knight knight) {
-		super(100, 20, knight);
+	public Minion2(double hp, int attack,Knight knight,Cowgirls cowgirl) {
+		super(100, 20, knight,cowgirl);
 		for (int i=1; i<5; i++) {
 			left.add(new Image("zombiemale_Right ("+i+").png"));
 			right.add(new Image("zombiemale_Right ("+i+").png"));
@@ -17,8 +17,8 @@ public class Minion2 extends Monster {
 		setZombie();
 		// TODO Auto-generated constructor stub
 	}
-	public Minion2(Knight knight) {
-		super(100,20,knight);
+	public Minion2(Knight knight,Cowgirls cowgirl) {
+		super(100,20,knight,cowgirl);
 		for (int i=1; i<5; i++) {
 			left.add(new Image("zombiemale_Right ("+i+").png"));
 			right.add(new Image("zombiemale_Right ("+i+").png"));
@@ -38,6 +38,9 @@ public class Minion2 extends Monster {
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
 		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
+			return false;
+		}
+		if ((this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
 			return false;
 		}
 		

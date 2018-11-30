@@ -27,7 +27,8 @@ public class Monster extends Entity{
 	protected double exp;
 	protected Random rand = new Random();
 	protected Knight knight;
-	public Monster(double hp, double damage, Knight knight) {
+	protected Cowgirls cowgirl;
+	public Monster(double hp, double damage, Knight knight,Cowgirls cowgirl) {
 		
 		super(0,0);
 		this.HP=hp;
@@ -76,6 +77,7 @@ public class Monster extends Entity{
 		setX(x);
 		setY(y);
 		this.knight = knight;
+		this.cowgirl = cowgirl;
 		
 	}
 

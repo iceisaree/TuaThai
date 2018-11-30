@@ -241,7 +241,7 @@ public static AnimationTimer getGamewindowanimation() {
 			RenderableHolder.getinstance().add(minion1);
 		}*/
 		if (value==1) {
-			minion2 = new Minion2(knight);
+			minion2 = new Minion2(knight,cowgirls);
 			RenderableHolder.getinstance().add(minion2);
 		}
 		/*if (value==2) {
@@ -250,7 +250,7 @@ public static AnimationTimer getGamewindowanimation() {
 		}*/
 	}
 	public void addMinion2() {
-		minion2 = new Minion2(knight);
+		minion2 = new Minion2(knight,cowgirls);
 		RenderableHolder.getinstance().add(minion2);
 	}
 	public void addAll() {
