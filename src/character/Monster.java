@@ -37,7 +37,9 @@ public class Monster extends Entity{
 		this.isDead=false;
 		this.MaxHP = hp;
 		this.exp = 100;
+		this.speed=1;
 		int way = rand.nextInt(8)+1;
+		
 	
 		
 		// set sponde monster different pos
@@ -111,8 +113,10 @@ public class Monster extends Entity{
 	public void attack(Character other) {
 		other.takedDamage(this.Damage);
 	}
+	@Override
 	public void draw(GraphicsContext gc) {
 		//monsterPic = new Image("zombiefemale_Up (1).png");
+		System.out.println("monster in draw");
 		gc.drawImage(monsterPic, x, y);
 	}
 	public void setImage() {
@@ -134,11 +138,13 @@ public class Monster extends Entity{
 		return speed;
 	}
 	public void updatePos() {
-		System.out.println("This is in updatePos");
+		System.out.println("This is in updatePos Monster");
+		System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
 		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
-		x += getSpeed();
-		y += getSpeed();
+		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
+		//x += getSpeed();
+		//y += getSpeed();
 		boolean isCharacterAttacked;
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		// change HP minus for change damage

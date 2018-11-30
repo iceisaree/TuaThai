@@ -18,7 +18,7 @@ public class Knight extends Entity implements IRenderable {
 	private double mana;
 	private double armor;
 	private double attack;
-	private int Level;
+	private int Level=1;
 	private int timeOfPics = 0;
 	public Image knightPic = new Image("desert.png");
 	private String control;
