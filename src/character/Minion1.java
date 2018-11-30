@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 public class Minion1 extends Monster {
 	
 	public Minion1(double hp, int attack, String name,Knight knight) {
-		super(hp, attack, name,knight);
+		super(hp, attack,knight);
 		for (int i=1; i<4; i++) {
 			left.add(new Image("ninja_left"+i+".png"));
 			right.add(new Image("ninja_right"+i+".png"));
@@ -15,7 +15,7 @@ public class Minion1 extends Monster {
 		// TODO Auto-generated constructor stub
 	}
 	public Minion1(Knight knight) {
-		super(75,25,"Ninja",knight);
+		super(75,25,knight);
 		for (int i=1; i<4; i++) {
 			left.add(new Image("ninja_left"+i+".png"));
 			right.add(new Image("ninja_right"+i+".png"));

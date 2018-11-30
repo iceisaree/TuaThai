@@ -4,8 +4,9 @@ import javafx.scene.image.Image;
 
 public class Minion2 extends Monster {
 	public Image zombiePic;
-	public Minion2(double hp, int attack, String name,Knight knight) {
-		super(hp, attack, name,knight);
+	
+	public Minion2(double hp, int attack,Knight knight) {
+		super(100, 20, knight);
 		for (int i=1; i<5; i++) {
 			left.add(new Image("zombiemale_Right ("+i+").png"));
 			right.add(new Image("zombiemale_Right ("+i+").png"));
@@ -16,7 +17,7 @@ public class Minion2 extends Monster {
 		// TODO Auto-generated constructor stub
 	}
 	public Minion2(Knight knight) {
-		super(160,100,"Zombieee",knight);
+		super(100,20,knight);
 		for (int i=1; i<5; i++) {
 			left.add(new Image("zombiemale_Right ("+i+").png"));
 			right.add(new Image("zombiemale_Right ("+i+").png"));
@@ -25,6 +26,8 @@ public class Minion2 extends Monster {
 		}
 		setZombie();
 	}
+	
+	
 	@Override
 	/*public void special() {
 		// TODO Auto-generated method stub

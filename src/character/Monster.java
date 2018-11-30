@@ -13,7 +13,6 @@ import character.Knight;
 public class Monster extends Entity{
 	protected double HP;
 	protected double Damage;
-	protected String Name;
 	protected double speed;
 	protected boolean isVisible = true;
 	protected List<Image> left = new ArrayList<>();
@@ -28,16 +27,17 @@ public class Monster extends Entity{
 	protected double exp;
 	protected Random rand = new Random();
 	protected Knight knight;
-	public Monster(double hp, double damage, String name,Knight knight) {
+	public Monster(double hp, double damage, Knight knight) {
 		
 		super(0,0);
 		this.HP=hp;
 		this.Damage=damage;
-		this.Name=name;
 		this.isDead=false;
 		this.MaxHP = hp;
 		this.exp = 100;
+		this.speed=1;
 		int way = rand.nextInt(8)+1;
+		
 	
 		
 		// set sponde monster different pos
@@ -78,7 +78,7 @@ public class Monster extends Entity{
 		this.knight = knight;
 		
 	}
-	
+
 	public boolean getStatus() {
 		return this.isDead;
 	}
@@ -105,27 +105,26 @@ public class Monster extends Entity{
 		this.Damage = damage;
 	}
 
-	public String getName() {
-		return Name;
-	}
 	public void attack(Character other) {
 		other.takedDamage(this.Damage);
 	}
+	@Override
 	public void draw(GraphicsContext gc) {
 		//monsterPic = new Image("zombiefemale_Up (1).png");
+		System.out.println("monster in draw");
 		gc.drawImage(monsterPic, x, y);
 	}
 	public void setImage() {
 		
 	}
 	
-	public void hit(Character o) {
-		this.setHP(this.getHP()-o.getAttack());	
-	}
 	public void takedDamage(double damage) {
-		if (damage<=0) return;
-		HP -= (damage);
-		if (HP<=0) this.isVisible = true;
+		if ((this.x < knight.getX()+10 && knight.getX()-10 < this.x) && (this.y < knight.getY()+10 && knight.getY()-10 < this.y)) {
+			this.isVisible = false;
+			if (damage<=0) return;
+			HP -= damage;
+		}
+		if (HP<=0) this.isVisible = false;
 	}
 	public double getExp() {
 		return exp;
@@ -134,15 +133,25 @@ public class Monster extends Entity{
 		return speed;
 	}
 	public void updatePos() {
+
 		//System.out.println("This is in updatePos");
+		System.out.println("This is in updatePos");
+		System.out.println("This is in updatePos Monster");
+		System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
 		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
-		x += getSpeed();
-		y += getSpeed();
+		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
+		//x += getSpeed();
+		//y += getSpeed();
 		boolean isCharacterAttacked;
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
+		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
+			this.isVisible = false;
+			if (!isVisible) System.out.println("isvisible pen false waaa");
+			System.out.println("tooooom!");
+		}
 	}
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;
@@ -158,13 +167,11 @@ public class Monster extends Entity{
 		double cos = c/cha;
 		return cos;
 	}
-	public void setVisible(boolean visible) {
-		this.isVisible = visible;
-	}
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
 	
 }
