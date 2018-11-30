@@ -147,11 +147,6 @@ public class Monster extends Entity{
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
-		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
-			this.isVisible = false;
-			if (!isVisible) System.out.println("isvisible pen false waaa");
-			System.out.println("tooooom!");
-		}
 	}
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;

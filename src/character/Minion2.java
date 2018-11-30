@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 public class Minion2 extends Monster {
 	public Image zombiePic;
 	
+	
 	public Minion2(double hp, int attack,Knight knight) {
 		super(100, 20, knight);
 		for (int i=1; i<5; i++) {
@@ -36,6 +37,10 @@ public class Minion2 extends Monster {
 	@Override*/
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
+		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
+			return false;
+		}
+		
 		return true;
 	}
 	public void setZombie() {
