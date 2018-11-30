@@ -19,25 +19,25 @@ public class CowgirlSkill2 extends Entity {
 
 	public void setKnightSkill() {
 		if (route=='w') {
-			skillPic = new Image("missle_0.png",50,10,false,false);
+			skillPic = new Image("missle_0.png",20,20,false,false);
 		}else if (route == 'd') {
-			skillPic = new Image("missle_90.png",50,10,false,false);
+			skillPic = new Image("missle_90.png",20,20,false,false);
 		}else if (route == 'a') {
-			skillPic = new Image("missle_270.png",50,10,false,false);
+			skillPic = new Image("missle_270.png",20,20,false,false);
 		}else if (route == 'x') {
-			skillPic = new Image("missle_180.png",50,10,false,false);
+			skillPic = new Image("missle_180.png",20,20,false,false);
 		}if (route=='e') {
-			skillPic = new Image("missle_45.png",50,10,false,false);
+			skillPic = new Image("missle_45.png",20,20,false,false);
 		}else if (route == 'c') {
-			skillPic = new Image("missle_135.png",50,10,false,false);
+			skillPic = new Image("missle_135.png",20,20,false,false);
 		}else if (route == 'z') {
-			skillPic = new Image("missle_225.png",50,10,false,false);
+			skillPic = new Image("missle_225.png",20,20,false,false);
 		}else if (route == 'q') {
-			skillPic = new Image("missle_315.png",50,10,false,false);
+			skillPic = new Image("missle_315.png",20,20,false,false);
 		}
 	}
 	public void draw(GraphicsContext gc) {
-		System.out.println("this is in CowgirlsSkill1");
+		//System.out.println("this is in CowgirlsSkill1");
 		System.out.println("this is x : "+x+"This is y : "+y);
 		gc.drawImage(skillPic, x, y+10);
 	}
@@ -51,7 +51,7 @@ public class CowgirlSkill2 extends Entity {
 		if (route=='w') {
 			y-=10;
 		}
-		if (route=='s') {
+		if (route=='x') {
 			y+=10;
 		}
 		if(x>960 || x <0 || y>600 || y<0) isVisible = false;

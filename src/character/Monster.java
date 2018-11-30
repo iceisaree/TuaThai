@@ -111,7 +111,7 @@ public class Monster extends Entity{
 	@Override
 	public void draw(GraphicsContext gc) {
 		//monsterPic = new Image("zombiefemale_Up (1).png");
-		System.out.println("monster in draw");
+		//System.out.println("monster in draw");
 		gc.drawImage(monsterPic, x, y);
 	}
 	public void setImage() {
@@ -135,9 +135,9 @@ public class Monster extends Entity{
 	public void updatePos() {
 
 		//System.out.println("This is in updatePos");
-		System.out.println("This is in updatePos");
-		System.out.println("This is in updatePos Monster");
-		System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
+		//System.out.println("This is in updatePos");
+		//System.out.println("This is in updatePos Monster");
+		//System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
 		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
 		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");

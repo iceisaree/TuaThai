@@ -8,26 +8,31 @@ public class PlayerDetail implements IRenderable {
 	private int maxLife;
 	private int exp;
 	private int maxExp;
-	
+	public Image backgroundGame;
 	public Image knightSkill1;
 	public Image knightSkill2;
-	public Image knightSkill3;
 	
-	public Image cowgirlsSkill1;
-	public Image cowgirlsSkill2;
-	public Image cowgirlsSkill3;
+	
+	public Image cowgirlSkill1;
+	public Image cowgirlSkill2;
+	public PlayerDetail() {
+		setImage();
+	}
+	public void setImage() {
+		backgroundGame = new Image("forest.png");
+	}
 	
 	public void draw(GraphicsContext gc) {
 		//draw Level exp Hp for knight and cowgirls
 		
 		gc.drawImage(knightSkill1,0,0);
 		gc.drawImage(knightSkill2, 0, 0);
-		gc.drawImage(knightSkill3,0,0);
+		
 		
 		// fix position skill pic
-		gc.drawImage(cowgirlsSkill1, 0, 0);
-		gc.drawImage(cowgirlsSkill2, 0, 0);
-		gc.drawImage(cowgirlsSkill3,0,0);
+		gc.drawImage(cowgirlSkill1, 0, 0);
+		gc.drawImage(cowgirlSkill2, 0, 0);
+		
 		
 	}
 	public boolean isVisible() {
@@ -43,12 +48,16 @@ public class PlayerDetail implements IRenderable {
 	public void setCooldownKngiht(int cooldownKnight1,int cooldownKnight2,int cooldownKnight3) {
 		knightSkill1 = new Image("");
 		knightSkill2 = new Image("");
-		knightSkill3 = new Image("");
+		if (cooldownKnightSkill1!=0) knightSkill1 = new Image("");
+		if (cooldownKnightSkill2!=0) knightSkill2 = new Image("");
+		
 		// add cooldown depend on time
 	}
 	public void setCooldownCowgirls(int cooldownCowgirls1,int cooldownCowgirls2,int cooldownCowgirls3) {
-		cowgirlsSkill1 = new Image("");
-		cowgirlsSkill2 = new Image("");
-		cowgirlsSkill3 = new Image("");
+		cowgirlSkill1 = new Image("");
+		cowgirlSkill2 = new Image("");
+		if (cooldownCowgirlSkill1!=0) cowgirlSkill1 = new Image("");
+		if (cooldownCowgirlSkill2!=0) cowgirlSkill2 = new Image("");
+		
 	}
 }

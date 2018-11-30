@@ -71,13 +71,13 @@ public class RenderableHolder {
 	
 	public void remove() {
 		int n = listRender.size();
-		System.out.println(listRender.size()+" sizeeeeeeeee");
+		//System.out.println(listRender.size()+" sizeeeeeeeee");
 		for (int i=n-1;i>=0;i--) {
 			System.out.println("This is in remove");
 			if (listRender.get(i).isVisible()) System.out.println("um");
 			if (listRender.get(i).isVisible() == false) {
 				listRender.remove(i);
-				System.out.println("removeeeeeeeeeeeee");
+				//System.out.println("removeeeeeeeeeeeee");
 			}
 	}
 	}
