@@ -3,6 +3,7 @@ package logic;
 import java.awt.event.MouseEvent;
 
 import logic.GameWindow;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -12,17 +13,17 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class StartWindow {
-	private static final Font LABEL_FONT = Font.font("Arial", 22);
 	private Stage primaryStage;
 	private Canvas bg;
 	
 	private GraphicsContext gc;
-	public Image background = new Image("forest.png");
+	private Image background = new Image("forest.png");
 	private Image name = new Image("name3.png");
 	private Image pbutton = new Image("pbutton.png");
 	private Image pbuttonfade = new Image("pbuttonfade.png");
@@ -30,11 +31,13 @@ public class StartWindow {
 	private Image exitButtonfade = new Image("exfade.png");
 	private Image creditButton = new Image("cr.png");
 	private Image creditButtonfade = new Image("crfade.png");
+	public AudioClip soundbg = new AudioClip(ClassLoader.getSystemResource("startgame.mp3").toString());
 	
 	public StartWindow(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		bg = new Canvas(950,600);
 		gc = bg.getGraphicsContext2D();
+		soundbg.play();
 	}
 	public void draw(GraphicsContext gc) {
 		Pane root = new Pane();
@@ -48,6 +51,7 @@ public class StartWindow {
 		bg.requestFocus();
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("TuaThaiKraiGorDai");
+		
 	}
 	private boolean isOnPlayButton(javafx.scene.input.MouseEvent e) {
 		return e.getX() >= 350 && e.getX() < 525 && e.getY() >= 420 && e.getY() < 540;
@@ -96,6 +100,7 @@ public class StartWindow {
 			if (isOnPlayButton(e)) {
 				GameWindow game = new GameWindow(primaryStage);
 				game.drawGameWindow();
+				soundbg.stop();
 			}
 			if (isOnExitButton(e)) {
 				Platform.exit();
@@ -103,6 +108,7 @@ public class StartWindow {
 			if (isOnCreditButton(e)) {
 				CreditWindow cr = new CreditWindow(primaryStage);
 				cr.drawCreditWindow();
+				//soundbg.stop();
 			}
 			
 		});
@@ -123,8 +129,6 @@ public class StartWindow {
 		draw(gc);
 		
 	}
-	
-	
-	
+
 	
 }
