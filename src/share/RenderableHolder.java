@@ -37,13 +37,17 @@ public class RenderableHolder {
 			if (e instanceof Monster) {
 				((Monster) e).updatePos();
 			}
+			if (e instanceof Minion2) {
+				//System.out.println("This is in minion2");
+				((Minion2) e).updatePos();
+			}
 			
 		}
 	}
 	public void draw(GraphicsContext gc) {
 		
 		for (int i=0;i<listRender.size();i++) {
-			System.out.println("this is draw in renderableHolder");
+			//System.out.println("this is draw in renderableHolder");
 			listRender.get(i).draw(gc);
 		}
 	}
@@ -51,7 +55,7 @@ public class RenderableHolder {
 	public void remove() {
 		int n = listRender.size();
 		for (int i=n-1;i>=0;i--) {
-			System.out.println("This is in remove");
+			//System.out.println("This is in remove");
 			if (listRender.get(i).isVisible() == false) {
 				listRender.remove(i);
 			}

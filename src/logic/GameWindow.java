@@ -33,7 +33,7 @@ public class GameWindow extends Canvas {
 	private Minion1 minion1;
 	private Minion2 minion2;
 	private Minion3 minion3;
-
+	private int countMinion = 1;
 	private String control="";
 	private char c;
 	private String image_path = "file:image/character/cowboy/Dead__001.png";
@@ -176,13 +176,18 @@ public static AnimationTimer getGamewindowanimation() {
 		if ((f%600)<500)
 			{
 				if (f%60 ==0) {
-					for(int i = 0 ; i<10 ; i++);
+					// maxCountMinion can change is 2
+					for(int i = countMinion ; i>0 ; i--) {
+						addMinion2();
+						
+					}
 				}
 				// add item by time
 				
 			}
-			RenderableHolder.getinstance().remove();
 			addBackground();
+			RenderableHolder.getinstance().remove();
+			
 			RenderableHolder.getinstance().draw(gc);
 			
 			

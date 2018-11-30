@@ -21,7 +21,8 @@ public class Monster extends Entity{
 	protected List<Image> down = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
 	private Character character;
-	protected Image monsterPic;
+	ClassLoader loader = ClassLoader.getSystemClassLoader();
+	public Image monsterPic = new Image("zombiefemale_Up (1).png",90,90,false,false);
 	protected boolean isDead;
 	protected double MaxHP;
 	protected double exp;
@@ -46,31 +47,32 @@ public class Monster extends Entity{
 		switch(way) {
 		case 1:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;
+			x = 100;
 		case 2:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;
+			x = 200;
 		case 3:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;
+			x = 300;
 		case 4:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;
+			x = 450;
 		case 5:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;
+			x = 400;
 		case 6:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;			
+			x = 350;			
 		case 7:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;
+			x = 250;
 		case 8:
 			y = (double) rand.nextInt(500)+60;
-			x = 40;
+			x = 150;
 			
 		}
 		setImage();
+		x = 0;y =0;
 		setX(x);
 		setY(y);
 		this.knight = knight;
@@ -110,6 +112,7 @@ public class Monster extends Entity{
 		other.takedDamage(this.Damage);
 	}
 	public void draw(GraphicsContext gc) {
+		//monsterPic = new Image("zombiefemale_Up (1).png");
 		gc.drawImage(monsterPic, x, y);
 	}
 	public void setImage() {
@@ -131,6 +134,7 @@ public class Monster extends Entity{
 		return speed;
 	}
 	public void updatePos() {
+		System.out.println("This is in updatePos");
 		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
 		x += getSpeed();
@@ -160,7 +164,7 @@ public class Monster extends Entity{
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 }
