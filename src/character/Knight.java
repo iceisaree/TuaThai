@@ -9,6 +9,8 @@ import javafx.scene.media.AudioClip;
 import share.Entity;
 import share.IRenderable;
 import share.RenderableHolder;
+import skill.KnightSkill;
+import skill.KnightSkill2;
 
 //change data in character and Knight
 public class Knight extends Entity implements IRenderable {
@@ -55,7 +57,7 @@ public class Knight extends Entity implements IRenderable {
 	public void draw(GraphicsContext gc) {
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
-		System.out.println("This is in knight draw");
+		//System.out.println("This is in knight draw");
 		gc.drawImage(knightPic, x, y);
 	}
 	public void updatePos() {
@@ -78,6 +80,18 @@ public class Knight extends Entity implements IRenderable {
 	}
 	public boolean isVisible() {
 		return true;
+	}
+	public KnightSkill attack(char c) {
+		KnightSkill knightSkill1 = new KnightSkill(x,y,c,1);
+		RenderableHolder.getinstance().add(knightSkill1);
+		knightSkill1.setKnightSkill();
+		return knightSkill1;
+	}
+	public KnightSkill2 attack2(char c) {
+		KnightSkill2 knightSkill2 = new KnightSkill2(x,y,c);
+		RenderableHolder.getinstance().add(knightSkill2);
+		knightSkill2.setKnightSkill2();
+		return knightSkill2;
 	}
 	public void setControl(String control) {
 		this.control = control;

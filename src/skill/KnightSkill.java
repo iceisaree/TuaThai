@@ -1,49 +1,50 @@
 package skill;
-
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import share.Entity;
 
-public class CowgirlSkill1 extends Entity {
+public class KnightSkill extends Entity {
 	private boolean isVisible = true;
 	private char route;
 	public Image skillPic;
 	private int typeSkill;
 	private boolean isFromCowgirls = false;
 	
-	public CowgirlSkill1(double x,double y,char route) {
+	public KnightSkill(double x,double y,char route,int typeSkill) {
 		super(x,y);
+		this.typeSkill = typeSkill;
 		this.route = route;
+		this.typeSkill = typeSkill;
 		setKnightSkill();
 	}
 
 	public void setKnightSkill() {
-		if (route=='j') {
-			skillPic = new Image("Tbomb_down.png",50,10,false,false);
-		}else if (route == 'k') {
-			skillPic = new Image("Tbomb_right.png",50,10,false,false);
-		}else if (route == 'u') {
-			skillPic = new Image("Tbomb_up.png",50,10,false,false);
-		}else if (route == 'h') {
-			skillPic = new Image("Tbomb_left.png",50,10,false,false);
+		if (route=='s') {
+			skillPic = new Image("Bullet_down.png",50,50,false,false);
+		}else if (route == 'a') {
+			skillPic = new Image("Bullet_right.png",50,50,false,false);
+		}else if (route == 'w') {
+			skillPic = new Image("Bullet_up.png",50,50,false,false);
+		}else if (route == 'd') {
+			skillPic = new Image("Bullet_left.png",50,50,false,false);
 		}
 	}
 	public void draw(GraphicsContext gc) {
-		System.out.println("this is in CowgirlsSkill1");
+		System.out.println("this is in knightSkill1");
 		System.out.println("this is x : "+x+"This is y : "+y);
 		gc.drawImage(skillPic, x, y+10);
 	}
 	public void updatePos() {
-		if (route=='h') {
+		if (route=='a') {
 			x-=10;
 		}
-		if (route=='k') {
+		if (route=='d') {
 			x+=10;
 		}
-		if (route=='u') {
+		if (route=='w') {
 			y-=10;
 		}
-		if (route=='j') {
+		if (route=='s') {
 			y+=10;
 		}
 		if(x>960 || x <0 || y>600 || y<0) isVisible = false;
@@ -59,10 +60,10 @@ public class CowgirlSkill1 extends Entity {
 			x-=10;
 			y-=10;
 		}
-		/*if(route=='u') {
+		if(route=='u') {
 			x-=10;
 			y+=10;
-		}*/
+		}
 	}
 
 	public boolean isVisible() {

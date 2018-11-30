@@ -37,7 +37,7 @@ public class GameWindow extends Canvas {
 	private String control="";
 	private char c;
 	private String image_path = "file:image/character/cowboy/Dead__001.png";
-	
+	private int FireTimes = 0;
 	private boolean alreadyAddBoss;
 	private boolean allBossDead;
 	private static AnimationTimer gamewindowanimation;
@@ -77,10 +77,39 @@ public class GameWindow extends Canvas {
 	public void upPlayerDetail() {
 		
 	}
+	public void fire() {
+		
+			
+			// for add sound fire.play();
+			cowgirls.attack2('q');
+			cowgirls.attack2('w');
+			cowgirls.attack2('d');
+			cowgirls.attack2('a');
+			cowgirls.attack2('x');
+			cowgirls.attack2('e');
+			cowgirls.attack2('c');
+			cowgirls.attack2('z');
+		
+	}
 	
 public void addMoving(GraphicsContext gc) {
 	this.setOnKeyPressed((KeyEvent) -> {
-		
+		if (KeyEvent.getCode() == KeyCode.Q) {
+			// for add sound skill fire.play();
+			knight.attack(c);
+		}
+		if (KeyEvent.getCode() == KeyCode.E) {
+			// for add sound skill fire.play();
+			knight.attack2(c);
+		}
+		if (KeyEvent.getCode() == KeyCode.N) {
+			// for add sound skill fire.play();
+			girlShoot();
+		}
+		if (KeyEvent.getCode() == KeyCode.M) {
+			// for add sound skill fire.play();
+			fire();
+		}
 
 		if (KeyEvent.getCode() == KeyCode.RIGHT) {
 			control+="k";
@@ -171,8 +200,8 @@ public static AnimationTimer getGamewindowanimation() {
 
 	public void updateDetail() {
 		f++;
-		System.out.println("this is update detail");
-		System.out.println("this is frame : "+ f);
+		//System.out.println("this is update detail");
+		//System.out.println("this is frame : "+ f);
 		if ((f%600)<500)
 			{
 				if (f%60 ==0) {
@@ -183,7 +212,7 @@ public static AnimationTimer getGamewindowanimation() {
 					}
 				}
 				// add item by time
-				
+			
 			}
 			addBackground();
 			RenderableHolder.getinstance().remove();
@@ -230,7 +259,7 @@ public static AnimationTimer getGamewindowanimation() {
 	addCowgirls();
 	//addMinion();
 	addMinion2();
-	addBackground();
+	//addBackground();
 	
 }
 	public void addPlayerDetail() {
@@ -300,6 +329,13 @@ public static AnimationTimer getGamewindowanimation() {
 		gc.drawImage(imagenew, 0, 0);
 		//gc.drawImage(imagek,0,0);
 	
+	}
+	public void girlShoot() {
+		cowgirls.attack('h');
+		cowgirls.attack('j');
+		cowgirls.attack('u');
+		cowgirls.attack('k');
+		
 	}
 		
 }

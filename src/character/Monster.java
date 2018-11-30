@@ -134,7 +134,7 @@ public class Monster extends Entity{
 		return speed;
 	}
 	public void updatePos() {
-		System.out.println("This is in updatePos");
+		//System.out.println("This is in updatePos");
 		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
 		x += getSpeed();

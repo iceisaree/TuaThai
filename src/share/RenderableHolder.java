@@ -1,6 +1,12 @@
 package share;
 
 import java.util.List;
+
+import skill.CowgirlSkill1;
+import skill.CowgirlSkill2;
+import skill.KnightSkill;
+import skill.KnightSkill2;
+
 import java.util.ArrayList;
 import character.*;
 import character.Character;
@@ -36,6 +42,17 @@ public class RenderableHolder {
 			}
 			if (e instanceof Monster) {
 				((Monster) e).updatePos();
+			}
+			if (e instanceof KnightSkill) {
+				((KnightSkill) e).updatePos();
+			}
+			if (e instanceof KnightSkill2) {
+				((KnightSkill2) e).updatePos();
+			}
+			if (e instanceof CowgirlSkill1) {
+				((CowgirlSkill1) e).updatePos();
+			}if (e instanceof CowgirlSkill2) {
+				((CowgirlSkill2) e).updatePos();
 			}
 			if (e instanceof Minion2) {
 				//System.out.println("This is in minion2");

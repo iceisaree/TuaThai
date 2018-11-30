@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import share.Entity;
 import share.IRenderable;
+import share.RenderableHolder;
+import skill.CowgirlSkill1;
+import skill.CowgirlSkill2;
+import skill.KnightSkill;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 //change data in character and Knight
@@ -57,7 +61,7 @@ public class Cowgirls extends Entity implements IRenderable {
 	public void draw(GraphicsContext gc) {
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
-		System.out.println("This is in knight draw");
+		//System.out.println("This is in knight draw");
 		gc.drawImage(knightPic, x, y);
 	}
 	public void updatePos() {
@@ -77,6 +81,18 @@ public class Cowgirls extends Entity implements IRenderable {
 			x+=speed;
 			knightPic = right.get(timeOfPics/10);
 		}
+	}
+	public CowgirlSkill1 attack(char c) {
+		CowgirlSkill1 cowgirlSkill1 = new CowgirlSkill1(x,y,c);
+		RenderableHolder.getinstance().add(cowgirlSkill1);
+		cowgirlSkill1.setKnightSkill();
+		return cowgirlSkill1;
+	}
+	public CowgirlSkill2 attack2(char c) {
+		CowgirlSkill2 cowgirlSkill2 = new CowgirlSkill2(x,y,c);
+		RenderableHolder.getinstance().add(cowgirlSkill2);
+		cowgirlSkill2.setKnightSkill();
+		return cowgirlSkill2;
 	}
 	public boolean isVisible() {
 		return true;
