@@ -44,7 +44,18 @@ public class Minion2 extends Monster {
 			return false;
 		}
 		
-		return true;
+		return isVisible;
+	}
+	public boolean isDestroyed(int x,int y) {
+		if ((this.x < x+20 && x-20 < this.x) && (this.y < y+20 && y-20 < this.y)) {
+			isVisible = false;
+			return true;
+		}
+		return false;
+	}
+
+	public void setVisible(boolean isVisible) {
+		this.isVisible = isVisible;
 	}
 	public void setZombie() {
 		zombiePic = left.get(0);

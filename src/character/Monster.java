@@ -28,6 +28,7 @@ public class Monster extends Entity{
 	protected Random rand = new Random();
 	protected Knight knight;
 	protected Cowgirls cowgirl;
+
 	public Monster(double hp, double damage, Knight knight,Cowgirls cowgirl) {
 		
 		super(0,0);
@@ -164,11 +165,30 @@ public class Monster extends Entity{
 		double cos = c/cha;
 		return cos;
 	}
+	public boolean isDestroyed(double x,double y) {
+		if ((this.x < x+20 && x-20 < this.x) && (this.y < y+20 && y-20 < this.y)) {
+			isVisible = false;
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		return true;
+		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
+			return false;
+		}
+		if ((this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
+			return false;
+		}
+		/*if ((this.x <= cowgirlSkill1.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
+			return false;
+		}*/
+		
+		return isVisible;
 	}
-	
+	public void setVisible(boolean isVisible) {
+		this.isVisible = isVisible;
+	}
 	
 }

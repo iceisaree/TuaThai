@@ -82,8 +82,9 @@ public class Cowgirls extends Entity implements IRenderable {
 			knightPic = right.get(timeOfPics/10);
 		}
 	}
-	public CowgirlSkill1 attack(char c) {
-		CowgirlSkill1 cowgirlSkill1 = new CowgirlSkill1(x,y,c);
+
+	public CowgirlSkill1 attack(char c,int addX,int addY) {
+		CowgirlSkill1 cowgirlSkill1 = new CowgirlSkill1(x,y,c,addX,addY);
 		RenderableHolder.getinstance().add(cowgirlSkill1);
 		cowgirlSkill1.setKnightSkill();
 		return cowgirlSkill1;

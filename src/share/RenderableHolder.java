@@ -10,9 +10,8 @@ import skill.KnightSkill2;
 import java.util.ArrayList;
 import character.*;
 import character.Character;
-import character.Knight;
-import character.Monster;
 import javafx.scene.canvas.GraphicsContext;
+import share.IRenderable;
 
 public class RenderableHolder {
 	private static final RenderableHolder render = new RenderableHolder();
@@ -40,6 +39,9 @@ public class RenderableHolder {
 				((Cowgirls)e).setControl(control);
 				((Cowgirls)e).updatePos();
 			}
+			if (e instanceof CowgirlSkill1) {
+				((CowgirlSkill1) e).updatePos();
+			}
 			if (e instanceof Monster) {
 				((Monster) e).updatePos();
 			}
@@ -49,9 +51,7 @@ public class RenderableHolder {
 			if (e instanceof KnightSkill2) {
 				((KnightSkill2) e).updatePos();
 			}
-			if (e instanceof CowgirlSkill1) {
-				((CowgirlSkill1) e).updatePos();
-			}if (e instanceof CowgirlSkill2) {
+			if (e instanceof CowgirlSkill2) {
 				((CowgirlSkill2) e).updatePos();
 			}
 			if (e instanceof Minion2) {
@@ -80,6 +80,27 @@ public class RenderableHolder {
 				//System.out.println("removeeeeeeeeeeeee");
 			}
 	}
+	}
+	public int setVisible() {
+		int exp =0;
+		for (IRenderable i : listRender) {
+			if (i instanceof Monster) {
+				for (IRenderable j : listRender) {
+					if (j instanceof CowgirlSkill1) {
+						if (((Monster)i).isDestroyed(((CowgirlSkill1)j).getX(), ((CowgirlSkill1)j).getY())) {
+							System.out.println("this is in setVisible");
+							((Monster)i).setVisible(false);
+							System.out.println("this is in is destroy");
+							((CowgirlSkill1)j).setVisible(false);
+							exp+=10;
+						}
+					}
+			}
+			
+			}
+			
+		}
+		return exp;
 	}
 	public void clearList() {
 		this.listRender = null;

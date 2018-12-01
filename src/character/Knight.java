@@ -14,9 +14,9 @@ import skill.KnightSkill2;
 
 //change data in character and Knight
 public class Knight extends Entity implements IRenderable {
-	
+	private int max_Exp;
 	private int speed = 4;
-	private static double Hp;
+	private int Hp;
 	private double mana;
 	private double armor;
 	private double attack;
@@ -28,7 +28,7 @@ public class Knight extends Entity implements IRenderable {
 	private List<Image> right = new ArrayList<>();
 	private List<Image> up = new ArrayList<>();
 	private List<Image> down = new ArrayList<>();
-	
+	private int exp;
 	private String name;
 	public Knight(String name){
 		super(0,0);
@@ -59,6 +59,18 @@ public class Knight extends Entity implements IRenderable {
 		if(timeOfPics>=30) timeOfPics = 0; 
 		//System.out.println("This is in knight draw");
 		gc.drawImage(knightPic, x, y);
+	}
+	public int getExp() {
+		return exp;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	public int getMaxExp() {
+		return max_Exp;
+	}
+	public void setMaxExp(int maxExp) {
+		this.max_Exp = maxExp;
 	}
 	public void updatePos() {
 		if (control.contains("a")) if(x>=35) {
@@ -96,7 +108,8 @@ public class Knight extends Entity implements IRenderable {
 	public void setControl(String control) {
 		this.control = control;
 	}
-	public static double getHp() {return Hp;}
+	public int getHp() {
+		return Hp;}
 	public List<Image> getLeft() {
 		return left;
 	}
@@ -156,7 +169,7 @@ public class Knight extends Entity implements IRenderable {
 	public String getControl() {
 		return control;
 	}
-	public void setHp(double hp) {
+	public void setHp(int hp) {
 		Hp = hp;
 	}
 public boolean attackPos(int xIn,int yIn) {

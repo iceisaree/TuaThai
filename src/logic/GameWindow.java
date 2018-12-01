@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 
 public class GameWindow extends Canvas {
 	private Scene scene;
+	
 	private Stage primaryStage;
 	private Knight knight;
 	private Cowgirls cowgirls;
@@ -212,9 +213,10 @@ public static AnimationTimer getGamewindowanimation() {
 					}
 				}
 				// add item by time
-			
+				playerDetail.setCharacterData(knight.getLevel(),knight.getExp(),knight.getMaxExp(),knight.getHp(),10);
 			}
 			addBackground();
+			int exp = RenderableHolder.getinstance().setVisible();
 			RenderableHolder.getinstance().remove();
 			
 			RenderableHolder.getinstance().draw(gc);
@@ -267,7 +269,7 @@ public static AnimationTimer getGamewindowanimation() {
 		RenderableHolder.getinstance().add(playerDetail);
 	}
 	public void isGameEnd() {
-		if (Knight.getHp()==0 && Cowgirls.getHp()==0) {
+		if (knight.getHp()==0 && Cowgirls.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameOverScene.startAnimation(gc);
@@ -331,10 +333,10 @@ public static AnimationTimer getGamewindowanimation() {
 	
 	}
 	public void girlShoot() {
-		cowgirls.attack('h');
-		cowgirls.attack('j');
-		cowgirls.attack('u');
-		cowgirls.attack('k');
+		cowgirls.attack('h',20,20);
+		cowgirls.attack('j',20,20);
+		cowgirls.attack('u',20,20);
+		cowgirls.attack('k',20,20);
 		
 	}
 		
