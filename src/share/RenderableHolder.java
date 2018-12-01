@@ -5,7 +5,6 @@ import java.util.List;
 import skill.CowgirlSkill1;
 import skill.CowgirlSkill2;
 import skill.KnightSkill;
-import skill.KnightSkill2;
 
 import java.util.ArrayList;
 import character.*;
@@ -48,9 +47,7 @@ public class RenderableHolder {
 			if (e instanceof KnightSkill) {
 				((KnightSkill) e).updatePos();
 			}
-			if (e instanceof KnightSkill2) {
-				((KnightSkill2) e).updatePos();
-			}
+			
 			if (e instanceof CowgirlSkill2) {
 				((CowgirlSkill2) e).updatePos();
 			}
@@ -92,6 +89,25 @@ public class RenderableHolder {
 							((Monster)i).setVisible(false);
 							System.out.println("this is in is destroy");
 							((CowgirlSkill1)j).setVisible(false);
+							exp+=10;
+						}
+					}
+					if (j instanceof CowgirlSkill2) {
+						if (((Monster)i).isDestroyed(((CowgirlSkill2)j).getX(), ((CowgirlSkill2)j).getY())) {
+							System.out.println("this is in setVisible");
+							((Monster)i).setVisible(false);
+							System.out.println("this is in is destroy");
+							((CowgirlSkill2)j).setVisible(false);
+							exp+=10;
+						}
+					}
+					// set visible for knight skill 
+					if (j instanceof KnightSkill) {
+						if (((Monster)i).isDestroyed(((KnightSkill)j).getX(), ((KnightSkill)j).getY())) {
+							System.out.println("this is in setVisible");
+							((Monster)i).setVisible(false);
+							System.out.println("this is in is destroy");
+							((KnightSkill)j).setVisible(false);
 							exp+=10;
 						}
 					}

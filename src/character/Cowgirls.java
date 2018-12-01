@@ -26,14 +26,14 @@ public class Cowgirls extends Entity implements IRenderable {
 	private double attack;
 	private int Level;
 	private int timeOfPics = 0;
-	public Image knightPic = new Image("desert.png");
+	public Image CowgirlPic = new Image("desert.png");
 	private String control;
 	private List<Image> left = new ArrayList<>();
 	private List<Image> right = new ArrayList<>();
 	private List<Image> up = new ArrayList<>();
 	private List<Image> down = new ArrayList<>();
 	
-	private String name,classCh;
+	private String name;
 	public Cowgirls(String name){
 		super(0,0);
 		for (int i=1;i<5;i++) {
@@ -56,43 +56,43 @@ public class Cowgirls extends Entity implements IRenderable {
 			setKnight();
 		}
 	public void setKnight() {
-		knightPic = right.get(0);
+		CowgirlPic = right.get(0);
 	}
 	public void draw(GraphicsContext gc) {
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
 		//System.out.println("This is in knight draw");
-		gc.drawImage(knightPic, x, y);
+		gc.drawImage(CowgirlPic, x, y);
 	}
 	public void updatePos() {
 		if (control.contains("h")) if(x>=35) {
 			x-=speed;
-			knightPic = left.get(timeOfPics/10);
+			CowgirlPic = left.get(timeOfPics/10);
 		}
 		if (control.contains("j")) if (y+90<=600) {
 			y+=speed;
-			knightPic = up.get(timeOfPics/10);
+			CowgirlPic = up.get(timeOfPics/10);
 		}
 		if (control.contains("u")) if(y>=0) {
 			y-=speed;
-			knightPic = down.get(timeOfPics/10);
+			CowgirlPic = down.get(timeOfPics/10);
 		}
 		if (control.contains("k")) if (x+90<=950) {
 			x+=speed;
-			knightPic = right.get(timeOfPics/10);
+			CowgirlPic = right.get(timeOfPics/10);
 		}
 	}
 
 	public CowgirlSkill1 attack(char c,int addX,int addY) {
 		CowgirlSkill1 cowgirlSkill1 = new CowgirlSkill1(x,y,c,addX,addY);
 		RenderableHolder.getinstance().add(cowgirlSkill1);
-		cowgirlSkill1.setKnightSkill();
+		cowgirlSkill1.setCowgirlSkill1();
 		return cowgirlSkill1;
 	}
 	public CowgirlSkill2 attack2(char c) {
 		CowgirlSkill2 cowgirlSkill2 = new CowgirlSkill2(x,y,c);
 		RenderableHolder.getinstance().add(cowgirlSkill2);
-		cowgirlSkill2.setKnightSkill();
+		cowgirlSkill2.setCowgirlSkill2();
 		return cowgirlSkill2;
 	}
 	public boolean isVisible() {
@@ -145,11 +145,11 @@ public class Cowgirls extends Entity implements IRenderable {
 	public void setTimeOfPics(int timeOfPics) {
 		this.timeOfPics = timeOfPics;
 	}
-	public Image getKnightPic() {
-		return knightPic;
+	public Image getCowgirlPic() {
+		return CowgirlPic;
 	}
-	public void setKnightPic(Image knightPic) {
-		this.knightPic = knightPic;
+	public void setCowgirlPic(Image CowgirlPic) {
+		this.CowgirlPic = CowgirlPic;
 	}
 	public String getName() {
 		return name;

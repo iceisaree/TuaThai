@@ -10,7 +10,7 @@ import share.Entity;
 import share.IRenderable;
 import share.RenderableHolder;
 import skill.KnightSkill;
-import skill.KnightSkill2;
+
 
 //change data in character and Knight
 public class Knight extends Entity implements IRenderable {
@@ -94,13 +94,13 @@ public class Knight extends Entity implements IRenderable {
 		return true;
 	}
 	public KnightSkill attack(char c) {
-		KnightSkill knightSkill1 = new KnightSkill(x,y,c,1);
+		KnightSkill knightSkill1 = new KnightSkill(x,y,c,0);
 		RenderableHolder.getinstance().add(knightSkill1);
 		knightSkill1.setKnightSkill();
 		return knightSkill1;
 	}
-	public KnightSkill2 attack2(char c) {
-		KnightSkill2 knightSkill2 = new KnightSkill2(x,y,c);
+	public KnightSkill attack2(char c) {
+		KnightSkill knightSkill2 = new KnightSkill(x,y,c,1);
 		RenderableHolder.getinstance().add(knightSkill2);
 		knightSkill2.setKnightSkill2();
 		return knightSkill2;

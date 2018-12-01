@@ -8,18 +8,16 @@ public class CowgirlSkill1 extends Entity {
 	private boolean isVisible = true;
 	private char route;
 	public Image skillPic;
-	private int typeSkill;
-	private boolean isFromCowgirls = false;
 	private int addX,addY;
 	public CowgirlSkill1(double x,double y,char route,int addX,int addY) {
 		super(x,y);
 		this.route = route;
 		this.addX = addX;
 		this.addY = addY;
-		setKnightSkill();
+		setCowgirlSkill1();
 	}
 
-	public void setKnightSkill() {
+	public void setCowgirlSkill1() {
 		if (route=='j') {
 			skillPic = new Image("Tbomb_down.png",10,50,false,false);
 		}else if (route == 'k') {
@@ -31,8 +29,6 @@ public class CowgirlSkill1 extends Entity {
 		}
 	}
 	public void draw(GraphicsContext gc) {
-		System.out.println("this is in CowgirlsSkill1");
-		System.out.println("this is x : "+x+"This is y : "+y);
 		gc.drawImage(skillPic, x+addX, y+addY);
 	}
 	public void updatePos() {
@@ -49,22 +45,7 @@ public class CowgirlSkill1 extends Entity {
 			y+=10;
 		}
 		if(x>960 || x <0 || y>600 || y<0) isVisible = false;
-		if( route=='r') {
-			x+=10;
-			y+=10;
-		}
-		if(route=='t') {
-			x+=10;
-			y-=10;
-		}
-		if(route=='y') {
-			x-=10;
-			y-=10;
-		}
-		/*if(route=='u') {
-			x-=10;
-			y+=10;
-		}*/
+		
 	}
 
 	public boolean isVisible() {
@@ -89,13 +70,5 @@ public class CowgirlSkill1 extends Entity {
 
 	public void setSkillPic(Image skillPic) {
 		this.skillPic = skillPic;
-	}
-
-	public boolean isFromCowgirls() {
-		return isFromCowgirls;
-	}
-
-	public void setFromCowgirls(boolean isFromCowgirls) {
-		this.isFromCowgirls = isFromCowgirls;
 	}
 }

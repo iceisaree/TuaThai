@@ -213,7 +213,11 @@ public static AnimationTimer getGamewindowanimation() {
 					}
 				}
 				// add item by time
+				// add Character detail
 				playerDetail.setCharacterData(knight.getLevel(),knight.getExp(),knight.getMaxExp(),knight.getHp(),10);
+				// add cooldown and add Skill
+				playerDetail.setCooldownCowgirls(10, 10);
+				playerDetail.setCooldownKnight(10, 10);
 			}
 			addBackground();
 			int exp = RenderableHolder.getinstance().setVisible();

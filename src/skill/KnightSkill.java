@@ -7,15 +7,17 @@ public class KnightSkill extends Entity {
 	private boolean isVisible = true;
 	private char route;
 	public Image skillPic;
-	private int typeSkill;
-	private boolean isFromCowgirls = false;
+	private int type=0;
 	
-	public KnightSkill(double x,double y,char route,int typeSkill) {
+	public KnightSkill(double x,double y,char route,int type) {
 		super(x,y);
-		this.typeSkill = typeSkill;
 		this.route = route;
-		this.typeSkill = typeSkill;
-		setKnightSkill();
+		if(type==0) {
+			setKnightSkill();
+		}else {
+			setKnightSkill2();
+		}
+		
 	}
 
 	public void setKnightSkill() {
@@ -27,6 +29,17 @@ public class KnightSkill extends Entity {
 			skillPic = new Image("Bullet_up.png",50,50,false,false);
 		}else if (route == 'd') {
 			skillPic = new Image("Bullet_left.png",50,50,false,false);
+		}
+	}
+	public void setKnightSkill2() {
+		if (route=='s') {
+			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
+		}else if (route == 'a') {
+			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
+		}else if (route == 'w') {
+			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
+		}else if (route == 'd') {
+			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
 		}
 	}
 	public void draw(GraphicsContext gc) {
@@ -47,23 +60,8 @@ public class KnightSkill extends Entity {
 		if (route=='s') {
 			y+=10;
 		}
-		if(x>960 || x <0 || y>600 || y<0) isVisible = false;
-		if( route=='r') {
-			x+=10;
-			y+=10;
-		}
-		if(route=='t') {
-			x+=10;
-			y-=10;
-		}
-		if(route=='y') {
-			x-=10;
-			y-=10;
-		}
-		if(route=='u') {
-			x-=10;
-			y+=10;
-		}
+		if(x>950 || x <0 || y>600 || y<0) isVisible = false;
+		
 	}
 
 	public boolean isVisible() {
@@ -90,11 +88,4 @@ public class KnightSkill extends Entity {
 		this.skillPic = skillPic;
 	}
 
-	public boolean isFromCowgirls() {
-		return isFromCowgirls;
-	}
-
-	public void setFromCowgirls(boolean isFromCowgirls) {
-		this.isFromCowgirls = isFromCowgirls;
-	}
 }
