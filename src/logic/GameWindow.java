@@ -214,7 +214,8 @@ public static AnimationTimer getGamewindowanimation() {
 				}
 				// add item by time
 				// add Character detail
-				playerDetail.setCharacterData(knight.getLevel(),knight.getExp(),knight.getMaxExp(),knight.getHp(),10);
+				playerDetail.setKnightData(knight.getMaxExp(),knight.getExp(),knight.getLevel(),knight.getMaxHp(),knight.getHp());
+				playerDetail.setCowgirlData(cowgirls.getMaxExp(),cowgirls.getExp(), cowgirls.getLevel(), cowgirls.getMaxHp(), cowgirls.getHp());
 				// add cooldown and add Skill
 				playerDetail.setCooldownCowgirls(10, 10);
 				playerDetail.setCooldownKnight(10, 10);
@@ -273,7 +274,7 @@ public static AnimationTimer getGamewindowanimation() {
 		RenderableHolder.getinstance().add(playerDetail);
 	}
 	public void isGameEnd() {
-		if (knight.getHp()==0 && Cowgirls.getHp()==0) {
+		if (knight.getHp()==0 && cowgirls.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameOverScene.startAnimation(gc);

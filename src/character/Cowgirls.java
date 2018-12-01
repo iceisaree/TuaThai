@@ -17,16 +17,19 @@ public class Cowgirls extends Entity implements IRenderable {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}
+	protected int [] indexExp = {10,50,200,800,3200,3200,3400,3800,4000,4200,3000,2000,1000,500,200};
+	
 	private int speed = 4;
-	private static double Hp;
+	private int Hp;
 	private double mana;
 	private int skill1Count;
-
+	private int maxLevel;
 	private double armor;
 	private double attack;
+	private int exp;
 	private int Level;
 	private int timeOfPics = 0;
-	public Image CowgirlPic = new Image("desert.png");
+	public Image CowgirlPic;
 	private String control;
 	private List<Image> left = new ArrayList<>();
 	private List<Image> right = new ArrayList<>();
@@ -43,17 +46,6 @@ public class Cowgirls extends Entity implements IRenderable {
 			right.add(new Image("cowgirl_Right ("+i+").png",70,80,false,false));
 		}
 		setKnight();
-		}
-	// fix in form Character
-	public Cowgirls(double HP,double mana,double armor,double attack,String name,int Level) {
-			super(0,0);
-			for (int i=1;i<5;i++) {
-				left.add(new Image("knight_Right ("+i+").png",70,80,false,false));
-				up.add(new Image("knight_up("+i+").png",70,80,false,false));
-				down.add(new Image("knight_up("+i+").png",70,80,false,false));
-				right.add(new Image("knight_Right("+i+").png",70,80,false,false));
-			}
-			setKnight();
 		}
 	public void setKnight() {
 		CowgirlPic = right.get(0);
@@ -89,6 +81,30 @@ public class Cowgirls extends Entity implements IRenderable {
 		cowgirlSkill1.setCowgirlSkill1();
 		return cowgirlSkill1;
 	}
+	public int getExp() {
+		return this.exp;
+	}
+	public int getSkill1Count() {
+		return skill1Count;
+	}
+	public void setSkill1Count(int skill1Count) {
+		this.skill1Count = skill1Count;
+	}
+	public int getMaxLevel() {
+		return maxLevel;
+	}
+	public void setMaxLevel(int maxLevel) {
+		this.maxLevel = maxLevel;
+	}
+	public int getMaxExp() {
+		return indexExp[Level];
+	}
+	
+	public int getMaxHp() {
+		
+		return (Level*50)+50;
+	}
+	
 	public CowgirlSkill2 attack2(char c) {
 		CowgirlSkill2 cowgirlSkill2 = new CowgirlSkill2(x,y,c);
 		RenderableHolder.getinstance().add(cowgirlSkill2);
@@ -101,7 +117,8 @@ public class Cowgirls extends Entity implements IRenderable {
 	public void setControl(String control) {
 		this.control = control;
 	}
-	public static double getHp() {return Hp;}
+	public int getHp() {
+		return Hp;}
 	public List<Image> getLeft() {
 		return left;
 	}
@@ -161,7 +178,7 @@ public class Cowgirls extends Entity implements IRenderable {
 	public String getControl() {
 		return control;
 	}
-	public void setHp(double hp) {
+	public void setHp(int hp) {
 		Hp = hp;
 	}
 public boolean attackPos(int xIn,int yIn) {

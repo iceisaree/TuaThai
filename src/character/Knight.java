@@ -16,7 +16,7 @@ import skill.KnightSkill;
 public class Knight extends Entity implements IRenderable {
 	private int max_Exp;
 	private int speed = 4;
-	private int Hp;
+	private int Hp=100;
 	private double mana;
 	private double armor;
 	private double attack;
@@ -39,17 +39,6 @@ public class Knight extends Entity implements IRenderable {
 			right.add(new Image("knight_Right ("+i+").png",70,80,false,false));
 		}
 		setKnight();
-		}
-	// fix in form Character
-	public Knight(double HP,double mana,double armor,double attack,String name,int Level) {
-			super(0,0);
-			for (int i=1;i<5;i++) {
-				left.add(new Image("knight_Right ("+i+").png",70,80,false,false));
-				up.add(new Image("knight_up("+i+").png",70,80,false,false));
-				down.add(new Image("knight_up("+i+").png",70,80,false,false));
-				right.add(new Image("knight_Right("+i+").png",70,80,false,false));
-			}
-			setKnight();
 		}
 	public void setKnight() {
 		knightPic = right.get(0);
@@ -171,6 +160,9 @@ public class Knight extends Entity implements IRenderable {
 	}
 	public void setHp(int hp) {
 		Hp = hp;
+	}
+	public int getMaxHp() {
+		return 150+(Level*50);
 	}
 public boolean attackPos(int xIn,int yIn) {
 		

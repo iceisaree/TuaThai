@@ -8,6 +8,11 @@ public class PlayerDetail implements IRenderable {
 	private int maxLife;
 	private int exp;
 	private int maxExp;
+	private int cowgirlLevel;
+	private int cowgirlLife;
+	private int cowgirlMaxLife;
+	private int cowgirlExp;
+	private int cowgirlMaxExp;
 	public Image backgroundGame;
 	public Image IconSkillKnight1;
 	public Image IconSkillKnight2;
@@ -27,28 +32,42 @@ public class PlayerDetail implements IRenderable {
 	public void draw(GraphicsContext gc) {
 		//draw Level exp Hp for knight and cowgirls
 		gc.drawImage(backgroundGame, 0, 0);
-		gc.fillText("Life : "+life+"/"+maxLife,50,20);
-		gc.fillText("LV : "+level,500,20);
-		gc.fillText("Exp : "+exp+"/"+maxExp, 600, 20);
-		gc.drawImage(IconSkillKnight1,0,400);
-		gc.drawImage(IconSkillKnight2, 100, 400);
+		gc.fillText("Name : Knight",20 , 30);
+		gc.fillText("Life : "+life+"/"+maxLife,130,30);
+		gc.fillText("LV : "+level,220,30);
+		gc.fillText("Exp : "+exp+"/"+maxExp, 275, 30);
+		gc.drawImage(IconSkillKnight1,355,0);
+		gc.drawImage(IconSkillKnight2, 425, 0);
 		
 		
 		// fix position skill pic
-		gc.drawImage(IconSkillCowgirl1, 200, 400);
-		gc.drawImage(IconSkillCowgirl2, 300, 400);
+
+		gc.fillText("Name : Cowgirl",495 , 30);
+		gc.fillText("Life : "+cowgirlLife+"/"+cowgirlMaxLife,605,30);
+		gc.fillText("LV : "+cowgirlLevel,695,30);
+		gc.fillText("Exp : "+cowgirlExp+"/"+cowgirlMaxExp, 750, 30);
+		
+		gc.drawImage(IconSkillCowgirl1, 830, 0);
+		gc.drawImage(IconSkillCowgirl2, 900, 0);
 		
 		
 	}
 	public boolean isVisible() {
 		return true;
 	}
-	public void setCharacterData(int maxExp,int exp,int level,int maxLife,int life) {
+	public void setKnightData(int maxExp,int exp,int level,int maxLife,int life) {
 		this.maxExp = maxExp;
 		this.exp = exp;
 		this.level = level;
 		this.maxLife = maxLife;
 		this.life = life;
+	}
+	public void setCowgirlData(int maxExp,int exp,int level,int maxLife,int life) {
+		this.cowgirlMaxExp = maxExp;
+		this.cowgirlExp = exp;
+		this.cowgirlLevel = level;
+		this.cowgirlMaxLife = maxLife;
+		this.cowgirlLife = life;
 	}
 	public void setCooldownKnight(int cooldownKnight1,int cooldownKnight2) {
 		IconSkillKnight1 = new Image("IconSkillknight1.png",50,50,false,false);
