@@ -13,14 +13,14 @@ import skill.KnightSkill;
 
 
 //change data in character and Knight
-public class Knight extends Entity implements IRenderable {
+public class Knight extends Character {
 	private int max_Exp;
 	private int speed = 4;
-	private int Hp=100;
+	private int Hp=200;
 	private double attack;
 	private int Level=1;
 	private int timeOfPics = 0;
-	public Image knightPic = new Image("desert.png");
+	private Image knightPic;
 	private String control;
 	private List<Image> left = new ArrayList<>();
 	private List<Image> right = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Knight extends Entity implements IRenderable {
 	private int [] indexExp = {10,20,30,40,50,60,70,80,90,100,2000,3000,4000,5000,60000};
 	private String name;
 	public Knight(String name){
-		super(0,0);
+		super();
 		for (int i=1;i<5;i++) {
 			left.add(new Image("knight_Right ("+i+").png",70,80, false, false));
 			up.add(new Image("knight_up ("+i+").png",70,80,false,false));
@@ -61,6 +61,7 @@ public class Knight extends Entity implements IRenderable {
 		this.max_Exp = maxExp;
 	}
 	public void updatePos() {
+		
 		if (control.contains("a")) if(x>=35) {
 			x-=speed;
 			knightPic = left.get(timeOfPics/10);
@@ -102,6 +103,7 @@ public class Knight extends Entity implements IRenderable {
 			Level++;
 			exp=0;
 		}
+		HP = getMaxHp();
 	}
 	public int getHp() {
 		return Hp;}

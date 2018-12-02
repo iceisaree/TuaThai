@@ -127,6 +127,11 @@ public class Monster extends Entity{
 			if (damage<=0) return;
 			HP -= damage;
 		}
+		if ((this.x < cowgirl.getX()+10 && cowgirl.getX()-10 < this.x) && (this.y < cowgirl.getY()+10 && cowgirl.getY()-10 < this.y)) {
+			this.isVisible = false;
+			if (damage<=0) return;
+			HP -= damage;
+		}
 		if (HP<=0) this.isVisible = false;
 	}
 	public double getExp() {
@@ -148,6 +153,7 @@ public class Monster extends Entity{
 		//y += getSpeed();
 		boolean isCharacterAttacked;
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
+		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}

@@ -90,7 +90,9 @@ public class Cowgirls extends Character{
 		if (exp>=indexExp[Level]) {
 			Level++;
 			exp=0;
+			HP = getMaxHp();
 		}
+	
 	}
 	public int getMaxExp() {
  		return indexExp[Level];

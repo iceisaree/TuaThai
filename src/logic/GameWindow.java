@@ -72,7 +72,7 @@ public class GameWindow extends Canvas {
 		public void handle(long now) {
 			updateDetail();
 			upPlayerDetail();
-			
+			isGameEnd();
 			//addBackground();
 			
 			}
@@ -225,14 +225,16 @@ public static AnimationTimer getGamewindowanimation() {
 				playerDetail.setCooldownKnight(10, 10);
 			}
 			addBackground();
+			int exp2 = RenderableHolder.getinstance().setVisible2();
 			int exp = RenderableHolder.getinstance().setVisible();
+			
 			RenderableHolder.getinstance().remove();
 			
 			
 			
 			cowgirl.setExp(cowgirl.getExp()+exp);
 			cowgirl.updateLevel();
-			knight.setExp(knight.getExp()+exp);
+			knight.setExp(knight.getExp()+exp2);
 			knight.updateLevel();
 			
 			

@@ -31,8 +31,10 @@ public class RenderableHolder {
 	public void updatePos(String control) {
 		for (IRenderable e:listRender) {
 			if (e instanceof Knight) {
+				if (((Knight) e).getHP()>0) {
 				((Knight)e).setControl(control);
 				((Knight)e).updatePos();
+				}
 			}
 			if (e instanceof Cowgirls) {
 				((Cowgirls)e).setControl(control);
@@ -71,13 +73,37 @@ public class RenderableHolder {
 		//System.out.println(listRender.size()+" sizeeeeeeeee");
 		for (int i=n-1;i>=0;i--) {
 			System.out.println("This is in remove");
-			if (listRender.get(i).isVisible()) System.out.println("um");
+			//if (listRender.get(i).isVisible()) System.out.println("um");
 			if (listRender.get(i).isVisible() == false) {
 				listRender.remove(i);
 				//System.out.println("removeeeeeeeeeeeee");
 			}
 	}
 	}
+	// minion killed by knight
+	public int setVisible2() {
+		int exp =0;
+		for (IRenderable i : listRender) {
+			if (i instanceof Monster) {
+				for (IRenderable j : listRender) {
+					// set visible for knight skill 
+					if (j instanceof KnightSkill) {
+						if (((Monster)i).isDestroyed(((KnightSkill)j).getX(), ((KnightSkill)j).getY())) {
+							System.out.println("this is in setVisible");
+							((Monster)i).setVisible(false);
+							System.out.println("this is in is destroy");
+							((KnightSkill)j).setVisible(false);
+							exp+=10;
+						}
+					}
+			}
+			
+			}
+			
+		}
+		return exp;
+	}
+	// minion killed by cowgirl
 	public int setVisible() {
 		int exp =0;
 		for (IRenderable i : listRender) {
@@ -99,16 +125,6 @@ public class RenderableHolder {
 							((Monster)i).setVisible(false);
 							System.out.println("this is in is destroy");
 							((CowgirlSkill2)j).setVisible(false);
-							exp+=10;
-						}
-					}
-					// set visible for knight skill 
-					if (j instanceof KnightSkill) {
-						if (((Monster)i).isDestroyed(((KnightSkill)j).getX(), ((KnightSkill)j).getY())) {
-							System.out.println("this is in setVisible");
-							((Monster)i).setVisible(false);
-							System.out.println("this is in is destroy");
-							((KnightSkill)j).setVisible(false);
 							exp+=10;
 						}
 					}

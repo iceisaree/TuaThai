@@ -35,7 +35,7 @@ public class Character extends Entity implements IRenderable{
 		
 		// 10 have to change by charcter pic 
 		if (Math.abs(this.x-xIn)<=10 && Math.abs(this.y-yIn)<=100) {
-			HP--;
+			HP -= 10;
 			return true;
 		}else return false;
 	}

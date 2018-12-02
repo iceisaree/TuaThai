@@ -38,9 +38,13 @@ public class Minion2 extends Monster {
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
 		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
+			//setChangeHp
+			knight.setHP(knight.getHp()-10);
 			return false;
 		}
 		if ((this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
+			//set change HP
+			cowgirl.setHP(cowgirl.getHp()-10);
 			return false;
 		}
 		
