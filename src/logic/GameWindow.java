@@ -2,8 +2,9 @@ package logic;
 
 import share.IRenderable;
 import share.RenderableHolder;
-import character.Knight;
 import character.Cowgirls;
+import character.Knight;
+
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
@@ -25,10 +26,13 @@ import javafx.stage.Stage;
 
 public class GameWindow extends Canvas {
 	private Scene scene;
-	
+	private int cooldownKnight1 = 10;
+	private int cooldownKnight2 = 10;
+	private int cooldownCowgirl1 = 10;
+	private int cooldownCowgirl2 = 10;
 	private Stage primaryStage;
 	private Knight knight;
-	private Cowgirls cowgirls;
+	private Cowgirls cowgirl;
 	private GraphicsContext gc;
 	private int f;
 	private Minion1 minion1;
@@ -82,14 +86,14 @@ public class GameWindow extends Canvas {
 		
 			
 			// for add sound fire.play();
-			cowgirls.attack2('q');
-			cowgirls.attack2('w');
-			cowgirls.attack2('d');
-			cowgirls.attack2('a');
-			cowgirls.attack2('x');
-			cowgirls.attack2('e');
-			cowgirls.attack2('c');
-			cowgirls.attack2('z');
+			cowgirl.attack2('q');
+			cowgirl.attack2('w');
+			cowgirl.attack2('d');
+			cowgirl.attack2('a');
+			cowgirl.attack2('x');
+			cowgirl.attack2('e');
+			cowgirl.attack2('c');
+			cowgirl.attack2('z');
 		
 	}
 	
@@ -215,20 +219,36 @@ public static AnimationTimer getGamewindowanimation() {
 				// add item by time
 				// add Character detail
 				playerDetail.setKnightData(knight.getMaxExp(),knight.getExp(),knight.getLevel(),knight.getMaxHp(),knight.getHp());
-				playerDetail.setCowgirlData(cowgirls.getMaxExp(),cowgirls.getExp(), cowgirls.getLevel(), cowgirls.getMaxHp(), cowgirls.getHp());
+				playerDetail.setCowgirlData(cowgirl.getMaxExp(),cowgirl.getExp(), cowgirl.getLevel(), cowgirl.getMaxHp(), cowgirl.getHp());
 				// add cooldown and add Skill
-				playerDetail.setCooldownCowgirls(10, 10);
+				playerDetail.setCooldownCowgirl(10, 10);
 				playerDetail.setCooldownKnight(10, 10);
 			}
 			addBackground();
 			int exp = RenderableHolder.getinstance().setVisible();
 			RenderableHolder.getinstance().remove();
 			
+			
+			
+			cowgirl.setExp(cowgirl.getExp()+exp);
+			cowgirl.updateLevel();
+			knight.setExp(knight.getExp()+exp);
+			knight.updateLevel();
+			
+			
+			//set knight and cowgirls detail
+		
+			if (cooldownKnight1!=0) cooldownKnight1--;
+			if (cooldownKnight2!=0) cooldownKnight2--;
+			if (cooldownCowgirl1!=0) cooldownCowgirl1--;
+			if (cooldownCowgirl2!=0) cooldownCowgirl2--;
+			
+			
+		
+			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
+			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
+			
 			RenderableHolder.getinstance().draw(gc);
-			
-			
-			
-			
 		
 			RenderableHolder.getinstance().updatePos(control);
 
@@ -237,9 +257,9 @@ public static AnimationTimer getGamewindowanimation() {
 		knight = new Knight("knight");
 		RenderableHolder.getinstance().add(knight);
 	}
-	public void addCowgirls() {
-		cowgirls = new Cowgirls("cowgirls");
-		RenderableHolder.getinstance().add(cowgirls);
+	public void addcowgirl() {
+		cowgirl = new Cowgirls("cowgirl");
+		RenderableHolder.getinstance().add(cowgirl);
 	}
 	public void addMinion() {
 		//add more minion
@@ -248,7 +268,7 @@ public static AnimationTimer getGamewindowanimation() {
 			RenderableHolder.getinstance().add(minion1);
 		}*/
 		if (value==1) {
-			minion2 = new Minion2(knight,cowgirls);
+			minion2 = new Minion2(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion2);
 		}
 		/*if (value==2) {
@@ -257,13 +277,13 @@ public static AnimationTimer getGamewindowanimation() {
 		}*/
 	}
 	public void addMinion2() {
-		minion2 = new Minion2(knight,cowgirls);
+		minion2 = new Minion2(knight,cowgirl);
 		RenderableHolder.getinstance().add(minion2);
 	}
 	public void addAll() {
 	addPlayerDetail();
 	addKnight();
-	addCowgirls();
+	addcowgirl();
 	//addMinion();
 	addMinion2();
 	//addBackground();
@@ -274,7 +294,7 @@ public static AnimationTimer getGamewindowanimation() {
 		RenderableHolder.getinstance().add(playerDetail);
 	}
 	public void isGameEnd() {
-		if (knight.getHp()==0 && cowgirls.getHp()==0) {
+		if (knight.getHp()==0 && cowgirl.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameOverScene.startAnimation(gc);
@@ -288,40 +308,40 @@ public static AnimationTimer getGamewindowanimation() {
 			GameWinnerScene.startAnimation(gc);
 		}
 	}
-	//add getLevel in cowgirls and set attack in knight and cowgirls
+	//add getLevel in cowgirl and set attack in knight and cowgirl
 	public void setState() {
-		if (knight.getLevel()+cowgirls.getLevel()<5) {
+		if (knight.getLevel()+cowgirl.getLevel()<5) {
 			knight.setSpeed(3);
 			//knight.setAttack();
-			cowgirls.setSpeed(2);
-			//cowgirls.setAttack();
+			cowgirl.setSpeed(2);
+			//cowgirl.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
 		}
-		if (knight.getLevel()+cowgirls.getLevel()<10) {
+		if (knight.getLevel()+cowgirl.getLevel()<10) {
 			knight.setSpeed(3);
 			//knight.setAttack();
-			cowgirls.setSpeed(2);
-			//cowgirls.setAttack();
+			cowgirl.setSpeed(2);
+			//cowgirl.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
 		}
-		if (knight.getLevel()+cowgirls.getLevel()<15) {
+		if (knight.getLevel()+cowgirl.getLevel()<15) {
 			knight.setSpeed(3);
 			//knight.setAttack();
-			cowgirls.setSpeed(2);
-			//cowgirls.setAttack();
+			cowgirl.setSpeed(2);
+			//cowgirl.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
 		}
-		if (knight.getLevel()+cowgirls.getLevel()<20) {
+		if (knight.getLevel()+cowgirl.getLevel()<20) {
 			knight.setSpeed(3);
 			//knight.setAttack();
-			cowgirls.setSpeed(2);
-			//cowgirls.setAttack();
+			cowgirl.setSpeed(2);
+			//cowgirl.setAttack();
 			minion1.setDamage(10);
 			minion2.setDamage(20);
 			minion3.setDamage(40);
@@ -338,10 +358,10 @@ public static AnimationTimer getGamewindowanimation() {
 	
 	}
 	public void girlShoot() {
-		cowgirls.attack('h',20,20);
-		cowgirls.attack('j',20,20);
-		cowgirls.attack('u',20,20);
-		cowgirls.attack('k',20,20);
+		cowgirl.attack('h',20,20);
+		cowgirl.attack('j',20,20);
+		cowgirl.attack('u',20,20);
+		cowgirl.attack('k',20,20);
 		
 	}
 		

@@ -17,8 +17,6 @@ public class Knight extends Entity implements IRenderable {
 	private int max_Exp;
 	private int speed = 4;
 	private int Hp=100;
-	private double mana;
-	private double armor;
 	private double attack;
 	private int Level=1;
 	private int timeOfPics = 0;
@@ -29,6 +27,7 @@ public class Knight extends Entity implements IRenderable {
 	private List<Image> up = new ArrayList<>();
 	private List<Image> down = new ArrayList<>();
 	private int exp;
+	private int [] indexExp = {10,20,30,40,50,60,70,80,90,100,2000,3000,4000,5000,60000};
 	private String name;
 	public Knight(String name){
 		super(0,0);
@@ -56,7 +55,7 @@ public class Knight extends Entity implements IRenderable {
 		this.exp = exp;
 	}
 	public int getMaxExp() {
-		return max_Exp;
+		return indexExp[Level];
 	}
 	public void setMaxExp(int maxExp) {
 		this.max_Exp = maxExp;
@@ -97,6 +96,13 @@ public class Knight extends Entity implements IRenderable {
 	public void setControl(String control) {
 		this.control = control;
 	}
+	public void updateLevel() {
+		if (Level>indexExp.length) return;
+		if (exp>=indexExp[Level]) {
+			Level++;
+			exp=0;
+		}
+	}
 	public int getHp() {
 		return Hp;}
 	public List<Image> getLeft() {
@@ -111,18 +117,6 @@ public class Knight extends Entity implements IRenderable {
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
-	}
-	public double getMana() {
-		return mana;
-	}
-	public void setMana(double mana) {
-		this.mana = mana;
-	}
-	public double getArmor() {
-		return armor;
-	}
-	public void setArmor(double armor) {
-		this.armor = armor;
 	}
 	public double getAttack() {
 		return attack;
@@ -164,7 +158,7 @@ public class Knight extends Entity implements IRenderable {
 	public int getMaxHp() {
 		return 150+(Level*50);
 	}
-public boolean attackPos(int xIn,int yIn) {
+	public boolean attackPos(int xIn,int yIn) {
 		
 		// 10 have to change by charcter pic 
 		if (Math.abs(this.x-xIn)<=10 && Math.abs(this.y-yIn)<=100) {

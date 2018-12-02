@@ -86,6 +86,7 @@ public class RenderableHolder {
 					if (j instanceof CowgirlSkill1) {
 						if (((Monster)i).isDestroyed(((CowgirlSkill1)j).getX(), ((CowgirlSkill1)j).getY())) {
 							System.out.println("this is in setVisible");
+							
 							((Monster)i).setVisible(false);
 							System.out.println("this is in is destroy");
 							((CowgirlSkill1)j).setVisible(false);

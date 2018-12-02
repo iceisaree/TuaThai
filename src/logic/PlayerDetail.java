@@ -72,16 +72,17 @@ public class PlayerDetail implements IRenderable {
 	public void setCooldownKnight(int cooldownKnight1,int cooldownKnight2) {
 		IconSkillKnight1 = new Image("IconSkillknight1.png",50,50,false,false);
 		IconSkillKnight2 = new Image("IconSkillknight2.png",50,50,false,false);
-		if (cooldownIconSkillKnight1!=0) IconSkillKnight1 = new Image("IconSkillknight1.png",50,50,false,false);
-		if (cooldownIconSkillKnight2!=0) IconSkillKnight2 = new Image("IconSkillknight2.png",50,50,false,false);
+		if (cooldownIconSkillKnight1!=0) IconSkillKnight1 = new Image("cooldownIconSkillknight1.png",50,50,false,false);
+		if (cooldownIconSkillKnight2!=0) IconSkillKnight2 = new Image("cooldownIconSkillknight2.png",50,50,false,false);
 		
 		// add cooldown depend on time
 	}
-	public void setCooldownCowgirls(int cooldownCowgirls1,int cooldownCowgirls2) {
+	// add cooldown pic
+	public void setCooldownCowgirl(int cooldownCowgirls1,int cooldownCowgirls2) {
 		IconSkillCowgirl1 = new Image("IconSkillcowgirl1.png",50,50,false,false);
 		IconSkillCowgirl2 = new Image("IconSkillcowgirl2.png",50,50,false,false);
-		if (cooldownIconSkillCowgirl1!=0) IconSkillCowgirl1 = new Image("IconSkillCowgirl1.png",50,50,false,false);
-		if (cooldownIconSkillCowgirl2!=0) IconSkillCowgirl2 = new Image("IconSkillCowgirl2.png",50,50,false,false);
+		if (cooldownIconSkillCowgirl1!=0) IconSkillCowgirl1 = new Image("cooldownIconSkillcowgirl1.png",50,50,false,false);
+		if (cooldownIconSkillCowgirl2!=0) IconSkillCowgirl2 = new Image("cooldownIconSkillcowgirl2.png",50,50,false,false);
 		
 	}
 }

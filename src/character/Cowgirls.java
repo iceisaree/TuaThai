@@ -11,23 +11,16 @@ import skill.KnightSkill;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 //change data in character and Knight
-public class Cowgirls extends Entity implements IRenderable {
+public class Cowgirls extends Character{
 	
 	public Cowgirls(double x, double y) {
-		super(x, y);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 	protected int [] indexExp = {10,50,200,800,3200,3200,3400,3800,4000,4200,3000,2000,1000,500,200};
-	
-	private int speed = 4;
-	private int Hp;
-	private double mana;
+
 	private int skill1Count;
-	private int maxLevel;
-	private double armor;
-	private double attack;
-	private int exp;
-	private int Level;
+	
 	private int timeOfPics = 0;
 	public Image CowgirlPic;
 	private String control;
@@ -38,16 +31,17 @@ public class Cowgirls extends Entity implements IRenderable {
 	
 	private String name;
 	public Cowgirls(String name){
-		super(0,0);
+		super();
 		for (int i=1;i<5;i++) {
 			left.add(new Image("cowgirl_Right ("+i+").png",100,80, false, false));
 			up.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
 			down.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
 			right.add(new Image("cowgirl_Right ("+i+").png",70,80,false,false));
 		}
-		setKnight();
+		setCowgirlPic();
+		super.speed = 4;
 		}
-	public void setKnight() {
+	public void setCowgirlPic() {
 		CowgirlPic = right.get(0);
 	}
 	public void draw(GraphicsContext gc) {
@@ -82,27 +76,7 @@ public class Cowgirls extends Entity implements IRenderable {
 		return cowgirlSkill1;
 	}
 	public int getExp() {
-		return this.exp;
-	}
-	public int getSkill1Count() {
-		return skill1Count;
-	}
-	public void setSkill1Count(int skill1Count) {
-		this.skill1Count = skill1Count;
-	}
-	public int getMaxLevel() {
-		return maxLevel;
-	}
-	public void setMaxLevel(int maxLevel) {
-		this.maxLevel = maxLevel;
-	}
-	public int getMaxExp() {
-		return indexExp[Level];
-	}
-	
-	public int getMaxHp() {
-		
-		return (Level*50)+50;
+		return super.exp;
 	}
 	
 	public CowgirlSkill2 attack2(char c) {
@@ -111,50 +85,34 @@ public class Cowgirls extends Entity implements IRenderable {
 		cowgirlSkill2.setCowgirlSkill2();
 		return cowgirlSkill2;
 	}
-	public boolean isVisible() {
-		return true;
+	public void updateLevel() {
+		if (Level>indexExp.length) return;
+		if (exp>=indexExp[Level]) {
+			Level++;
+			exp=0;
+		}
+	}
+	public int getMaxExp() {
+ 		return indexExp[Level];
+	}
+	public int getMaxHp() {
+		return 50+(Level*50);
+	}
+	public int getHp() {
+		return HP;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 	public void setControl(String control) {
 		this.control = control;
 	}
-	public int getHp() {
-		return Hp;}
-	public List<Image> getLeft() {
-		return left;
-	}
-	public void setLeft(List<Image> left) {
-		this.left = left;
-	}
 	
 	public int getSpeed() {
-		return speed;
+		return super.speed;
 	}
 	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-	public double getMana() {
-		return mana;
-	}
-	public void setMana(double mana) {
-		this.mana = mana;
-	}
-	public double getArmor() {
-		return armor;
-	}
-	public void setArmor(double armor) {
-		this.armor = armor;
-	}
-	public double getAttack() {
-		return attack;
-	}
-	public void setAttack(double attack) {
-		this.attack = attack;
-	}
-	public int getLevel() {
-		return Level;
-	}
-	public void setLevel(int level) {
-		Level = level;
+		super.speed = speed;
 	}
 	public int getTimeOfPics() {
 		return timeOfPics;
@@ -168,27 +126,12 @@ public class Cowgirls extends Entity implements IRenderable {
 	public void setCowgirlPic(Image CowgirlPic) {
 		this.CowgirlPic = CowgirlPic;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	
 	public String getControl() {
 		return control;
 	}
-	public void setHp(int hp) {
-		Hp = hp;
-	}
-public boolean attackPos(int xIn,int yIn) {
-		
-		// 10 have to change by charcter pic 
-		if (Math.abs(this.x-xIn)<=10 && Math.abs(this.y-yIn)<=100) {
-			Hp--;
-			return true;
-		}else return false;
-	}
+	
+
 	
 	
 }
