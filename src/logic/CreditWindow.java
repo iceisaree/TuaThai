@@ -16,9 +16,9 @@ public class CreditWindow extends Canvas {
 	private Stage primaryStage;
 	private GraphicsContext gc;
 	private Canvas bg;
-	private Image name = new Image("crscene.png");
-	private Image back = new Image("back.png");
-	private Image backp = new Image("backfade.png");
+	private Image name = new Image("credit.png");
+	private Image back = new Image("backbut.png");
+	private Image backp = new Image("backbutf.png");
 	
 	public CreditWindow(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -64,6 +64,8 @@ public class CreditWindow extends Canvas {
 	}
 	private void setBackground() {
 		GraphicsContext gc = bg.getGraphicsContext2D();
+		gc.setFill(Color.BURLYWOOD);
+		gc.fillRect(0, 0, 950, 600);
 		gc.drawImage(name, 0, 0);
 		gc.drawImage(back, 0, 0);
 	}
