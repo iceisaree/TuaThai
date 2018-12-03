@@ -35,13 +35,14 @@ public class GameWindow extends Canvas {
 	private Cowgirls cowgirl;
 	private GraphicsContext gc;
 	private int f;
+	private int score;
 	private Minion1 minion1;
 	private Minion2 minion2;
 	private Minion3 minion3;
 	private int countMinion = 1;
 	private String control="";
 	private char c;
-	private String image_path = "file:image/character/cowboy/Dead__001.png";
+	private Image imagenew;
 	private int FireTimes = 0;
 	private boolean alreadyAddBoss;
 	private boolean allBossDead;
@@ -58,7 +59,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		
+		score = 0;
 		this.primaryStage.setScene(scene);
 		addAll();
 		
@@ -234,10 +235,11 @@ public static AnimationTimer getGamewindowanimation() {
 				// add cooldown and add Skill
 			}
 
-		addBackground();
+		//addBackground();
 			int exp2 = RenderableHolder.getinstance().setVisible2();
 			int exp = RenderableHolder.getinstance().setVisible();
-			
+			if (exp!=0) score += 10;
+			if (exp2!=0) score += 10;
 			RenderableHolder.getinstance().remove();
 			RenderableHolder.getinstance().draw(gc);
 			
@@ -263,7 +265,7 @@ public static AnimationTimer getGamewindowanimation() {
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
 		
-			
+			playerDetail.setScore(score);
 			RenderableHolder.getinstance().updatePos(control);
 
 	}
@@ -368,8 +370,13 @@ public static AnimationTimer getGamewindowanimation() {
 	// add updateState for rander window
 	// add background stage
 	public void addBackground() {
-		Image imagenew = new Image("winter.png");
-
+		if (score < 400) {
+			Image imagenew = new Image("forest.png");
+		}else if (score<800) {
+			Image imagenew = new Image("winter");
+		}else {
+			Image imgaenew = new Image("desert");
+		}
 		gc.drawImage(imagenew, 0, 0);
 		//gc.drawImage(imagek,0,0);
 	

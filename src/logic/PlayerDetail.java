@@ -13,29 +13,37 @@ public class PlayerDetail implements IRenderable {
 	private int cowgirlMaxLife;
 	private int cowgirlExp;
 	private int cowgirlMaxExp;
-	public Image backgroundGame;
+	public Image backgroundGame = new Image("forest.png");
 	public Image IconSkillKnight1;
 	public Image IconSkillKnight2;
 	protected int cooldownIconSkillKnight1=0;
 	protected int cooldownIconSkillKnight2=0;
 	protected int cooldownIconSkillCowgirl1=0;
 	protected int cooldownIconSkillCowgirl2=0;
+	protected int score;
 	public Image IconSkillCowgirl1;
 	public Image IconSkillCowgirl2;
 	public PlayerDetail() {
-		setImage();
+	
 	}
 	public void setImage() {
-		backgroundGame = new Image("forest.png");
+		if (score < 20) {
+			backgroundGame = new Image("forest.png");
+		}else if (score<40) {
+			backgroundGame = new Image("winter.png");
+		}else {
+			backgroundGame = new Image("desert.png");
+		}
 	}
 	
 	public void draw(GraphicsContext gc) {
 		//draw Level exp Hp for knight and cowgirls
+		setImage();
 		gc.drawImage(backgroundGame, 0, 0);
 		gc.fillText("Name : Knight",20 , 30);
 		gc.fillText("Life : "+life+"/"+maxLife,130,30);
 		gc.fillText("LV : "+level,220,30);
-		gc.fillText("Exp : "+exp+"/"+maxExp, 275, 30);
+		gc.fillText("Exp : "+exp+"/"+maxExp, 265, 30);
 		gc.drawImage(IconSkillKnight1,355,0);
 		gc.drawImage(IconSkillKnight2, 425, 0);
 		
@@ -45,12 +53,16 @@ public class PlayerDetail implements IRenderable {
 		gc.fillText("Name : Cowgirl",495 , 30);
 		gc.fillText("Life : "+cowgirlLife+"/"+cowgirlMaxLife,605,30);
 		gc.fillText("LV : "+cowgirlLevel,695,30);
-		gc.fillText("Exp : "+cowgirlExp+"/"+cowgirlMaxExp, 750, 30);
+		gc.fillText("Exp : "+cowgirlExp+"/"+cowgirlMaxExp, 735, 30);
 		
+		gc.fillText("Score : "+score,600,500);
 		gc.drawImage(IconSkillCowgirl1, 830, 0);
 		gc.drawImage(IconSkillCowgirl2, 900, 0);
 		
 		
+	}
+	public void setScore(int score) {
+		this.score = score;
 	}
 	public boolean isVisible() {
 		return true;
