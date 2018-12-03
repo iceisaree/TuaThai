@@ -46,7 +46,7 @@ public class Minion2 extends Monster {
 			knight.setHP(knight.getHp()-10);
 			isVisible = false;
 
-			knight.setHP(knight.getHp()-10);
+	
 
 			return false;
 		}
@@ -65,15 +65,15 @@ public class Minion2 extends Monster {
 		
 		
 		}
-		return true;
+		return super.isVisible;
 	}
-	/*public boolean isDestroyed(int x,int y) {
+	public boolean isDestroyed(int x,int y) {
 		if ((this.x < x+20 && x-20 < this.x) && (this.y < y+20 && y-20 < this.y)) {
 			isVisible = false;
 			return true;
 		}
 		return false;
-	}*/
+	}
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
 		super.isVisible =false;

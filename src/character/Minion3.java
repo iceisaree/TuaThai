@@ -47,7 +47,7 @@ public class Minion3 extends Monster {
 			return false;
 		}
 		
-		return true;
+		return super.isVisible;
 	}
 	
 

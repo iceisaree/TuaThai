@@ -47,7 +47,7 @@ public class Minion1 extends Monster {
 			return false;
 		}
 		
-		return true;
+		return super.isVisible;
 	}
 	public boolean isDestroyed(int x,int y) {
 		if ((this.x < x+20 && x-20 < this.x) && (this.y < y+20 && y-20 < this.y)) {
