@@ -26,10 +26,10 @@ import javafx.stage.Stage;
 
 public class GameWindow extends Canvas {
 	private Scene scene;
-	private int cooldownKnight1 = 10;
-	private int cooldownKnight2 = 10;
-	private int cooldownCowgirl1 = 10;
-	private int cooldownCowgirl2 = 10;
+	private int cooldownKnight1;
+	private int cooldownKnight2;
+	private int cooldownCowgirl1;
+	private int cooldownCowgirl2;
 	private Stage primaryStage;
 	private Knight knight;
 	private Cowgirls cowgirl;
@@ -101,19 +101,32 @@ public void addMoving(GraphicsContext gc) {
 	this.setOnKeyPressed((KeyEvent) -> {
 		if (KeyEvent.getCode() == KeyCode.Q) {
 			// for add sound skill fire.play();
-			knight.attack(c);
+			if (cooldownKnight1==0) {
+				knight.attack(c);
+				cooldownKnight1 = 180;
+			}
+			
 		}
 		if (KeyEvent.getCode() == KeyCode.E) {
 			// for add sound skill fire.play();
-			knight.attack2(c);
+			if (cooldownKnight2==0) {
+				knight.attack2(c);
+				cooldownKnight2 = 180;
+			}
 		}
 		if (KeyEvent.getCode() == KeyCode.N) {
 			// for add sound skill fire.play();
-			girlShoot();
+			if (cooldownCowgirl1==0) {
+				girlShoot();
+				cooldownCowgirl1 = 180;
+			}
 		}
 		if (KeyEvent.getCode() == KeyCode.M) {
 			// for add sound skill fire.play();
-			fire();
+			if (cooldownCowgirl2==0) {
+				fire();
+				cooldownCowgirl2 = 180;
+			}
 		}
 
 		if (KeyEvent.getCode() == KeyCode.RIGHT) {
@@ -222,15 +235,13 @@ public static AnimationTimer getGamewindowanimation() {
 				playerDetail.setKnightData(knight.getMaxExp(),knight.getExp(),knight.getLevel(),knight.getMaxHp(),knight.getHp());
 				playerDetail.setCowgirlData(cowgirl.getMaxExp(),cowgirl.getExp(), cowgirl.getLevel(), cowgirl.getMaxHp(), cowgirl.getHp());
 				// add cooldown and add Skill
-				playerDetail.setCooldownCowgirl(10, 10);
-				playerDetail.setCooldownKnight(10, 10);
 			}
 			addBackground();
 			int exp2 = RenderableHolder.getinstance().setVisible2();
 			int exp = RenderableHolder.getinstance().setVisible();
 			
 			RenderableHolder.getinstance().remove();
-			
+			RenderableHolder.getinstance().draw(gc);
 			
 			
 			cowgirl.setExp(cowgirl.getExp()+exp);
@@ -247,12 +258,11 @@ public static AnimationTimer getGamewindowanimation() {
 			if (cooldownCowgirl2!=0) cooldownCowgirl2--;
 			
 			
-		
+			System.out.println("This is cooldown Knight"+cooldownKnight1);
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
+			System.out.println("This is cooldown Cowgirl" + cooldownCowgirl1);
 			
-			RenderableHolder.getinstance().draw(gc);
-		
 			RenderableHolder.getinstance().updatePos(control);
 
 	}
