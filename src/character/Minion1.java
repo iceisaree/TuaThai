@@ -1,21 +1,26 @@
 package character;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Minion1 extends Monster {
 	public Image ninjaPic;
 	int k = rand.nextInt(2);
+	protected List<Image> right = new ArrayList<>();
+	private int timeOfPics = 0;
 	
 	public Minion1(Knight knight,Cowgirls cowgirl) {
 		super(100,20,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<7; i++) {
-			left.add(new Image("ninja_right ("+i+").png"));
-			right.add(new Image("ninja_right ("+i+").png"));
-			down.add(new Image("ninja_right ("+i+").png"));
-			up.add(new Image("ninja_right ("+i+").png"));
+			left.add(new Image("ninja_right ("+i+").png",70,80,false,false));
+			right.add(new Image("ninja_right ("+i+").png",70,80,false,false));
+			down.add(new Image("ninja_right ("+i+").png",70,80,false,false));
+			up.add(new Image("ninja_right ("+i+").png",70,80,false,false));
 		}
 		setNinja();
 	}
@@ -23,7 +28,9 @@ public class Minion1 extends Monster {
 	public void draw(GraphicsContext gc) {
 		//monsterPic = new Image("zombiefemale_Up (1).png");
 		//System.out.println("monster in draw");
-		gc.drawImage(new Image("ninja_right (1).png",70,80,false,false), x, y);
+		timeOfPics++;
+		if(timeOfPics>=30) timeOfPics = 0; 
+		gc.drawImage(ninjaPic, x, y);
 	}
 	@Override
 	/*public void special() {
@@ -61,7 +68,7 @@ public class Minion1 extends Monster {
 		this.isVisible = isVisible;
 	}
 	public void setNinja() {
-		ninjaPic = left.get(0);
+		ninjaPic = right.get(0);
 	}
 	
 	public void updatePos() {
@@ -73,10 +80,12 @@ public class Minion1 extends Monster {
 		if (k==0) {
 			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+			ninjaPic = right.get(timeOfPics/10);
 		}
 		if (k==1) {
-				x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
-				y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			ninjaPic = right.get(timeOfPics/10);
 		}
 		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
 		//x += getSpeed();
