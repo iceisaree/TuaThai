@@ -76,7 +76,7 @@ public class RenderableHolder {
 			//if (listRender.get(i).isVisible()) System.out.println("um");
 			if (listRender.get(i).isVisible() == false) {
 				listRender.remove(i);
-				//System.out.println("removeeeeeeeeeeeee");
+				System.out.println("removeeeeeeeeeeeee");
 			}
 	}
 	}

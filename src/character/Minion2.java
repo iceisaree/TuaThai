@@ -9,8 +9,6 @@ import javafx.scene.image.Image;
 public class Minion2 extends Monster {
 	public Image zombiePic;
 	protected List<Image> left = new ArrayList<>();
-	protected List<Image> up = new ArrayList<>();
-	protected List<Image> down = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
 	int k = rand.nextInt(2);
 	private int timeOfPics = 0;
@@ -20,17 +18,13 @@ public class Minion2 extends Monster {
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<5; i++) {
-			left.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
+			left.add(new Image("zombiemale_Left ("+i+").png",70,80,false,false));
 			right.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
-			down.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
-			up.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
 		}
 		setZombie();
 	}
 	
 	public void draw(GraphicsContext gc) {
-		//monsterPic = new Image("zombiefemale_Up (1).png");
-		//System.out.println("monster in draw");
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
 		gc.drawImage(zombiePic, x, y);
@@ -84,43 +78,27 @@ public class Minion2 extends Monster {
 	public void setZombie() {
 		zombiePic = right.get(0);
 	}
-	/*public void updatePos() {
-		if(x>=35) {
-			x-=speed;
-			knightPic = left.get(timeOfPics/10);
-		}
-		if (control.contains("s")) if (y+90<=600) {
-			y+=speed;
-			knightPic = up.get(timeOfPics/10);
-		}
-		if (control.contains("w")) if(y>=0) {
-			y-=speed;
-			knightPic = down.get(timeOfPics/10);
-		}
-		if (control.contains("d")) if (x+90<=950) {
-			x+=speed;
-			knightPic = right.get(timeOfPics/10);
-		}
-	}*/
+	
 	public void updatePos() {
-
-		//System.out.println("This is in updatePos");
-		//System.out.println("This is in updatePos");
-		//System.out.println("This is in updatePos Monster");
-		//System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
 		if (k==0) {
-		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
-		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
-		zombiePic = right.get(timeOfPics/10);
+			double cos =calculateCos(knight.getX(),knight.getY());
+			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
+			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+			if (cos>=0) {
+				zombiePic = right.get(timeOfPics/10);
+			}
+			else zombiePic = left.get(timeOfPics/10);
 		}
 		if (k==1) {
+			double cos =calculateCos(knight.getX(),knight.getY());
 			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
 			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
-			zombiePic = right.get(timeOfPics/10);
+			if (cos>=0) {
+				zombiePic = right.get(timeOfPics/10);
+			}
+			else zombiePic = left.get(timeOfPics/10);
 		}
-		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
-		//x += getSpeed();
-		//y += getSpeed();
+	
 		boolean isCharacterAttacked;
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);

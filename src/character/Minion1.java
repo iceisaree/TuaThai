@@ -10,6 +10,7 @@ public class Minion1 extends Monster {
 	public Image ninjaPic;
 	int k = rand.nextInt(2);
 	protected List<Image> right = new ArrayList<>();
+	protected List<Image> left = new ArrayList<>();
 	private int timeOfPics = 0;
 	
 	public Minion1(Knight knight,Cowgirls cowgirl) {
@@ -17,17 +18,13 @@ public class Minion1 extends Monster {
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<7; i++) {
-			left.add(new Image("ninja_right ("+i+").png",70,80,false,false));
+			left.add(new Image("ninja_left ("+i+").png",70,80,false,false));
 			right.add(new Image("ninja_right ("+i+").png",70,80,false,false));
-			down.add(new Image("ninja_right ("+i+").png",70,80,false,false));
-			up.add(new Image("ninja_right ("+i+").png",70,80,false,false));
 		}
 		setNinja();
 	}
 
 	public void draw(GraphicsContext gc) {
-		//monsterPic = new Image("zombiefemale_Up (1).png");
-		//System.out.println("monster in draw");
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
 		gc.drawImage(ninjaPic, x, y);
@@ -72,24 +69,27 @@ public class Minion1 extends Monster {
 	}
 	
 	public void updatePos() {
-
-		//System.out.println("This is in updatePos");
-		//System.out.println("This is in updatePos");
-		//System.out.println("This is in updatePos Monster");
-		//System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
 		if (k==0) {
+			double cos =calculateCos(knight.getX(),knight.getY());
 			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
-			ninjaPic = right.get(timeOfPics/10);
+			
+			if (cos>=0) {
+				ninjaPic = right.get(timeOfPics/10);
+			}
+			else ninjaPic = left.get(timeOfPics/10);
 		}
 		if (k==1) {
+			double cos =calculateCos(knight.getX(),knight.getY());
 			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
 			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
-			ninjaPic = right.get(timeOfPics/10);
+			
+			if (cos>=0) {
+				ninjaPic = right.get(timeOfPics/10);
+			}
+			else ninjaPic = left.get(timeOfPics/10);
 		}
-		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
-		//x += getSpeed();
-		//y += getSpeed();
+		
 		boolean isCharacterAttacked;
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);

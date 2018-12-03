@@ -32,7 +32,7 @@ public class Knight extends Character {
 	public Knight(String name){
 		super();
 		for (int i=1;i<5;i++) {
-			left.add(new Image("knight_Right ("+i+").png",70,80, false, false));
+			left.add(new Image("knight_Left ("+i+").png",70,80, false, false));
 			up.add(new Image("knight_up ("+i+").png",70,80,false,false));
 			down.add(new Image("knight_up ("+i+").png",70,80,false,false));
 			right.add(new Image("knight_Right ("+i+").png",70,80,false,false));
