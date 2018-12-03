@@ -205,6 +205,7 @@ public static AnimationTimer getGamewindowanimation() {
 
 	public void updateDetail() {
 		f++;
+		value = rand.nextInt(3);
 		//System.out.println("this is update detail");
 		//System.out.println("this is frame : "+ f);
 		if ((f%600)<500)
@@ -212,7 +213,7 @@ public static AnimationTimer getGamewindowanimation() {
 				if (f%60 ==0) {
 					// maxCountMinion can change is 2
 					for(int i = countMinion ; i>0 ; i--) {
-						addMinion2();
+						addMinion();
 						
 					}
 				}
@@ -265,29 +266,32 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	public void addMinion() {
 		//add more minion
-		/*if (value==0) {
-			minion1 = new Minion1();
+		if (value==0) {
+			minion1 = new Minion1(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion1);
-		}*/
+		}
+		System.out.println(value);
 		if (value==1) {
 			minion2 = new Minion2(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion2);
+			System.out.println("zombieeeee");
 		}
-		/*if (value==2) {
-			minion3 = new Minion3();
+		if (value==2) {
+			minion3 = new Minion3(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion3);
-		}*/
+			System.out.println("cowboyyyyy");
+		}
 	}
-	public void addMinion2() {
+	/*public void addMinion2() {
 		minion2 = new Minion2(knight,cowgirl);
 		RenderableHolder.getinstance().add(minion2);
-	}
+	}*/
 	public void addAll() {
 	addPlayerDetail();
 	addKnight();
 	addcowgirl();
-	//addMinion();
-	addMinion2();
+	addMinion();
+	//addMinion2();
 	//addBackground();
 	
 }

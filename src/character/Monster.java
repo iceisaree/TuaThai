@@ -10,7 +10,7 @@ import share.Entity;
 import share.IRenderable;
 import character.Knight;
 
-public class Monster extends Entity{
+public abstract class Monster extends Entity{
 	protected double HP;
 	protected double Damage;
 	protected double speed;
@@ -73,8 +73,8 @@ public class Monster extends Entity{
 			x = 150;
 			
 		}
-		setImage();
-		x = 0;y =0;
+		//setImage();
+		
 		setX(x);
 		setY(y);
 		this.knight = knight;
@@ -111,16 +111,6 @@ public class Monster extends Entity{
 	public void attack(Character other) {
 		other.takedDamage(this.Damage);
 	}
-	@Override
-	public void draw(GraphicsContext gc) {
-		//monsterPic = new Image("zombiefemale_Up (1).png");
-		//System.out.println("monster in draw");
-		gc.drawImage(monsterPic, x, y);
-	}
-	public void setImage() {
-		
-	}
-	
 	public void takedDamage(double damage) {
 		if ((this.x < knight.getX()+10 && knight.getX()-10 < this.x) && (this.y < knight.getY()+10 && knight.getY()-10 < this.y)) {
 			this.isVisible = false;
@@ -141,7 +131,7 @@ public class Monster extends Entity{
 		return speed;
 	}
 	public void updatePos() {
-
+/*
 		//System.out.println("This is in updatePos");
 		//System.out.println("This is in updatePos");
 		//System.out.println("This is in updatePos Monster");
@@ -155,7 +145,7 @@ public class Monster extends Entity{
 		isCharacterAttacked = knight.attackPos((int) x,(int)y);
 		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
 		// change HP minus for change damage
-		//if (isCharacterAttacked) takedDamage(character.getAttack());
+		//if (isCharacterAttacked) takedDamage(character.getAttack());*/
 	}
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;
@@ -181,7 +171,7 @@ public class Monster extends Entity{
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
+		/*if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
 			return false;
 		}
 		if ((this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
