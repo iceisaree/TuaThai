@@ -85,6 +85,7 @@ public class Minion2 extends Monster {
 	}*/
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
+		super.isVisible =false;
 	}
 	public void setZombie() {
 		zombiePic = left.get(0);
