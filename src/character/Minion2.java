@@ -14,19 +14,10 @@ public class Minion2 extends Monster {
 	protected List<Image> right = new ArrayList<>();
 	int k = rand.nextInt(2);
 	
-	public Minion2(double hp, int attack,Knight knight,Cowgirls cowgirl) {
-		super(100, 20, knight,cowgirl);
-		for (int i=1; i<5; i++) {
-			left.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
-			right.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
-			down.add(new Image("zombiemale_Up ("+i+").png",70,80,false,false));
-			up.add(new Image("zombiemale_Up ("+i+").png",70,80,false,false));
-		}
-		setZombie();
-		// TODO Auto-generated constructor stub
-	}
 	public Minion2(Knight knight,Cowgirls cowgirl) {
 		super(100,20,knight,cowgirl);
+		if (!knight.isVisible()) k=1;
+		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<5; i++) {
 			left.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
 			right.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));

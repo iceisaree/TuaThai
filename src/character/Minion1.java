@@ -7,19 +7,10 @@ public class Minion1 extends Monster {
 	public Image ninjaPic;
 	int k = rand.nextInt(2);
 	
-	public Minion1(double hp, int attack,Knight knight,Cowgirls cowgirl) {
-		super(100, 20, knight,cowgirl);
-		for (int i=1; i<7; i++) {
-			left.add(new Image("ninja_right ("+i+").png"));
-			right.add(new Image("ninja_right ("+i+").png"));
-			down.add(new Image("ninja_right ("+i+").png"));
-			up.add(new Image("ninja_right ("+i+").png"));
-		}
-		// TODO Auto-generated constructor stub
-		setNinja();
-	}
 	public Minion1(Knight knight,Cowgirls cowgirl) {
 		super(100,20,knight,cowgirl);
+		if (!knight.isVisible()) k=1;
+		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<7; i++) {
 			left.add(new Image("ninja_right ("+i+").png"));
 			right.add(new Image("ninja_right ("+i+").png"));
