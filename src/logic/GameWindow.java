@@ -225,10 +225,9 @@ public static AnimationTimer getGamewindowanimation() {
 			{
 				if (f%60 ==0) {
 					// maxCountMinion can change is 2
-					for(int i = countMinion ; i>0 ; i--) {
 						addMinion();
 						
-					}
+					
 				}
 				// add item by time
 				// add Character detail

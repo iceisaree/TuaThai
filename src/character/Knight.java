@@ -25,6 +25,7 @@ public class Knight extends Character {
 	private List<Image> right = new ArrayList<>();
 	private List<Image> up = new ArrayList<>();
 	private List<Image> down = new ArrayList<>();
+	
 	private int exp;
 	private int [] indexExp = {10,20,30,40,50,60,70,80,90,100,2000,3000,4000,5000,60000};
 	private String name;
@@ -76,9 +77,7 @@ public class Knight extends Character {
 			knightPic = right.get(timeOfPics/10);
 		}
 	}
-	public boolean isVisible() {
-		return true;
-	}
+
 	public KnightSkill attack(char c) {
 		KnightSkill knightSkill1 = new KnightSkill(x,y,c,0);
 		RenderableHolder.getinstance().add(knightSkill1);
@@ -156,9 +155,7 @@ public class Knight extends Character {
 	public String getControl() {
 		return control;
 	}
-	public void setHp(int hp) {
-		super.HP = hp;
-	}
+	
 	public int getMaxHp() {
 		return 150+(Level*50);
 	}

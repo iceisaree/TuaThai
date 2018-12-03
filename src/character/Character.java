@@ -18,6 +18,7 @@ public class Character extends Entity implements IRenderable{
 	protected int Level=1;
 	protected boolean isDead=false;
 	protected int speed = 1;
+	protected boolean isVisible=true;
 	public Character() {
 		super(100,100);
 		this.exp = 0;
@@ -44,9 +45,7 @@ public class Character extends Entity implements IRenderable{
 	public double getHP() {
 		return HP;
 	}
-	public void setHP(int hp) {
-		HP = hp;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -72,17 +71,25 @@ public class Character extends Entity implements IRenderable{
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+	public void setHP(int hp) {
+		if (hp<=0) {
+			isVisible = false;
+			HP = hp;
+		}
+		HP = hp;
+	}
+	
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		
 		// add Skill show
-		
+	
 	}
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		return true;
+		return isVisible;
 	}
 	
 	@Override

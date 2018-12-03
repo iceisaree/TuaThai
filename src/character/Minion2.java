@@ -48,18 +48,21 @@ public class Minion2 extends Monster {
 	@Override*/
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
-		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
+		if ((knight.isVisible()==true)&&(this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
 			//setChangeHp
-		
+			knight.setHP(knight.getHp()-10);
+			isVisible = false;
 			return false;
 		}
-		if ((this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
+		
+		if ((cowgirl.isVisible()==true)&&(this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
 			//set change HP
-		
+			cowgirl.setHP(cowgirl.getHp()-10);
+			isVisible = false;
 			return false;
 		}
 		
-		return isVisible;
+		return true;
 	}
 	/*public boolean isDestroyed(int x,int y) {
 		if ((this.x < x+20 && x-20 < this.x) && (this.y < y+20 && y-20 < this.y)) {
