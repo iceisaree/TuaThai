@@ -14,7 +14,7 @@ import skill.KnightSkill;
 
 //change data in character and Knight
 public class Knight extends Character {
-	private int max_Exp;
+
 	private int speed = 4;
 	private int Hp=200;
 	private double attack;
@@ -56,9 +56,6 @@ public class Knight extends Character {
 	}
 	public int getMaxExp() {
 		return indexExp[Level];
-	}
-	public void setMaxExp(int maxExp) {
-		this.max_Exp = maxExp;
 	}
 	public void updatePos() {
 		
@@ -102,8 +99,9 @@ public class Knight extends Character {
 		if (exp>=indexExp[Level]) {
 			Level++;
 			exp=0;
+			HP = getMaxHp();
 		}
-		HP = getMaxHp();
+		
 	}
 	public int getHp() {
 		return Hp;}
