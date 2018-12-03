@@ -33,10 +33,10 @@ public class Cowgirls extends Character{
 	public Cowgirls(String name){
 		super();
 		for (int i=1;i<5;i++) {
-			left.add(new Image("cowgirl_Right ("+i+").png",100,80, false, false));
-			up.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
-			down.add(new Image("cowgirl_up ("+i+").png",70,80,false,false));
-			right.add(new Image("cowgirl_Right ("+i+").png",70,80,false,false));
+			left.add(new Image("cowgirl_Right ("+i+").png",90,80, false, false));
+			up.add(new Image("cowgirl_up ("+i+").png",90,80,false,false));
+			down.add(new Image("cowgirl_up ("+i+").png",90,80,false,false));
+			right.add(new Image("cowgirl_Right ("+i+").png",90,80,false,false));
 		}
 		setCowgirlPic();
 		super.speed = 4;
