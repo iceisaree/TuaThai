@@ -102,7 +102,7 @@ public void addMoving(GraphicsContext gc) {
 	this.setOnKeyPressed((KeyEvent) -> {
 		if (KeyEvent.getCode() == KeyCode.Q) {
 			// for add sound skill fire.play();
-			if (cooldownKnight1==0) {
+			if (cooldownKnight1==0 && knight.isVisible()==true) {
 				knight.attack(c);
 				cooldownKnight1 = 180;
 			}
@@ -110,21 +110,21 @@ public void addMoving(GraphicsContext gc) {
 		}
 		if (KeyEvent.getCode() == KeyCode.E) {
 			// for add sound skill fire.play();
-			if (cooldownKnight2==0) {
+			if (cooldownKnight2==0 && knight.isVisible()==true) {
 				knight.attack2(c);
 				cooldownKnight2 = 180;
 			}
 		}
 		if (KeyEvent.getCode() == KeyCode.N) {
 			// for add sound skill fire.play();
-			if (cooldownCowgirl1==0) {
+			if (cooldownCowgirl1==0 && cowgirl.isVisible()==true) {
 				girlShoot();
 				cooldownCowgirl1 = 180;
 			}
 		}
 		if (KeyEvent.getCode() == KeyCode.M) {
 			// for add sound skill fire.play();
-			if (cooldownCowgirl2==0) {
+			if (cooldownCowgirl2==0 && cowgirl.isVisible()==true) {
 				fire();
 				cooldownCowgirl2 = 180;
 			}
@@ -325,6 +325,7 @@ public static AnimationTimer getGamewindowanimation() {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameWinnerScene.startAnimation(gc);
+			gameEnd = true;
 		}
 	}
 	//add getLevel in cowgirl and set attack in knight and cowgirl
@@ -334,36 +335,24 @@ public static AnimationTimer getGamewindowanimation() {
 			//knight.setAttack();
 			cowgirl.setSpeed(2);
 			//cowgirl.setAttack();
-			minion1.setDamage(10);
-			minion2.setDamage(20);
-			minion3.setDamage(40);
 		}
 		if (knight.getLevel()+cowgirl.getLevel()<10) {
 			knight.setSpeed(3);
 			//knight.setAttack();
 			cowgirl.setSpeed(2);
 			//cowgirl.setAttack();
-			minion1.setDamage(10);
-			minion2.setDamage(20);
-			minion3.setDamage(40);
 		}
 		if (knight.getLevel()+cowgirl.getLevel()<15) {
 			knight.setSpeed(3);
 			//knight.setAttack();
 			cowgirl.setSpeed(2);
 			//cowgirl.setAttack();
-			minion1.setDamage(10);
-			minion2.setDamage(20);
-			minion3.setDamage(40);
 		}
 		if (knight.getLevel()+cowgirl.getLevel()<20) {
 			knight.setSpeed(3);
 			//knight.setAttack();
 			cowgirl.setSpeed(2);
 			//cowgirl.setAttack();
-			minion1.setDamage(10);
-			minion2.setDamage(20);
-			minion3.setDamage(40);
 		}
 		
 	}

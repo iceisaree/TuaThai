@@ -81,6 +81,7 @@ public class Cowgirls extends Character{
 	}
 	
 	public CowgirlSkill2 attack2(char c) {
+		
 		CowgirlSkill2 cowgirlSkill2 = new CowgirlSkill2(x,y,c);
 		RenderableHolder.getinstance().add(cowgirlSkill2);
 		cowgirlSkill2.setCowgirlSkill2();
