@@ -19,18 +19,15 @@ public class Character extends Entity implements IRenderable{
 	protected boolean isDead=false;
 	protected int speed = 1;
 	public Character() {
-		super(0,0);
+		super(100,100);
 		this.exp = 0;
+		
 	}
 	public void setSkill(String skillName,double damage,double manaUse,double cooldown) {
 		
 	}
 	//fix takedDamage
-	public void takedDamage(double damage) {
-		if ((damage)<0) return;
-		HP -= (damage);
-		if (HP<=0) this.isDead = true;
-	}
+	
 	public boolean attackPos(int xIn,int yIn) {
 		
 		// 10 have to change by charcter pic 
@@ -43,7 +40,6 @@ public class Character extends Entity implements IRenderable{
 	public void setLevelup() {
 		Level++;
 	}
-	
 	
 	public double getHP() {
 		return HP;

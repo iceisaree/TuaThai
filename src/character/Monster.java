@@ -93,11 +93,11 @@ public class Monster extends Entity{
 		return this.HP;
 	}
 
-	public void setHP(double hP) {
-		if(hP <=0) {
+	public void setHP(double HP) {
+		if(HP <=0) {
 			this.HP = 0;
 			this.setStatus(true);
-		}else this.HP=hP;
+		}else this.HP=HP;
 	}
 
 	public double getDamage() {
@@ -108,9 +108,7 @@ public class Monster extends Entity{
 		this.Damage = damage;
 	}
 
-	public void attack(Character other) {
-		other.takedDamage(this.Damage);
-	}
+	
 	@Override
 	public void draw(GraphicsContext gc) {
 		//monsterPic = new Image("zombiefemale_Up (1).png");
@@ -120,8 +118,8 @@ public class Monster extends Entity{
 	public void setImage() {
 		
 	}
-	
-	public void takedDamage(double damage) {
+	//didn't use
+	/*public void takedDamage(double damage) {
 		if ((this.x < knight.getX()+10 && knight.getX()-10 < this.x) && (this.y < knight.getY()+10 && knight.getY()-10 < this.y)) {
 			this.isVisible = false;
 			if (damage<=0) return;
@@ -133,7 +131,7 @@ public class Monster extends Entity{
 			HP -= damage;
 		}
 		if (HP<=0) this.isVisible = false;
-	}
+	}*/
 	public double getExp() {
 		return exp;
 	}
@@ -151,11 +149,14 @@ public class Monster extends Entity{
 		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
 		//x += getSpeed();
 		//y += getSpeed();
-		boolean isCharacterAttacked;
-		isCharacterAttacked = knight.attackPos((int) x,(int)y);
-		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
+		boolean isKnightAttacked,isCowgirlAttacked;
+		isKnightAttacked = knight.attackPos((int) x,(int)y);
+		isCowgirlAttacked = cowgirl.attackPos((int) x,(int)y);
 		// change HP minus for change damage
-		//if (isCharacterAttacked) takedDamage(character.getAttack());
+	
+		System.out.println("this is HP knight : "+knight.getHP());
+		
+		System.out.println("This is HP cowgirl : "+cowgirl.getHP());
 	}
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;

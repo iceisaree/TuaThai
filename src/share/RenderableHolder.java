@@ -31,10 +31,10 @@ public class RenderableHolder {
 	public void updatePos(String control) {
 		for (IRenderable e:listRender) {
 			if (e instanceof Knight) {
-				if (((Knight) e).getHP()>0) {
+				
 				((Knight)e).setControl(control);
 				((Knight)e).updatePos();
-				}
+				
 			}
 			if (e instanceof Cowgirls) {
 				((Cowgirls)e).setControl(control);
@@ -72,7 +72,7 @@ public class RenderableHolder {
 		int n = listRender.size();
 		//System.out.println(listRender.size()+" sizeeeeeeeee");
 		for (int i=n-1;i>=0;i--) {
-			System.out.println("This is in remove");
+		
 			//if (listRender.get(i).isVisible()) System.out.println("um");
 			if (listRender.get(i).isVisible() == false) {
 				listRender.remove(i);
@@ -111,19 +111,18 @@ public class RenderableHolder {
 				for (IRenderable j : listRender) {
 					if (j instanceof CowgirlSkill1) {
 						if (((Monster)i).isDestroyed(((CowgirlSkill1)j).getX(), ((CowgirlSkill1)j).getY())) {
-							System.out.println("this is in setVisible");
 							
 							((Monster)i).setVisible(false);
-							System.out.println("this is in is destroy");
+							//System.out.println("this is in is destroy");
 							((CowgirlSkill1)j).setVisible(false);
 							exp+=10;
 						}
 					}
 					if (j instanceof CowgirlSkill2) {
 						if (((Monster)i).isDestroyed(((CowgirlSkill2)j).getX(), ((CowgirlSkill2)j).getY())) {
-							System.out.println("this is in setVisible");
+							//System.out.println("this is in setVisible");
 							((Monster)i).setVisible(false);
-							System.out.println("this is in is destroy");
+							//System.out.println("this is in is destroy");
 							((CowgirlSkill2)j).setVisible(false);
 							exp+=10;
 						}

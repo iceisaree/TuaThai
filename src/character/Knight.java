@@ -16,7 +16,6 @@ import skill.KnightSkill;
 public class Knight extends Character {
 
 	private int speed = 4;
-	private int Hp=200;
 	private double attack;
 	private int Level=1;
 	private int timeOfPics = 0;
@@ -37,6 +36,7 @@ public class Knight extends Character {
 			down.add(new Image("knight_up ("+i+").png",70,80,false,false));
 			right.add(new Image("knight_Right ("+i+").png",70,80,false,false));
 		}
+		super.HP= 200;
 		setKnight();
 		}
 	public void setKnight() {
@@ -99,12 +99,12 @@ public class Knight extends Character {
 		if (exp>=indexExp[Level]) {
 			Level++;
 			exp=0;
-			HP = getMaxHp();
+			super.HP = getMaxHp();
 		}
 		
 	}
 	public int getHp() {
-		return Hp;}
+		return super.HP;}
 	public List<Image> getLeft() {
 		return left;
 	}
@@ -148,23 +148,19 @@ public class Knight extends Character {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public void minusHP() {
+		super.HP-=10;
+		System.out.println("this is in MinusHP");
+	}
 	
 	public String getControl() {
 		return control;
 	}
 	public void setHp(int hp) {
-		Hp = hp;
+		super.HP = hp;
 	}
 	public int getMaxHp() {
 		return 150+(Level*50);
-	}
-	public boolean attackPos(int xIn,int yIn) {
-		
-		// 10 have to change by charcter pic 
-		if (Math.abs(this.x-xIn)<=10 && Math.abs(this.y-yIn)<=100) {
-			Hp--;
-			return true;
-		}else return false;
 	}
 	
 	

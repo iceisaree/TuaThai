@@ -231,11 +231,10 @@ public static AnimationTimer getGamewindowanimation() {
 				}
 				// add item by time
 				// add Character detail
-				playerDetail.setKnightData(knight.getMaxExp(),knight.getExp(),knight.getLevel(),knight.getMaxHp(),knight.getHp());
-				playerDetail.setCowgirlData(cowgirl.getMaxExp(),cowgirl.getExp(), cowgirl.getLevel(), cowgirl.getMaxHp(), cowgirl.getHp());
 				// add cooldown and add Skill
 			}
-			addBackground();
+
+		addBackground();
 			int exp2 = RenderableHolder.getinstance().setVisible2();
 			int exp = RenderableHolder.getinstance().setVisible();
 			
@@ -247,7 +246,9 @@ public static AnimationTimer getGamewindowanimation() {
 			cowgirl.updateLevel();
 			knight.setExp(knight.getExp()+exp2);
 			knight.updateLevel();
-			
+			playerDetail.setKnightData(knight.getMaxExp(),knight.getExp(),knight.getLevel(),knight.getMaxHp(),knight.getHp());
+			playerDetail.setCowgirlData(cowgirl.getMaxExp(),cowgirl.getExp(), cowgirl.getLevel(), cowgirl.getMaxHp(), cowgirl.getHp());
+				
 			
 			//set knight and cowgirls detail
 		
@@ -257,10 +258,11 @@ public static AnimationTimer getGamewindowanimation() {
 			if (cooldownCowgirl2!=0) cooldownCowgirl2--;
 			
 			
-			System.out.println("This is cooldown Knight"+cooldownKnight1);
+			
+			
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
-			System.out.println("This is cooldown Cowgirl" + cooldownCowgirl1);
+		
 			
 			RenderableHolder.getinstance().updatePos(control);
 

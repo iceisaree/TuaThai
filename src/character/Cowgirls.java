@@ -40,6 +40,7 @@ public class Cowgirls extends Character{
 		}
 		setCowgirlPic();
 		super.speed = 4;
+		super.HP = 150;
 		}
 	public void setCowgirlPic() {
 		CowgirlPic = right.get(0);
@@ -90,7 +91,7 @@ public class Cowgirls extends Character{
 		if (exp>=indexExp[Level]) {
 			Level++;
 			exp=0;
-			HP = getMaxHp();
+			super.HP = getMaxHp();
 		}
 	
 	}
@@ -101,7 +102,7 @@ public class Cowgirls extends Character{
 		return 50+(Level*50);
 	}
 	public int getHp() {
-		return HP;
+		return super.HP;
 	}
 	public void setExp(int exp) {
 		this.exp = exp;
@@ -132,6 +133,11 @@ public class Cowgirls extends Character{
 	public String getControl() {
 		return control;
 	}
+	public void minusHP() {
+		super.HP-=10;
+		System.out.println("this is in MinusHP");
+	}
+	
 	
 
 	
