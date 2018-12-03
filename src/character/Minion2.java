@@ -12,6 +12,7 @@ public class Minion2 extends Monster {
 	protected List<Image> up = new ArrayList<>();
 	protected List<Image> down = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
+	int k = rand.nextInt(2);
 	
 	public Minion2(double hp, int attack,Knight knight,Cowgirls cowgirl) {
 		super(100, 20, knight,cowgirl);
@@ -50,12 +51,12 @@ public class Minion2 extends Monster {
 		// TODO Auto-generated method stub
 		if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
 			//setChangeHp
-		
+			knight.setHP(knight.getHp()-10);
 			return false;
 		}
 		if ((this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
 			//set change HP
-		
+			cowgirl.setHP(cowgirl.getHp()-10);
 			return false;
 		}
 		
@@ -98,8 +99,14 @@ public class Minion2 extends Monster {
 		//System.out.println("This is in updatePos");
 		//System.out.println("This is in updatePos Monster");
 		//System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
+		if (k==0) {
 		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+		}
+		if (k==1) {
+			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+		}
 		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
 		//x += getSpeed();
 		//y += getSpeed();

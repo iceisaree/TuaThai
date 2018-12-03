@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 
 public class Minion3 extends Monster {
 	public Image cowboyPic;
+	int k = rand.nextInt(2);
 	
 	public Minion3(double hp, int attack,Knight knight,Cowgirls cowgirl) {
 		super(100, 20, knight,cowgirl);
@@ -75,8 +76,14 @@ public class Minion3 extends Monster {
 		//System.out.println("This is in updatePos");
 		//System.out.println("This is in updatePos Monster");
 		//System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
-		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
-		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+		if (k==0) {
+			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
+			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+			}
+		if (k==1) {
+			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+		}
 		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
 		//x += getSpeed();
 		//y += getSpeed();
