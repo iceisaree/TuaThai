@@ -1,6 +1,7 @@
 package logic;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import share.IRenderable;
 public class PlayerDetail implements IRenderable {
 	private int level;
@@ -13,6 +14,7 @@ public class PlayerDetail implements IRenderable {
 	private int cowgirlMaxLife;
 	private int cowgirlExp;
 	private int cowgirlMaxExp;
+	private final Font score_Font = Font.loadFont(ClassLoader.getSystemResourceAsStream("DISKOPIA2.0.ttf"),25);
 	public Image backgroundGame = new Image("forest.png");
 	public Image IconSkillKnight1;
 	public Image IconSkillKnight2;
@@ -28,11 +30,11 @@ public class PlayerDetail implements IRenderable {
 	}
 	public void setImage() {
 		if (score < 20) {
-			backgroundGame = new Image("forest.png");
+			backgroundGame = new Image("forest1.png");
 		}else if (score<40) {
-			backgroundGame = new Image("winter.png");
+			backgroundGame = new Image("night1.png");
 		}else {
-			backgroundGame = new Image("desert.png");
+			backgroundGame = new Image("desert1.png");
 		}
 	}
 	
@@ -54,8 +56,8 @@ public class PlayerDetail implements IRenderable {
 		gc.fillText("Life : "+cowgirlLife+"/"+cowgirlMaxLife,605,30);
 		gc.fillText("LV : "+cowgirlLevel,695,30);
 		gc.fillText("Exp : "+cowgirlExp+"/"+cowgirlMaxExp, 735, 30);
-		
-		gc.fillText("Score : "+score,600,500);
+		gc.setFont(score_Font);
+		gc.fillText("Score : "+score,450,590);
 		gc.drawImage(IconSkillCowgirl1, 830, 0);
 		gc.drawImage(IconSkillCowgirl2, 900, 0);
 		
