@@ -8,13 +8,11 @@ import character.Knight;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import character.*;
-import com.sun.javafx.tk.PlatformImage;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -287,13 +285,13 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	public void addBoss(int bosstype) {
 		if (bosstype==1) {
-			boss1 = new Boss1();
+			boss1 = new Boss1(knight,cowgirl);
 			RenderableHolder.getinstance().add(boss1);
 		}else if(bosstype==2) {
-			boss2 = new Boss2();
+			boss2 = new Boss2(knight,cowgirl);
 			RenderableHolder.getinstance().add(boss2);
 		}else {
-			boss3 = new Boss3();
+			boss3 = new Boss3(knight,cowgirl);
 			RenderableHolder.getinstance().add(boss3);
 		}
 		
