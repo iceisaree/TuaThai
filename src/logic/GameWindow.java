@@ -45,6 +45,7 @@ public class GameWindow extends Canvas {
 	private Boss1 boss1;
 	private Boss2 boss2;
 	private Boss3 boss3;
+	private GameWinnerScene gameWin;
 	private boolean alreadyAddBoss1 = false;
 	private boolean alreadyAddBoss2 = false;
 	private boolean alreadyAddBoss3 = false;
@@ -63,7 +64,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		score = 690;
+		score = 0;
 		this.primaryStage.setScene(scene);
 		addAll();
 		
@@ -363,10 +364,14 @@ public static AnimationTimer getGamewindowanimation() {
 			gameEnd = true;
 			
 		}
-		if (alreadyAddAllBoss) {
+		// instance alreadyAddAllBoss with true
+		if (true) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
-			GameWinnerScene.startAnimation(gc);
+		
+			gameWin.setScore(score);
+			gameWin.startAnimation(gc);
+			
 			gameEnd = true;
 		}
 	}
