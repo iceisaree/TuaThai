@@ -31,10 +31,8 @@ public class RenderableHolder {
 	public void updatePos(String control) {
 		for (IRenderable e:listRender) {
 			if (e instanceof Knight) {
-				
 				((Knight)e).setControl(control);
 				((Knight)e).updatePos();
-				
 			}
 			if (e instanceof Cowgirls) {
 				((Cowgirls)e).setControl(control);
@@ -53,10 +51,16 @@ public class RenderableHolder {
 			if (e instanceof CowgirlSkill2) {
 				((CowgirlSkill2) e).updatePos();
 			}
-			if (e instanceof Minion2) {
-				//System.out.println("This is in minion2");
-				((Minion2) e).updatePos();
+			if (e instanceof Boss1) {
+				((Boss1) e).updatePos();
 			}
+			if (e instanceof Boss2) {
+				((Boss2) e).updatePos();
+			}
+			if (e instanceof Boss3) {
+				((Boss3) e).updatePos();
+			}
+			
 			
 		}
 	}
@@ -89,9 +93,9 @@ public class RenderableHolder {
 					// set visible for knight skill 
 					if (j instanceof KnightSkill) {
 						if (((Monster)i).isDestroyed(((KnightSkill)j).getX(), ((KnightSkill)j).getY())) {
-							System.out.println("this is in setVisible");
+							//System.out.println("this is in setVisible");
 							((Monster)i).setVisible(false);
-							System.out.println("this is in is destroy");
+							//System.out.println("this is in is destroy");
 							((KnightSkill)j).setVisible(false);
 							exp+=10;
 						}

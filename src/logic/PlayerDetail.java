@@ -29,11 +29,11 @@ public class PlayerDetail implements IRenderable {
 	
 	}
 	public void setImage() {
-		if (score < 20) {
+		if (score<200) {
 			backgroundGame = new Image("forest1.png");
-		}else if (score<40) {
+		}else if (score<300) {
 			backgroundGame = new Image("night1.png");
-		}else {
+		}else{
 			backgroundGame = new Image("desert1.png");
 		}
 	}

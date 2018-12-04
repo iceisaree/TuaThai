@@ -7,13 +7,8 @@ import character.Knight;
 
 import java.awt.event.KeyEvent;
 import java.util.Random;
-
+import character.*;
 import com.sun.javafx.tk.PlatformImage;
-
-import character.Minion1;
-import character.Minion2;
-import character.Minion3;
-
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -45,6 +40,13 @@ public class GameWindow extends Canvas {
 	private Image imagenew;
 	private int FireTimes = 0;
 	private boolean alreadyAddBoss;
+	private Boss1 boss1;
+	private Boss2 boss2;
+	private Boss3 boss3;
+	private boolean alreadyAddBoss1 = false;
+	private boolean alreadyAddBoss2 = false;
+	private boolean alreadyAddBoss3 = false;
+	private boolean addedBoss = false;
 	private boolean allBossDead;
 	private static AnimationTimer gamewindowanimation;
 	private boolean gameEnd = false;
@@ -59,7 +61,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		score = 0;
+		score = 490;
 		this.primaryStage.setScene(scene);
 		addAll();
 		
@@ -226,7 +228,10 @@ public static AnimationTimer getGamewindowanimation() {
 			{
 				if (f%60 ==0) {
 					// maxCountMinion can change is 2
+					if (addedBoss=false) {
 						addMinion();
+					}
+						
 						
 					
 				}
@@ -261,13 +266,37 @@ public static AnimationTimer getGamewindowanimation() {
 			
 			
 			
-			
+			if (score > 500 && alreadyAddBoss1==false) {
+				addBoss(1);
+				alreadyAddBoss1 = true;
+			}
+			if (score > 700 && alreadyAddBoss2==false) {
+				addBoss(2);
+				alreadyAddBoss2 = true;
+			}
+			if (score > 800 && alreadyAddBoss3==false) {
+				addBoss(3);
+				alreadyAddBoss3 = true;
+			}
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
 		
 			playerDetail.setScore(score);
 			RenderableHolder.getinstance().updatePos(control);
 
+	}
+	public void addBoss(int bosstype) {
+		if (bosstype==1) {
+			boss1 = new Boss1();
+			RenderableHolder.getinstance().add(boss1);
+		}else if(bosstype==2) {
+			boss2 = new Boss2();
+			RenderableHolder.getinstance().add(boss2);
+		}else {
+			boss3 = new Boss3();
+			RenderableHolder.getinstance().add(boss3);
+		}
+		
 	}
 	public void addKnight() {
 		knight = new Knight("knight");
@@ -358,18 +387,6 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	// add updateState for rander window
 	// add background stage
-	public void addBackground() {
-		if (score < 400) {
-			Image imagenew = new Image("forest.png");
-		}else if (score<800) {
-			Image imagenew = new Image("winter");
-		}else {
-			Image imgaenew = new Image("desert");
-		}
-		gc.drawImage(imagenew, 0, 0);
-		//gc.drawImage(imagek,0,0);
-	
-	}
 	public void girlShoot() {
 		cowgirl.attack('h',20,20);
 		cowgirl.attack('j',20,20);
