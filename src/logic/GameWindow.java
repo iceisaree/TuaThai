@@ -267,6 +267,7 @@ public static AnimationTimer getGamewindowanimation() {
 			if (score > 500 && alreadyAddBoss1==false) {
 				addBoss(1);
 				alreadyAddBoss1 = true;
+				System.out.println("this is in boss 1");
 			}
 			if (score > 700 && alreadyAddBoss2==false) {
 				addBoss(2);
