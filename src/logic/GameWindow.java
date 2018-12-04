@@ -264,7 +264,7 @@ public static AnimationTimer getGamewindowanimation() {
 			
 			
 			
-			if (score > 500 && alreadyAddBoss1==false) {
+			if (score >= 500 && alreadyAddBoss1==false) {
 				addBoss(1);
 				alreadyAddBoss1 = true;
 			}

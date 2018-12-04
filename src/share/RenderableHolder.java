@@ -60,6 +60,9 @@ public class RenderableHolder {
 			if (e instanceof Boss3) {
 				((Boss3) e).updatePos();
 			}
+			if (e instanceof Boss) {
+				((Boss) e).updatePos();
+			}
 			
 			
 		}
@@ -142,4 +145,5 @@ public class RenderableHolder {
 		this.listRender = null;
 		this.listRender = new ArrayList<>();
 	}
+	
 }

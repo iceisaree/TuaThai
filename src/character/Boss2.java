@@ -6,7 +6,7 @@ import java.util.List;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Boss2 extends Monster {
+public class Boss2 extends Boss {
 
 	public Image pumpkinPic;
 	int k = rand.nextInt(2);
