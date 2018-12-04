@@ -15,6 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class GameWindow extends Canvas {
@@ -51,6 +52,10 @@ public class GameWindow extends Canvas {
 	private PlayerDetail playerDetail;
 	Random rand = new Random();
 	int value = rand.nextInt(3);
+	public AudioClip cowgirlskill1sound = new AudioClip(ClassLoader.getSystemResource("cowgirlskill1.wav").toString());
+	public AudioClip bggamesound = new AudioClip(ClassLoader.getSystemResource("bggame.mp3").toString());
+	public AudioClip bosssound = new AudioClip(ClassLoader.getSystemResource("boss.mp3").toString());
+	
 	public GameWindow(Stage primaryStage) {
 		setWidth(950);
 		setHeight(600);
@@ -62,6 +67,7 @@ public class GameWindow extends Canvas {
 		score = 490;
 		this.primaryStage.setScene(scene);
 		addAll();
+		bggamesound.play();
 		
 		requestFocus();
 	}
@@ -72,6 +78,7 @@ public class GameWindow extends Canvas {
 		gamewindowanimation = new AnimationTimer() {
 		public void handle(long now) {
 			updateDetail();
+			updateSong();
 			upPlayerDetail();
 			isGameEnd();
 			//addBackground();
@@ -104,6 +111,7 @@ public void addMoving(GraphicsContext gc) {
 			// for add sound skill fire.play();
 			if (cooldownKnight1==0 && knight.isVisible()==true) {
 				knight.attack(c);
+				cowgirlskill1sound.play();
 				cooldownKnight1 = 180;
 			}
 			
@@ -112,6 +120,7 @@ public void addMoving(GraphicsContext gc) {
 			// for add sound skill fire.play();
 			if (cooldownKnight2==0 && knight.isVisible()==true) {
 				knight.attack2(c);
+				cowgirlskill1sound.play();
 				cooldownKnight2 = 180;
 			}
 		}
@@ -119,6 +128,7 @@ public void addMoving(GraphicsContext gc) {
 			// for add sound skill fire.play();
 			if (cooldownCowgirl1==0 && cowgirl.isVisible()==true) {
 				girlShoot();
+				cowgirlskill1sound.play();
 				cooldownCowgirl1 = 180;
 			}
 		}
@@ -126,6 +136,7 @@ public void addMoving(GraphicsContext gc) {
 			// for add sound skill fire.play();
 			if (cooldownCowgirl2==0 && cowgirl.isVisible()==true) {
 				fire();
+				cowgirlskill1sound.play();
 				cooldownCowgirl2 = 180;
 			}
 		}
@@ -226,7 +237,7 @@ public static AnimationTimer getGamewindowanimation() {
 			{
 				if (f%60 ==0) {
 					// maxCountMinion can change is 2
-					if (addedBoss=false) {
+					if (addedBoss==false) {
 						addMinion();
 					}
 						
@@ -392,6 +403,14 @@ public static AnimationTimer getGamewindowanimation() {
 		cowgirl.attack('k',20,20);
 		
 	}
+	public void playSong() {
+		bggamesound.play();
+	}
+	public void updateSong() {
+		if (bggamesound.isPlaying()==false) playSong();
 		
+		//if (bosssound.isPlaying() == false && AddedBoss && !toMainMenu) bosssound.play();
+	}
+
 }
 
