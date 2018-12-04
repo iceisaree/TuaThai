@@ -3,22 +3,20 @@ package logic;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class CreditWindow extends Canvas {
-	private Scene scene;
 	private Stage primaryStage;
-	private GraphicsContext gc;
 	private Canvas bg;
 	private Image name = new Image("credit.png");
 	private Image back = new Image("backbut.png");
 	private Image backp = new Image("backbutf.png");
+	private Image cowgirl = new Image("cowgirl_Up (1).png",250,200,false,false);
+	private Image knight = new Image("knight_Left (1).png",180,200,false,false);
 	
 	public CreditWindow(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -68,5 +66,7 @@ public class CreditWindow extends Canvas {
 		gc.fillRect(0, 0, 950, 600);
 		gc.drawImage(name, 0, 0);
 		gc.drawImage(back, 0, 0);
+		gc.drawImage(cowgirl, 650, 350);
+		gc.drawImage(knight, 60, 50);
 	}
 }

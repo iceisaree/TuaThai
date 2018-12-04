@@ -1,6 +1,7 @@
 package logic;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import share.IRenderable;
 public class PlayerDetail implements IRenderable {
@@ -14,7 +15,7 @@ public class PlayerDetail implements IRenderable {
 	private int cowgirlMaxLife;
 	private int cowgirlExp;
 	private int cowgirlMaxExp;
-	private final Font score_Font = Font.loadFont(ClassLoader.getSystemResourceAsStream("DISKOPIA2.0.ttf"),25);
+	private final Font score_Font = Font.loadFont(ClassLoader.getSystemResourceAsStream("AvenueX-Regular.otf"),15);
 	public Image backgroundGame = new Image("forest.png");
 	public Image IconSkillKnight1;
 	public Image IconSkillKnight2;
@@ -25,6 +26,10 @@ public class PlayerDetail implements IRenderable {
 	protected int score;
 	public Image IconSkillCowgirl1;
 	public Image IconSkillCowgirl2;
+	public Image heart = new Image("heart.png",30,30,false,false);
+	public Image knight = new Image("knighticon.png");
+	public Image lv = new Image("arrow.png");
+	public Image cowgirl = new Image("cg.png");
 	public PlayerDetail() {
 	
 	}
@@ -42,8 +47,13 @@ public class PlayerDetail implements IRenderable {
 		//draw Level exp Hp for knight and cowgirls
 		setImage();
 		gc.drawImage(backgroundGame, 0, 0);
-		gc.fillText("Name : Knight",20 , 30);
-		gc.fillText("Life : "+life+"/"+maxLife,130,30);
+		gc.setFill(Color.ALICEBLUE);
+		gc.fillRect(0, 0, 950, 50);
+		gc.setFill(Color.BLACK);
+		gc.drawImage(knight, 10, 0);
+		gc.drawImage(heart, 80, 10);
+		gc.fillText(": "+life+"/"+maxLife,105,30);
+		gc.drawImage(lv, 180, 0);
 		gc.fillText("LV : "+level,220,30);
 		gc.fillText("Exp : "+exp+"/"+maxExp, 265, 30);
 		gc.drawImage(IconSkillKnight1,355,0);
@@ -52,8 +62,10 @@ public class PlayerDetail implements IRenderable {
 		
 		// fix position skill pic
 
-		gc.fillText("Name : Cowgirl",495 , 30);
-		gc.fillText("Life : "+cowgirlLife+"/"+cowgirlMaxLife,605,30);
+		gc.drawImage(cowgirl, 500, 0);
+		gc.drawImage(heart, 565, 10);
+		gc.fillText(": "+cowgirlLife+"/"+cowgirlMaxLife,595,30);
+		gc.drawImage(lv, 653, 0);
 		gc.fillText("LV : "+cowgirlLevel,695,30);
 		gc.fillText("Exp : "+cowgirlExp+"/"+cowgirlMaxExp, 735, 30);
 		gc.setFont(score_Font);

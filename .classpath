@@ -10,8 +10,9 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Font"/>
 	<classpathentry kind="src" path="audio"/>
-	<classpathentry excluding="src/|image/character/|image/stage/|image/object/|image/|audio/" kind="src" path=""/>
+	<classpathentry excluding="src/|image/character/|image/stage/|image/object/|image/|audio/|Font/" kind="src" path=""/>
 	<classpathentry kind="src" path="image/character"/>
 	<classpathentry kind="src" path="image/stage"/>
 	<classpathentry kind="src" path="image/object"/>
