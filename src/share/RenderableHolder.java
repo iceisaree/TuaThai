@@ -51,6 +51,20 @@ public class RenderableHolder {
 			if (e instanceof CowgirlSkill2) {
 				((CowgirlSkill2) e).updatePos();
 			}
+
+
+			if (e instanceof Boss1) {
+				((Boss1) e).updatePos();
+			}
+			if (e instanceof Boss2) {
+				((Boss2) e).updatePos();
+			}
+			if (e instanceof Boss3) {
+				((Boss3) e).updatePos();
+			}
+			if (e instanceof Boss) {
+				((Boss) e).updatePos();
+			}
 			
 			
 		}
@@ -170,4 +184,5 @@ public class RenderableHolder {
 		this.listRender = null;
 		this.listRender = new ArrayList<>();
 	}
+	
 }
