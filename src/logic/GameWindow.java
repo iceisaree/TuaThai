@@ -19,6 +19,10 @@ import javafx.stage.Stage;
 
 public class GameWindow extends Canvas {
 	private Scene scene;
+	private int damageBoss;
+	private boolean alreadyAddAllBoss;
+	private int countBoss = 0;
+	private boolean isBossDead;
 	private int cooldownKnight1;
 	private int cooldownKnight2;
 	private int cooldownCowgirl1;
@@ -59,7 +63,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		score = 490;
+		score = 690;
 		this.primaryStage.setScene(scene);
 		addAll();
 		
@@ -226,7 +230,7 @@ public static AnimationTimer getGamewindowanimation() {
 			{
 				if (f%60 ==0) {
 					// maxCountMinion can change is 2
-					if (addedBoss=false) {
+					if (addedBoss==false) {
 						addMinion();
 					}
 						
@@ -241,6 +245,10 @@ public static AnimationTimer getGamewindowanimation() {
 		//addBackground();
 			int exp2 = RenderableHolder.getinstance().setVisible2();
 			int exp = RenderableHolder.getinstance().setVisible();
+			isBossDead = RenderableHolder.getinstance().setVisibleBoss();
+			if(!isBossDead) {
+				addedBoss = false;
+			}
 			if (exp!=0) score += 10;
 			if (exp2!=0) score += 10;
 			RenderableHolder.getinstance().remove();
@@ -262,38 +270,44 @@ public static AnimationTimer getGamewindowanimation() {
 			if (cooldownCowgirl1!=0) cooldownCowgirl1--;
 			if (cooldownCowgirl2!=0) cooldownCowgirl2--;
 			
-			
+			isGameEnd();
 			
 			if (score >= 500 && alreadyAddBoss1==false) {
-				addBoss(1);
+				addBoss(0);
 				alreadyAddBoss1 = true;
+				addedBoss = true;
 				System.out.println("this is in boss 1");
 			}
-			if (score > 700 && alreadyAddBoss2==false) {
-				addBoss(2);
+			if (score >= 700 && alreadyAddBoss2==false) {
+				addBoss(1);
 				alreadyAddBoss2 = true;
+				addedBoss = true;
 			}
-			if (score > 800 && alreadyAddBoss3==false) {
-				addBoss(3);
+			if (score >= 800 && alreadyAddBoss3==false) {
+				addBoss(2);
 				alreadyAddBoss3 = true;
+				addedBoss = true;
 			}
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
 		
 			playerDetail.setScore(score);
 			RenderableHolder.getinstance().updatePos(control);
+			alreadyAddAllBoss = (alreadyAddBoss3&&(!addedBoss));
 
 	}
-	public void addBoss(int bosstype) {
-		if (bosstype==1) {
+	public void addBoss(int countBoss) {
+		if (countBoss==0) {
 			boss1 = new Boss1(knight,cowgirl);
 			RenderableHolder.getinstance().add(boss1);
-		}else if(bosstype==2) {
+		}else if(countBoss==1) {
 			boss2 = new Boss2(knight,cowgirl);
 			RenderableHolder.getinstance().add(boss2);
-		}else {
+		}else if(countBoss==2){
 			boss3 = new Boss3(knight,cowgirl);
 			RenderableHolder.getinstance().add(boss3);
+		}else {
+			
 		}
 		
 	}
@@ -349,7 +363,7 @@ public static AnimationTimer getGamewindowanimation() {
 			gameEnd = true;
 			
 		}
-		if (alreadyAddBoss && allBossDead) {
+		if (alreadyAddAllBoss) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameWinnerScene.startAnimation(gc);

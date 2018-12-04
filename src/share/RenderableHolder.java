@@ -38,6 +38,18 @@ public class RenderableHolder {
 				((Cowgirls)e).setControl(control);
 				((Cowgirls)e).updatePos();
 			}
+			if (e instanceof Boss1) {
+				((Boss1) e).updatePos();
+			}
+			if (e instanceof Boss2) {
+				((Boss2) e).updatePos();
+			}
+			if (e instanceof Boss3) {
+				((Boss3) e).updatePos();
+			}
+			if (e instanceof Boss) {
+				((Boss) e).updatePos();
+			}
 			if (e instanceof CowgirlSkill1) {
 				((CowgirlSkill1) e).updatePos();
 			}
@@ -53,18 +65,7 @@ public class RenderableHolder {
 			}
 
 
-			if (e instanceof Boss1) {
-				((Boss1) e).updatePos();
-			}
-			if (e instanceof Boss2) {
-				((Boss2) e).updatePos();
-			}
-			if (e instanceof Boss3) {
-				((Boss3) e).updatePos();
-			}
-			if (e instanceof Boss) {
-				((Boss) e).updatePos();
-			}
+			
 			
 			
 		}
@@ -143,21 +144,26 @@ public class RenderableHolder {
 		}
 		return exp;
 	}
-	public int setVisibleBoss() {
-		int damage;
+	public boolean setVisibleBoss() {
 		for (IRenderable i:listRender) {
 			if (i instanceof Boss) {
+				if (((Boss) i).getHP()<=0) {
+					((Boss) i).setVisible(false);
+					return false;
+				}
 				for (IRenderable j:listRender) {
 					if (j instanceof CowgirlSkill1) {
 						if (((Boss) i).isDestroyed(((CowgirlSkill1)j).getX(),((CowgirlSkill1)j).getY())){
 							((CowgirlSkill1)j).setVisible(false);
-							damage += 40;
+							System.out.println("setVisible CowgirlSkill1 = false");
+							((Boss) i).decreaseBossHp(40);
 						}
 					}
 					if (j instanceof CowgirlSkill2) {
 						if (((Boss) i).isDestroyed(((CowgirlSkill2)j).getX(),((CowgirlSkill2)j).getY())){
 							((CowgirlSkill2)j).setVisible(false);
-							damage += 30;
+							System.out.println("setVisible CowgirlSkill2 = false");
+							((Boss) i).decreaseBossHp(30);
 						}
 					}
 					if (j instanceof KnightSkill) {
@@ -165,20 +171,25 @@ public class RenderableHolder {
 						if (k==0) {
 							if (((Boss) i).isDestroyed(((KnightSkill)j).getX(),((KnightSkill)j).getY())){
 								((KnightSkill)j).setVisible(false);
-								damage += 10;
+								System.out.println("setVisible knightSkill1 = false;");
+								((Boss) i).decreaseBossHp(20);
 							}
 						}else {
 
 							if (((Boss) i).isDestroyed(((KnightSkill)j).getX(),((KnightSkill)j).getY())){
 								((KnightSkill)j).setVisible(false);
-								damage += 20;
+								System.out.println("setVisible knightSkill2 = false");
+								((Boss) i).decreaseBossHp(10);
 							}
 						
 					}
 					
 				}
 			}
+			}
+		
 		}
+	return true;
 	}
 	public void clearList() {
 		this.listRender = null;

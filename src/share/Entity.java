@@ -20,5 +20,6 @@ public abstract class Entity implements IRenderable {
 		this.y = y;
 	}
 	public abstract void updatePos();
+	
 
 }
