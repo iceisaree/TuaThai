@@ -7,14 +7,16 @@ public class KnightSkill extends Entity {
 	private boolean isVisible = true;
 	private char route;
 	public Image skillPic;
-	private int type=0;
+	private int type;
 	
 	public KnightSkill(double x,double y,char route,int type) {
 		super(x,y);
 		this.route = route;
+		this.type = type;
 		if(type==0) {
 			setKnightSkill();
 		}else {
+			this.type = type;
 			setKnightSkill2();
 		}
 		
@@ -43,8 +45,6 @@ public class KnightSkill extends Entity {
 		}
 	}
 	public void draw(GraphicsContext gc) {
-		System.out.println("this is in knightSkill1");
-		System.out.println("this is x : "+x+"This is y : "+y);
 		gc.drawImage(skillPic, x, y+10);
 	}
 	public void updatePos() {
@@ -87,5 +87,8 @@ public class KnightSkill extends Entity {
 	public void setSkillPic(Image skillPic) {
 		this.skillPic = skillPic;
 	}
-
+	public int getType() {
+		return type;
+	}
+	
 }
