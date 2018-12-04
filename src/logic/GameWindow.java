@@ -287,12 +287,12 @@ public static AnimationTimer getGamewindowanimation() {
 		if (value==1) {
 			minion2 = new Minion2(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion2);
-			System.out.println("zombieeeee");
+			//System.out.println("zombieeeee");
 		}
 		if (value==2) {
 			minion3 = new Minion3(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion3);
-			System.out.println("cowboyyyyy");
+			//System.out.println("cowboyyyyy");
 		}
 	}
 	/*public void addMinion2() {

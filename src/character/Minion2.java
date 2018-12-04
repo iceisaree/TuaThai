@@ -84,15 +84,21 @@ public class Minion2 extends Monster {
 			double cos =calculateCos(knight.getX(),knight.getY());
 			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
 			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+			if (knight.isVisible()==false) {
+				k = 1;
+			}
 			if (cos>=0) {
 				zombiePic = right.get(timeOfPics/10);
 			}
 			else zombiePic = left.get(timeOfPics/10);
 		}
 		if (k==1) {
-			double cos =calculateCos(knight.getX(),knight.getY());
+			double cos =calculateCos(cowgirl.getX(),cowgirl.getY());
 			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
 			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			if (cowgirl.isVisible()==false) {
+				k = 0;
+			}
 			if (cos>=0) {
 				zombiePic = right.get(timeOfPics/10);
 			}
