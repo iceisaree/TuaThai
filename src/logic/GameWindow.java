@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 import character.*;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -207,8 +208,16 @@ public void addMoving(GraphicsContext gc) {
 		}if (KeyEvent.getCode() == KeyCode.LEFT) {
 			control = control.replace("h","");
 			RenderableHolder.getinstance().updatePos(control);
+		}if (KeyEvent.getCode() == KeyCode.ENTER) {
+			if (GameWinnerScene.isFinished()) {
+				StartWindow startwindow =new StartWindow(primaryStage);
+				startwindow.startAnimation();
+			}
+		}if (KeyEvent.getCode() == KeyCode.ESCAPE) {
+			if (GameWinnerScene.isFinished()) {
+				Platform.exit();
+			}
 		}
-
 		if (KeyEvent.getCode() == KeyCode.D) {
 			control = control.replace("d", "");
 			RenderableHolder.getinstance().updatePos(control);
