@@ -381,7 +381,7 @@ public static AnimationTimer getGamewindowanimation() {
 		if (knight.getHp()==0 && cowgirl.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
-			//bggamesound.stop();
+			bggamesound.stop();
 			bosssound.stop();
 			soundbg.play();
 			GameOverScene.setScore(score);
@@ -392,7 +392,7 @@ public static AnimationTimer getGamewindowanimation() {
 		if (alreadyAddAllBoss) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
-			//bggamesound.stop();
+			bggamesound.stop();
 			bosssound.stop();
 			soundbg.play();
 			GameWinnerScene.setScore(score);
