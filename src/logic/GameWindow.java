@@ -379,7 +379,7 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	public void isGameEnd() {
 		//if (knight.getHp()==0 && cowgirl.getHp()==0)
-		if (knight.getHp()==0 && cowgirl.getHp()==0) {
+		if (true) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameOverScene.startAnimation(gc);
@@ -389,7 +389,7 @@ public static AnimationTimer getGamewindowanimation() {
 		}
 		// instance alreadyAddAllBoss with true
 		//alreadyAddAllBoss
-		if (true) {
+		if (alreadyAddAllBoss) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameWinnerScene.setScore(score);
