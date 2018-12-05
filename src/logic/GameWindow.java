@@ -213,6 +213,10 @@ public void addMoving(GraphicsContext gc) {
 				StartWindow startwindow =new StartWindow(primaryStage);
 				startwindow.startAnimation();
 			}
+			if (GameOverScene.isFinished()) {
+				StartWindow startwindow = new StartWindow(primaryStage);
+				startwindow.startAnimation();
+			}
 		}if (KeyEvent.getCode() == KeyCode.ESCAPE) {
 			if (GameWinnerScene.isFinished()) {
 				Platform.exit();
@@ -389,7 +393,7 @@ public static AnimationTimer getGamewindowanimation() {
 		}
 		// instance alreadyAddAllBoss with true
 		//alreadyAddAllBoss
-		if (alreadyAddAllBoss) {
+		if (false) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameWinnerScene.setScore(score);
