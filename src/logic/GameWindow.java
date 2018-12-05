@@ -52,6 +52,7 @@ public class GameWindow extends Canvas {
 	public AudioClip cowgirlskill1sound = new AudioClip(ClassLoader.getSystemResource("cowgirlskill1.wav").toString());
 	public AudioClip bggamesound = new AudioClip(ClassLoader.getSystemResource("bggame.mp3").toString());
 	public AudioClip bosssound = new AudioClip(ClassLoader.getSystemResource("boss.mp3").toString());
+	public AudioClip soundbg = new AudioClip(ClassLoader.getSystemResource("startgame.mp3").toString());
 	
 	public GameWindow(Stage primaryStage) {
 		setWidth(950);
@@ -256,6 +257,7 @@ public static AnimationTimer getGamewindowanimation() {
 			if(!isBossDead) {
 				addedBoss = false;
 			}
+			
 			if (exp!=0) score += 10;
 			if (exp2!=0) score += 10;
 			RenderableHolder.getinstance().remove();
@@ -270,7 +272,8 @@ public static AnimationTimer getGamewindowanimation() {
 			knight.updateLevel();
 			playerDetail.setKnightData(knight.getMaxExp(),knight.getExp(),knight.getLevel(),knight.getMaxHp(),knight.getHp());
 			playerDetail.setCowgirlData(cowgirl.getMaxExp(),cowgirl.getExp(), cowgirl.getLevel(), cowgirl.getMaxHp(), cowgirl.getHp());
-				
+			
+			
 			
 			//set knight and cowgirls detail
 		
@@ -287,18 +290,28 @@ public static AnimationTimer getGamewindowanimation() {
 				addBoss(0);
 				alreadyAddBoss1 = true;
 				addedBoss = true;
+				bggamesound.stop();
+				bosssound.play();
 				System.out.println("this is in boss 1");
 			}
 			if (score >= 600 && alreadyAddBoss2==false) {
 				addBoss(1);
 				alreadyAddBoss2 = true;
 				addedBoss = true;
+				bggamesound.stop();
+				bosssound.play();
 			}
 			if (score >= 900 && alreadyAddBoss3==false) {
 				addBoss(2);
 				alreadyAddBoss3 = true;
 				addedBoss = true;
+				bggamesound.stop();
+				bosssound.play();
 			}
+			if (boss1.isDead()==true && alreadyAddBoss2==false) bosssound.stop();
+			if (boss2.isDead()==true && alreadyAddBoss3==false) bosssound.stop();
+			
+			
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
 		
@@ -384,6 +397,9 @@ public static AnimationTimer getGamewindowanimation() {
 		if (knight.getHp()==0 && cowgirl.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
+			bggamesound.stop();
+			bosssound.stop();
+			soundbg.play();
 			GameOverScene.setScore(score);
 			GameOverScene.startAnimation(gc);
 		}
@@ -392,6 +408,9 @@ public static AnimationTimer getGamewindowanimation() {
 		if (alreadyAddAllBoss) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
+			bggamesound.stop();
+			bosssound.stop();
+			soundbg.play();
 			GameWinnerScene.setScore(score);
 			GameWinnerScene.startAnimation(gc);
 		}
@@ -428,9 +447,9 @@ public static AnimationTimer getGamewindowanimation() {
 		bggamesound.play();
 	}
 	public void updateSong() {
-		if (bggamesound.isPlaying()==false) playSong();
+		if (bggamesound.isPlaying()==false && bosssound.isPlaying() ==false) playSong();
 		
-		//if (bosssound.isPlaying() == false && AddedBoss && !toMainMenu) bosssound.play();
+		//if (bosssound.isPlaying() == true) bosssound.play();
 	}
 
 }
