@@ -368,6 +368,7 @@ public static AnimationTimer getGamewindowanimation() {
 		if (knight.getHp()==0 && cowgirl.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
+			GameOverScene.setScore(score);
 			GameOverScene.startAnimation(gc);
 		}
 		// instance alreadyAddAllBoss with true

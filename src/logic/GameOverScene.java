@@ -18,7 +18,7 @@ public class GameOverScene {
 	public static final Font FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("AvenueX-Regular.otf"),20);
 	public static final Font BIG_FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("AvenueX-Regular.otf"),40);
 	public static String[] gameOverChar3 = {"P","R","E","S","S"," ","E","N","T","E","R"," ","T","O"," ","G","O"," ","T","O"," ","M","A","I","N"," ","M","E","N","U"};
-	public static String[] gameOverChar2 = {"A","N","D"," ","T","R","Y"," ","A","G","A","N","I","N"};
+	public static String[] gameOverChar2 = {"A","N","D"," ","T","R","Y"," ","A","G","A","I","N"};
 	public GameOverScene(Stage primaryStage) {
 		bg = new Canvas(950,600);
 	
@@ -73,6 +73,9 @@ public class GameOverScene {
 	}
 	public static void startAnimation(GraphicsContext gc) {
 		draw(gc);
+	}
+	public static void setScore(int score) {
+		Score1 = score;
 	}
 	public static boolean isFinished() {
 		return isFinished;
