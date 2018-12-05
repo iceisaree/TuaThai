@@ -69,7 +69,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		score = 0;
+		score = 700;
 		this.primaryStage.setScene(scene);
 		addAll();
 		bggamesound.play();
@@ -367,7 +367,8 @@ public static AnimationTimer getGamewindowanimation() {
 		RenderableHolder.getinstance().add(playerDetail);
 	}
 	public void isGameEnd() {
-		if (knight.getHp()==0 && cowgirl.getHp()==0) {
+		//if (knight.getHp()==0 && cowgirl.getHp()==0)
+		if (false) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameOverScene.startAnimation(gc);
@@ -376,13 +377,12 @@ public static AnimationTimer getGamewindowanimation() {
 			
 		}
 		// instance alreadyAddAllBoss with true
+		//alreadyAddAllBoss
 		if (true) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
-		
-			gameWin.setScore(score);
-			gameWin.startAnimation(gc);
-			
+			GameWinnerScene.setScore(score);
+			GameWinnerScene.startAnimation(gc);
 			gameEnd = true;
 		}
 	}
