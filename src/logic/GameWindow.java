@@ -283,7 +283,9 @@ public static AnimationTimer getGamewindowanimation() {
 			if (cooldownCowgirl2!=0) cooldownCowgirl2--;
 			
 			isGameEnd();
-			
+			if (alreadyAddBoss1 && addedBoss) {
+				
+			}
 			if (score >= 500 && alreadyAddBoss1==false) {
 				addBoss(0);
 				alreadyAddBoss1 = true;
@@ -368,7 +370,7 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	public void isGameEnd() {
 		//if (knight.getHp()==0 && cowgirl.getHp()==0)
-		if (false) {
+		if (knight.getHp()==0 && cowgirl.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameOverScene.startAnimation(gc);
