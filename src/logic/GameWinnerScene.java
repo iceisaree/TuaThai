@@ -22,7 +22,7 @@ public class GameWinnerScene {
 		gc = bg.getGraphicsContext2D();
 	}
 	public static void draw(GraphicsContext gc) {
-		
+
 		Thread t = new Thread() {
 		public void run(){
 		Image winnerImage = new Image(background);
