@@ -48,6 +48,7 @@ public class PlayerDetail implements IRenderable {
 		setImage();
 		gc.drawImage(backgroundGame, 0, 0);
 		gc.setFill(Color.ALICEBLUE);
+		gc.setFill(Color.color(1, 1, 1, 0.3));
 		gc.fillRect(0, 0, 950, 50);
 		gc.setFill(Color.BLACK);
 		gc.drawImage(knight, 10, 0);
