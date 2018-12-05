@@ -39,8 +39,8 @@ public class GameWindow extends Canvas {
 	private String control="";
 	private char c;
 	private Boss1 boss1;
-	private Boss2 boss2;
-	private Boss3 boss3;
+	private Boss2 boss21,boss22,boss23,boss24;
+	private Boss3 boss31,boss32,boss33,boss34,boss35,boss36,boss37,boss38;
 	private boolean alreadyAddBoss1 = false;
 	private boolean alreadyAddBoss2 = false;
 	private boolean alreadyAddBoss3 = false;
@@ -48,7 +48,7 @@ public class GameWindow extends Canvas {
 	private static AnimationTimer gamewindowanimation;
 	private PlayerDetail playerDetail;
 	Random rand = new Random();
-	int value = rand.nextInt(3);
+	int value = 0;
 	public AudioClip cowgirlskill1sound = new AudioClip(ClassLoader.getSystemResource("cowgirlskill1.wav").toString());
 	public AudioClip bggamesound = new AudioClip(ClassLoader.getSystemResource("bggame.mp3").toString());
 	public AudioClip bosssound = new AudioClip(ClassLoader.getSystemResource("boss.mp3").toString());
@@ -61,7 +61,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		score = 700;
+		score = 0;
 		this.primaryStage.setScene(scene);
 		addAll();
 		bggamesound.play();
@@ -76,7 +76,6 @@ public class GameWindow extends Canvas {
 		public void handle(long now) {
 			updateDetail();
 			updateSong();
-			upPlayerDetail();
 			isGameEnd();
 			//addBackground();
 			
@@ -84,12 +83,7 @@ public class GameWindow extends Canvas {
 		};
 		gamewindowanimation.start();
 	}
-	public void upPlayerDetail() {
-		
-	}
 	public void fire() {
-		
-			
 			// for add sound fire.play();
 			cowgirl.attack2('q');
 			cowgirl.attack2('w');
@@ -109,7 +103,7 @@ public void addMoving(GraphicsContext gc) {
 			if (cooldownKnight1==0 && knight.isVisible()==true) {
 				knight.attack(c);
 				cowgirlskill1sound.play();
-				cooldownKnight1 = 180;
+				cooldownKnight1 = 60;
 			}
 			
 		}
@@ -118,7 +112,7 @@ public void addMoving(GraphicsContext gc) {
 			if (cooldownKnight2==0 && knight.isVisible()==true) {
 				knight.attack2(c);
 				cowgirlskill1sound.play();
-				cooldownKnight2 = 180;
+				cooldownKnight2 = 60;
 			}
 		}
 		if (KeyEvent.getCode() == KeyCode.N) {
@@ -126,7 +120,7 @@ public void addMoving(GraphicsContext gc) {
 			if (cooldownCowgirl1==0 && cowgirl.isVisible()==true) {
 				girlShoot();
 				cowgirlskill1sound.play();
-				cooldownCowgirl1 = 180;
+				cooldownCowgirl1 = 60;
 			}
 		}
 		if (KeyEvent.getCode() == KeyCode.M) {
@@ -239,7 +233,7 @@ public static AnimationTimer getGamewindowanimation() {
 
 	public void updateDetail() {
 		f++;
-		value = rand.nextInt(3);
+		
 		//System.out.println("this is update detail");
 		//System.out.println("this is frame : "+ f);
 		if ((f%600)<500)
@@ -267,6 +261,8 @@ public static AnimationTimer getGamewindowanimation() {
 			RenderableHolder.getinstance().remove();
 			RenderableHolder.getinstance().draw(gc);
 			
+			if (score>=300) value = 1;
+			if (score>=600) value = 2;
 			
 			cowgirl.setExp(cowgirl.getExp()+exp);
 			cowgirl.updateLevel();
@@ -287,18 +283,18 @@ public static AnimationTimer getGamewindowanimation() {
 			if (alreadyAddBoss1 && addedBoss) {
 				
 			}
-			if (score >= 500 && alreadyAddBoss1==false) {
+			if (score >= 300 && alreadyAddBoss1==false) {
 				addBoss(0);
 				alreadyAddBoss1 = true;
 				addedBoss = true;
 				System.out.println("this is in boss 1");
 			}
-			if (score >= 700 && alreadyAddBoss2==false) {
+			if (score >= 600 && alreadyAddBoss2==false) {
 				addBoss(1);
 				alreadyAddBoss2 = true;
 				addedBoss = true;
 			}
-			if (score >= 800 && alreadyAddBoss3==false) {
+			if (score >= 900 && alreadyAddBoss3==false) {
 				addBoss(2);
 				alreadyAddBoss3 = true;
 				addedBoss = true;
@@ -316,11 +312,31 @@ public static AnimationTimer getGamewindowanimation() {
 			boss1 = new Boss1(knight,cowgirl);
 			RenderableHolder.getinstance().add(boss1);
 		}else if(countBoss==1) {
-			boss2 = new Boss2(knight,cowgirl);
-			RenderableHolder.getinstance().add(boss2);
+			boss21 = new Boss2(knight,cowgirl);
+			boss22 = new Boss2(knight,cowgirl);
+			boss23 = new Boss2(knight,cowgirl);
+			boss24 = new Boss2(knight,cowgirl);
+			RenderableHolder.getinstance().add(boss21);
+			RenderableHolder.getinstance().add(boss22);
+			RenderableHolder.getinstance().add(boss23);
+			RenderableHolder.getinstance().add(boss24);
 		}else if(countBoss==2){
-			boss3 = new Boss3(knight,cowgirl);
-			RenderableHolder.getinstance().add(boss3);
+			boss31 = new Boss3(knight,cowgirl);
+			boss32 = new Boss3(knight,cowgirl);
+			boss33 = new Boss3(knight,cowgirl);
+			boss34 = new Boss3(knight,cowgirl);
+			boss35 = new Boss3(knight,cowgirl);
+			boss36 = new Boss3(knight,cowgirl);
+			boss37 = new Boss3(knight,cowgirl);
+			boss38 = new Boss3(knight,cowgirl);
+			RenderableHolder.getinstance().add(boss31);
+			RenderableHolder.getinstance().add(boss32);
+			RenderableHolder.getinstance().add(boss33);
+			RenderableHolder.getinstance().add(boss34);
+			RenderableHolder.getinstance().add(boss35);
+			RenderableHolder.getinstance().add(boss36);
+			RenderableHolder.getinstance().add(boss37);
+			RenderableHolder.getinstance().add(boss38);
 		}else {
 			
 		}
@@ -331,7 +347,7 @@ public static AnimationTimer getGamewindowanimation() {
 		RenderableHolder.getinstance().add(knight);
 	}
 	public void addcowgirl() {
-		cowgirl = new Cowgirls("cowgirl");
+		cowgirl = new Cowgirls();
 		RenderableHolder.getinstance().add(cowgirl);
 	}
 	public void addMinion() {
@@ -344,10 +360,10 @@ public static AnimationTimer getGamewindowanimation() {
 		if (value==1) {
 			minion2 = new Minion2(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion2);
-		
+
 		}
 		if (value==2) {
-			minion3 = new Minion3(knight,cowgirl);
+			minion3 = new Minion3(knight,cowgirl);;
 			RenderableHolder.getinstance().add(minion3);
 		
 		}
@@ -383,30 +399,21 @@ public static AnimationTimer getGamewindowanimation() {
 	//add getLevel in cowgirl and set attack in knight and cowgirl
 	public void setState() {
 		if (knight.getLevel()+cowgirl.getLevel()<5) {
-			knight.setSpeed(3);
-			//knight.setAttack();
-			cowgirl.setSpeed(2);
-			//cowgirl.setAttack();
+			knight.setSpeed(1);
+			cowgirl.setSpeed(1);
 		}
 		if (knight.getLevel()+cowgirl.getLevel()<10) {
-			knight.setSpeed(3);
-			//knight.setAttack();
-			cowgirl.setSpeed(2);
-			//cowgirl.setAttack();
+			knight.setSpeed(2);
+			cowgirl.setSpeed(3);
 		}
 		if (knight.getLevel()+cowgirl.getLevel()<15) {
 			knight.setSpeed(3);
-			//knight.setAttack();
-			cowgirl.setSpeed(2);
-			//cowgirl.setAttack();
+			cowgirl.setSpeed(3);
 		}
 		if (knight.getLevel()+cowgirl.getLevel()<20) {
-			knight.setSpeed(3);
-			//knight.setAttack();
-			cowgirl.setSpeed(2);
-			//cowgirl.setAttack();
+			knight.setSpeed(4);
+			cowgirl.setSpeed(4);
 		}
-		
 	}
 	// add updateState for rander window
 	// add background stage

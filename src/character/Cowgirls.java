@@ -18,9 +18,6 @@ public class Cowgirls extends Character{
 		// TODO Auto-generated constructor stub
 	}
 	protected int [] indexExp = {10,50,200,800,3200,3200,3400,3800,4000,4200,3000,2000,1000,500,200};
-
-	private int skill1Count;
-	
 	private int timeOfPics = 0;
 	public Image CowgirlPic;
 	private String control;
@@ -29,8 +26,7 @@ public class Cowgirls extends Character{
 	private List<Image> up = new ArrayList<>();
 	private List<Image> down = new ArrayList<>();
 	
-	private String name;
-	public Cowgirls(String name){
+	public Cowgirls(){
 		super();
 		for (int i=1;i<5;i++) {
 			left.add(new Image("cowgirl_Left ("+i+").png",90,80, false, false));
@@ -40,7 +36,7 @@ public class Cowgirls extends Character{
 		}
 		setCowgirlPic();
 		super.speed = 4;
-		super.HP = 150;
+		super.HP = 100;
 		}
 	public void setCowgirlPic() {
 		CowgirlPic = right.get(0);

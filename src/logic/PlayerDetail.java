@@ -34,9 +34,9 @@ public class PlayerDetail implements IRenderable {
 	
 	}
 	public void setImage() {
-		if (score<500) {
+		if (score<=300) {
 			backgroundGame = new Image("forest1.png");
-		}else if (score<=700) {
+		}else if (score>300) {
 			backgroundGame = new Image("night1.png");
 		}else{
 			backgroundGame = new Image("desert1.png");

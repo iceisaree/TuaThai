@@ -19,9 +19,8 @@ public abstract class Boss extends Entity{
 	protected List<Image> up = new ArrayList<>();
 	protected List<Image> down = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
-	private Character character;
 	ClassLoader loader = ClassLoader.getSystemClassLoader();
-	public Image monsterPic = new Image("zombiefemale_Up (1).png",90,90,false,false);
+	public Image monsterPic;
 	protected boolean isDead;
 	protected double MaxHP;
 	protected double exp;
@@ -29,11 +28,10 @@ public abstract class Boss extends Entity{
 	protected Knight knight;
 	protected Cowgirls cowgirl;
 
-	public Boss(double hp, double damage, Knight knight,Cowgirls cowgirl) {
+	public Boss(double hp, Knight knight,Cowgirls cowgirl) {
 		
 		super(0,0);
 		this.HP=100;
-		this.Damage=damage;
 		this.isDead=false;
 		this.MaxHP = hp;
 		this.exp = 100;
@@ -98,14 +96,6 @@ public abstract class Boss extends Entity{
 			this.HP = 0;
 			this.setStatus(true);
 		}else this.HP=HP;
-	}
-
-	public double getDamage() {
-		return this.Damage;
-	}
-
-	public void setDamage(double damage) {
-		this.Damage = damage;
 	}
 	
 	public boolean isVisible() {

@@ -21,6 +21,7 @@ public class Minion1 extends Monster {
 			left.add(new Image("ninja_left ("+i+").png",70,80,false,false));
 			right.add(new Image("ninja_right ("+i+").png",70,80,false,false));
 		}
+		super.speed = 2;
 		setNinja();
 	}
 
@@ -67,8 +68,8 @@ public class Minion1 extends Monster {
 	public void updatePos() {
 		if (k==0) {
 			double cos =calculateCos(knight.getX(),knight.getY());
-			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
-			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
 			if (knight.isVisible()==false) {
 				k = 1;
 			}
@@ -79,8 +80,8 @@ public class Minion1 extends Monster {
 		}
 		if (k==1) {
 			double cos =calculateCos(cowgirl.getX(),cowgirl.getY());
-			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
-			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
 			if (cowgirl.isVisible()==false) {
 				k = 0;
 			}

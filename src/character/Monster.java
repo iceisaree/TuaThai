@@ -19,7 +19,6 @@ public abstract class Monster extends Entity{
 	protected List<Image> up = new ArrayList<>();
 	protected List<Image> down = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
-	private Character character;
 	ClassLoader loader = ClassLoader.getSystemClassLoader();
 	public Image monsterPic = new Image("zombiefemale_Up (1).png",90,90,false,false);
 	protected boolean isDead;
@@ -160,7 +159,7 @@ public abstract class Monster extends Entity{
 	public double getSpeed() {
 		return speed;
 	}
-	public void updatePos() {
+	/*public void updatePos() {
 /*
 		//System.out.println("This is in updatePos");
 		//System.out.println("This is in updatePos");
@@ -183,8 +182,8 @@ public abstract class Monster extends Entity{
 ||||||| merged common ancestors
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 =======
-		//if (isCharacterAttacked) takedDamage(character.getAttack());*/
-	}
+		//if (isCharacterAttacked) takedDamage(character.getAttack());
+	}*/
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;
 		double k = charY - this.y;

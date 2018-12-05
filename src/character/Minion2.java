@@ -21,6 +21,7 @@ public class Minion2 extends Monster {
 			left.add(new Image("zombiemale_Left ("+i+").png",70,80,false,false));
 			right.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
 		}
+		super.speed = 0.5;
 		setZombie();
 	}
 	
@@ -82,8 +83,8 @@ public class Minion2 extends Monster {
 	public void updatePos() {
 		if (k==0) {
 			double cos =calculateCos(knight.getX(),knight.getY());
-			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
-			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
 			if (knight.isVisible()==false) {
 				k = 1;
 			}
@@ -94,8 +95,8 @@ public class Minion2 extends Monster {
 		}
 		if (k==1) {
 			double cos =calculateCos(cowgirl.getX(),cowgirl.getY());
-			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
-			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
 			if (cowgirl.isVisible()==false) {
 				k = 0;
 			}
@@ -104,10 +105,6 @@ public class Minion2 extends Monster {
 			}
 			else zombiePic = left.get(timeOfPics/10);
 		}
-	
-		boolean isCharacterAttacked;
-		isCharacterAttacked = knight.attackPos((int) x,(int)y);
-		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}

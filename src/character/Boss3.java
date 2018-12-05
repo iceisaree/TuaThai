@@ -15,7 +15,7 @@ public class Boss3 extends Boss {
 	private int timeOfPics = 0;
 	
 	public Boss3(Knight knight,Cowgirls cowgirl) {
-		super(100,20,knight,cowgirl);
+		super(100,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<11; i++) {
@@ -43,8 +43,8 @@ public class Boss3 extends Boss {
 	public void updatePos() {
 		if (k==0) {
 			double cos =calculateCos(knight.getX(),knight.getY());
-			x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
-			y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
+			x += getSpeed()*calculateCos(knight.getX(),knight.getY());
+			y += getSpeed()*calculateSin(knight.getX(),knight.getY());
 			if (knight.isVisible()==false) {
 				k = 1;
 			}
@@ -55,8 +55,8 @@ public class Boss3 extends Boss {
 		}
 		if (k==1) {
 			double cos =calculateCos(cowgirl.getX(),cowgirl.getY());
-			x += getSpeed()*cowgirl.getLevel()*calculateCos(cowgirl.getX(),cowgirl.getY());
-			y += getSpeed()*cowgirl.getLevel()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
+			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
 			if (cowgirl.isVisible()==false) {
 				k = 0;
 			}
@@ -65,10 +65,7 @@ public class Boss3 extends Boss {
 			}
 			else dinoPic = left.get(timeOfPics/10);
 		}
-		
-		boolean isCharacterAttacked;
-		isCharacterAttacked = knight.attackPos((int) x,(int)y);
-		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
+		;
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
