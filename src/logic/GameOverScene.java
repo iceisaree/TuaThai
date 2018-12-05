@@ -1,26 +1,18 @@
 package logic;
 
-import java.net.URL;
+
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 public class GameOverScene {
 	protected static int Score1;
 	private static Canvas bg;
-	private static GraphicsContext gc;
 	private static boolean isFinished;
 	public static String image_path = ClassLoader.getSystemResource("endgameScene.png").toString();
 	public static final Font FONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("AvenueX-Regular.otf"),20);
@@ -29,7 +21,7 @@ public class GameOverScene {
 	public static String[] gameOverChar2 = {"A","N","D"," ","T","R","Y"," ","A","G","A","N","I","N"};
 	public GameOverScene(Stage primaryStage) {
 		bg = new Canvas(950,600);
-		gc = bg.getGraphicsContext2D();
+	
 	}
 	public static void draw(GraphicsContext gc) {
 		Thread t2 = new Thread() {

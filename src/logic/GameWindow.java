@@ -21,9 +21,7 @@ import javafx.stage.Stage;
 
 public class GameWindow extends Canvas {
 	private Scene scene;
-	private int damageBoss;
 	private boolean alreadyAddAllBoss;
-	private int countBoss = 0;
 	private boolean isBossDead;
 	private int cooldownKnight1;
 	private int cooldownKnight2;
@@ -38,23 +36,16 @@ public class GameWindow extends Canvas {
 	private Minion1 minion1;
 	private Minion2 minion2;
 	private Minion3 minion3;
-	private int countMinion = 1;
 	private String control="";
 	private char c;
-	private Image imagenew;
-	private int FireTimes = 0;
-	private boolean alreadyAddBoss;
 	private Boss1 boss1;
 	private Boss2 boss2;
 	private Boss3 boss3;
-	private GameWinnerScene gameWin;
 	private boolean alreadyAddBoss1 = false;
 	private boolean alreadyAddBoss2 = false;
 	private boolean alreadyAddBoss3 = false;
 	private boolean addedBoss = false;
-	private boolean allBossDead;
 	private static AnimationTimer gamewindowanimation;
-	private boolean gameEnd = false;
 	private PlayerDetail playerDetail;
 	Random rand = new Random();
 	int value = rand.nextInt(3);
@@ -262,9 +253,6 @@ public static AnimationTimer getGamewindowanimation() {
 						
 					
 				}
-				// add item by time
-				// add Character detail
-				// add cooldown and add Skill
 			}
 
 		//addBackground();
@@ -356,25 +344,19 @@ public static AnimationTimer getGamewindowanimation() {
 		if (value==1) {
 			minion2 = new Minion2(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion2);
-			//System.out.println("zombieeeee");
+		
 		}
 		if (value==2) {
 			minion3 = new Minion3(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion3);
-			//System.out.println("cowboyyyyy");
+		
 		}
 	}
-	/*public void addMinion2() {
-		minion2 = new Minion2(knight,cowgirl);
-		RenderableHolder.getinstance().add(minion2);
-	}*/
 	public void addAll() {
 	addPlayerDetail();
 	addKnight();
 	addcowgirl();
 	addMinion();
-	//addMinion2();
-	//addBackground();
 	
 }
 	public void addPlayerDetail() {
@@ -383,22 +365,18 @@ public static AnimationTimer getGamewindowanimation() {
 	}
 	public void isGameEnd() {
 		//if (knight.getHp()==0 && cowgirl.getHp()==0)
-		if (true) {
+		if (knight.getHp()==0 && cowgirl.getHp()==0) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameOverScene.startAnimation(gc);
-			
-			gameEnd = true;
-			
 		}
 		// instance alreadyAddAllBoss with true
 		//alreadyAddAllBoss
-		if (false) {
+		if (alreadyAddAllBoss) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			GameWinnerScene.setScore(score);
 			GameWinnerScene.startAnimation(gc);
-			gameEnd = true;
 		}
 	}
 	//add getLevel in cowgirl and set attack in knight and cowgirl

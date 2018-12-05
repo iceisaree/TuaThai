@@ -29,12 +29,8 @@ public class Minion1 extends Monster {
 		if(timeOfPics>=30) timeOfPics = 0; 
 		gc.drawImage(ninjaPic, x, y);
 	}
+	
 	@Override
-	/*public void special() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override*/
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
 		if ((knight.isVisible()==true)&&(this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
@@ -93,10 +89,6 @@ public class Minion1 extends Monster {
 			}
 			else ninjaPic = left.get(timeOfPics/10);
 		}
-		
-		boolean isCharacterAttacked;
-		isCharacterAttacked = knight.attackPos((int) x,(int)y);
-		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}

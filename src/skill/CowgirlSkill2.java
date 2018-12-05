@@ -8,8 +8,6 @@ public class CowgirlSkill2 extends Entity {
 	private boolean isVisible = true;
 	private char route;
 	public Image skillPic;
-	private int typeSkill;
-	private boolean isFromCowgirls = false;
 	
 	public CowgirlSkill2(double x,double y,char route) {
 		super(x,y);
