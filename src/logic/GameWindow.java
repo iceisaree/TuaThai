@@ -52,6 +52,7 @@ public class GameWindow extends Canvas {
 	public AudioClip cowgirlskill1sound = new AudioClip(ClassLoader.getSystemResource("cowgirlskill1.wav").toString());
 	public AudioClip bggamesound = new AudioClip(ClassLoader.getSystemResource("bggame.mp3").toString());
 	public AudioClip bosssound = new AudioClip(ClassLoader.getSystemResource("boss.mp3").toString());
+	public AudioClip soundbg = new AudioClip(ClassLoader.getSystemResource("startgame.mp3").toString());
 	
 	public GameWindow(Stage primaryStage) {
 		setWidth(950);
@@ -382,6 +383,7 @@ public static AnimationTimer getGamewindowanimation() {
 			gamewindowanimation.stop();
 			//bggamesound.stop();
 			bosssound.stop();
+			soundbg.play();
 			GameOverScene.setScore(score);
 			GameOverScene.startAnimation(gc);
 		}
@@ -392,6 +394,7 @@ public static AnimationTimer getGamewindowanimation() {
 			gamewindowanimation.stop();
 			//bggamesound.stop();
 			bosssound.stop();
+			soundbg.play();
 			GameWinnerScene.setScore(score);
 			GameWinnerScene.startAnimation(gc);
 		}
