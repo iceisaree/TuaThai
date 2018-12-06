@@ -289,8 +289,6 @@ public static AnimationTimer getGamewindowanimation() {
 				addedBoss = true;
 				bggamesound.stop();
 				bosssound.play();
-				System.out.println(boss1.isDead());
-				System.out.println("this is in boss 1");
 
 			}
 			if (score >= 600 && alreadyAddBoss2==false) {
@@ -310,8 +308,6 @@ public static AnimationTimer getGamewindowanimation() {
 			//if (boss1.isVisible()==true && alreadyAddBoss2==false) bosssound.stop();
 			//if (checkAllBoss2Dead()==true && alreadyAddBoss3==false) bosssound.stop();
 
-			
-			alreadyAddAllBoss = alreadyAddBoss3;
 
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
@@ -419,7 +415,7 @@ public static AnimationTimer getGamewindowanimation() {
 		}
 		// instance alreadyAddAllBoss with true
 		//alreadyAddAllBoss
-		if (alreadyAddAllBoss && AllBoss3Dead()) {
+		if (alreadyAddBoss3 && AllBoss3Dead()) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			bggamesound.stop();
