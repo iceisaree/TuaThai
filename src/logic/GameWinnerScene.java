@@ -43,7 +43,9 @@ public class GameWinnerScene {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				System.out.println("thread has been interrupted");
+				break;
 			}
 		}
 		//gc.drawImage(exit, 0, 0);
