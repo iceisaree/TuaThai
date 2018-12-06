@@ -7,8 +7,9 @@ import share.Entity;
 public class CowgirlSkill1 extends Entity {
 	private boolean isVisible = true;
 	private char route;
-	public Image skillPic;
 	private int addX,addY;
+	private String skillPic_path;
+	protected Image skillPic;
 	public CowgirlSkill1(double x,double y,char route,int addX,int addY) {
 		super(x,y);
 		this.route = route;
@@ -19,14 +20,18 @@ public class CowgirlSkill1 extends Entity {
 
 	public void setCowgirlSkill1() {
 		if (route=='j') {
-			skillPic = new Image("Tbomb_down.png",10,50,false,false);
+			skillPic_path = ClassLoader.getSystemResource("Tbomb_down.png").toString();
+			skillPic = new Image(skillPic_path,10,50,false,false);
 		}else if (route == 'k') {
-			skillPic = new Image("Tbomb_right.png",50,10,false,false);
+			skillPic_path = ClassLoader.getSystemResource("Tbomb_right.png").toString();
+			skillPic = new Image(skillPic_path,50,10,false,false);
 		}else if (route == 'u') {
-			skillPic = new Image("Tbomb_up.png",10,50,false,false);
+			skillPic_path = ClassLoader.getSystemResource("Tbomb_up.png").toString();
+			skillPic = new Image(skillPic_path,10,50,false,false);
 		}else if (route == 'h') {
-			skillPic = new Image("Tbomb_left.png",50,10,false,false);
-		}
+			skillPic_path = ClassLoader.getSystemResource("Tbomb_left.png").toString();
+			skillPic = new Image(skillPic_path,50,10,false,false);}
+		
 	}
 	public void draw(GraphicsContext gc) {
 		gc.drawImage(skillPic, x+addX, y+addY);

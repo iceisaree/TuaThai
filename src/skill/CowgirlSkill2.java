@@ -8,7 +8,7 @@ public class CowgirlSkill2 extends Entity {
 	private boolean isVisible = true;
 	private char route;
 	public Image skillPic;
-	
+	private String skillPic_path;
 	public CowgirlSkill2(double x,double y,char route) {
 		super(x,y);
 		this.route = route;
@@ -17,21 +17,29 @@ public class CowgirlSkill2 extends Entity {
 
 	public void setCowgirlSkill2() {
 		if (route=='w') {
-			skillPic = new Image("missle_0.png",20,20,false,false);
-		}else if (route == 'd') {
-			skillPic = new Image("missle_90.png",20,20,false,false);
-		}else if (route == 'a') {
-			skillPic = new Image("missle_270.png",20,20,false,false);
-		}else if (route == 'x') {
-			skillPic = new Image("missle_180.png",20,20,false,false);
-		}if (route=='e') {
-			skillPic = new Image("missle_45.png",20,20,false,false);
-		}else if (route == 'c') {
-			skillPic = new Image("missle_135.png",20,20,false,false);
-		}else if (route == 'z') {
-			skillPic = new Image("missle_225.png",20,20,false,false);
-		}else if (route == 'q') {
-			skillPic = new Image("missle_315.png",20,20,false,false);
+			skillPic_path = ClassLoader.getSystemResource("missle_0.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
+		}else if (route == 'd') { //90
+			skillPic_path = ClassLoader.getSystemResource("missle_90.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
+		}else if (route == 'a') { //270
+			skillPic_path = ClassLoader.getSystemResource("missle_270.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
+		}else if (route == 'x') { //180
+			skillPic_path = ClassLoader.getSystemResource("missle_180.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
+		}if (route=='e') { //45
+			skillPic_path = ClassLoader.getSystemResource("missle_45.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
+		}else if (route == 'c') { //135
+			skillPic_path = ClassLoader.getSystemResource("missle_135.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
+		}else if (route == 'z') { //225
+			skillPic_path = ClassLoader.getSystemResource("missle_225.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
+		}else if (route == 'q') { //315
+			skillPic_path = ClassLoader.getSystemResource("missle_315.png").toString();
+			skillPic = new Image(skillPic_path,20,20,false,false);
 		}
 	}
 	public void draw(GraphicsContext gc) {

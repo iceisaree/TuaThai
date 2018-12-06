@@ -8,6 +8,7 @@ public class KnightSkill extends Entity {
 	private char route;
 	public Image skillPic;
 	private int type;
+	private String skillPic_path;
 	
 	public KnightSkill(double x,double y,char route,int type) {
 		super(x,y);
@@ -24,24 +25,23 @@ public class KnightSkill extends Entity {
 
 	public void setKnightSkill() {
 		if (route=='s') {
-			skillPic = new Image("Bullet_down.png",50,50,false,false);
+			skillPic_path = ClassLoader.getSystemResource("Bullet_down.png").toString();
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}else if (route == 'a') {
-			skillPic = new Image("Bullet_right.png",50,50,false,false);
+			skillPic_path = ClassLoader.getSystemResource("Bullet_right.png").toString();
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}else if (route == 'w') {
-			skillPic = new Image("Bullet_up.png",50,50,false,false);
+			skillPic_path = ClassLoader.getSystemResource("Bullet_up.png").toString();
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}else if (route == 'd') {
-			skillPic = new Image("Bullet_left.png",50,50,false,false);
+			skillPic_path = ClassLoader.getSystemResource("Bullet_left.png").toString();
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}
 	}
 	public void setKnightSkill2() {
-		if (route=='s') {
-			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
-		}else if (route == 'a') {
-			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
-		}else if (route == 'w') {
-			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
-		}else if (route == 'd') {
-			skillPic = new Image("Horizon_explosion.png",30,30,false,false);
+		if (route=='s' || route=='a' || route=='w' ||route=='d') {
+			skillPic_path = ClassLoader.getSystemResource("Horizon_explosion.png").toString();
+			skillPic = new Image(skillPic_path,30,30,false,false);
 		}
 	}
 	public void draw(GraphicsContext gc) {
