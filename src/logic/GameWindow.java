@@ -292,6 +292,7 @@ public static AnimationTimer getGamewindowanimation() {
 				addedBoss = true;
 				bggamesound.stop();
 				bosssound.play();
+				System.out.println(boss1.isDead());
 				System.out.println("this is in boss 1");
 			}
 			if (score >= 600 && alreadyAddBoss2==false) {
@@ -308,8 +309,6 @@ public static AnimationTimer getGamewindowanimation() {
 				bggamesound.stop();
 				bosssound.play();
 			}
-			if (boss1.isDead()==true && alreadyAddBoss2==false) bosssound.stop();
-			if (boss2.isDead()==true && alreadyAddBoss3==false) bosssound.stop();
 			
 			
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
@@ -373,12 +372,13 @@ public static AnimationTimer getGamewindowanimation() {
 		if (value==1) {
 			minion2 = new Minion2(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion2);
+			bosssound.stop();
 
 		}
 		if (value==2) {
 			minion3 = new Minion3(knight,cowgirl);;
 			RenderableHolder.getinstance().add(minion3);
-		
+			bosssound.stop();
 		}
 	}
 	public void addAll() {
@@ -449,7 +449,6 @@ public static AnimationTimer getGamewindowanimation() {
 	public void updateSong() {
 		if (bggamesound.isPlaying()==false && bosssound.isPlaying() ==false) playSong();
 		
-		//if (bosssound.isPlaying() == true) bosssound.play();
 	}
 
 }

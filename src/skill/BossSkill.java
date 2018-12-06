@@ -44,7 +44,7 @@ public class BossSkill extends Entity{
 				skillPic = new Image("missle_315.png",20,20,false,false);
 			}
 		}
-		
+		}
 	}
 	public void draw(GraphicsContext gc) {
 		//System.out.println("this is in CowgirlsSkill1");
