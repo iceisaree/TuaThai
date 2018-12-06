@@ -12,15 +12,17 @@ public class Minion3 extends Monster {
 	protected List<Image> left = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
 	private int timeOfPics = 0;
-	
+	private String leftString,rightString;
 	
 	public Minion3(Knight knight,Cowgirls cowgirl) {
 		super(100,20,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<7; i++) {
-			left.add(new Image("cowboy_left ("+i+").png",70,80,false,false));
-			right.add(new Image("cowboy_right ("+i+").png",70,80,false,false));
+			leftString = ClassLoader.getSystemResource("cowboy_left ("+i+").png").toString();
+			left.add(new Image(leftString,70,80,false,false));
+			rightString = ClassLoader.getSystemResource("cowboy_right ("+i+").png").toString();
+			right.add(new Image(rightString,70,80,false,false));
 		}
 		super.speed = 1;
 		setCowboy();
@@ -67,8 +69,8 @@ public class Minion3 extends Monster {
 
 		if (k==0) {
 			double cos =calculateCos(knight.getX(),knight.getY());
-			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
-			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			x += getSpeed()*calculateCos(knight.getX(),knight.getY());
+			y += getSpeed()*calculateSin(knight.getX(),knight.getY());
 			if (knight.isVisible()==false) {
 				k = 1;
 			}

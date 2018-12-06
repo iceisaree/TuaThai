@@ -13,14 +13,16 @@ public class Boss3 extends Boss {
 	protected List<Image> right = new ArrayList<>();
 	protected List<Image> left = new ArrayList<>();
 	private int timeOfPics = 0;
-	
+	private String leftString,rightString;
 	public Boss3(Knight knight,Cowgirls cowgirl) {
 		super(100,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<11; i++) {
-			left.add(new Image("dino_left ("+i+").png",100,100,false,false));
-			right.add(new Image("dino_right ("+i+").png",100,100,false,false));
+			leftString = ClassLoader.getSystemResource("dino_left ("+i+").png").toString();
+			left.add(new Image(leftString,100,100,false,false));
+			rightString = ClassLoader.getSystemResource("dino_right ("+i+").png").toString();
+			right.add(new Image(rightString,100,100,false,false));
 		}
 		setDino();
 	}
@@ -70,20 +72,6 @@ public class Boss3 extends Boss {
 		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
-	}
-	public double calculateSin(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double sin = k/cha;
-		return sin;
-	}
-	public double calculateCos(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double cos = c/cha;
-		return cos;
 	}
 
 }

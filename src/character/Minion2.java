@@ -12,14 +12,16 @@ public class Minion2 extends Monster {
 	protected List<Image> right = new ArrayList<>();
 	int k = rand.nextInt(2);
 	private int timeOfPics = 0;
-	
+	private String leftString,rightString;
 	public Minion2(Knight knight,Cowgirls cowgirl) {
 		super(100,20,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<5; i++) {
-			left.add(new Image("zombiemale_Left ("+i+").png",70,80,false,false));
-			right.add(new Image("zombiemale_Right ("+i+").png",70,80,false,false));
+			leftString = ClassLoader.getSystemResource("zombiemale_left ("+i+").png").toString();
+			left.add(new Image(leftString,70,80,false,false));
+			rightString = ClassLoader.getSystemResource("zombiemale_right ("+i+").png").toString();
+			right.add(new Image(rightString,70,80,false,false));
 		}
 		super.speed = 0.5;
 		setZombie();
@@ -83,8 +85,8 @@ public class Minion2 extends Monster {
 	public void updatePos() {
 		if (k==0) {
 			double cos =calculateCos(knight.getX(),knight.getY());
-			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
-			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			x += getSpeed()*calculateCos(knight.getX(),knight.getY());
+			y += getSpeed()*calculateSin(knight.getX(),knight.getY());
 			if (knight.isVisible()==false) {
 				k = 1;
 			}
@@ -108,18 +110,5 @@ public class Minion2 extends Monster {
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
-	public double calculateSin(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double sin = k/cha;
-		return sin;
-	}
-	public double calculateCos(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double cos = c/cha;
-		return cos;
-	}
+	
 }

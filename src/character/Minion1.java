@@ -12,14 +12,17 @@ public class Minion1 extends Monster {
 	protected List<Image> right = new ArrayList<>();
 	protected List<Image> left = new ArrayList<>();
 	private int timeOfPics = 0;
-	
+	private String leftString,rightString;
 	public Minion1(Knight knight,Cowgirls cowgirl) {
 		super(100,20,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<7; i++) {
-			left.add(new Image("ninja_left ("+i+").png",70,80,false,false));
-			right.add(new Image("ninja_right ("+i+").png",70,80,false,false));
+
+			leftString = ClassLoader.getSystemResource("ninja_left ("+i+").png").toString();
+			left.add(new Image(leftString,70,80,false,false));
+			rightString = ClassLoader.getSystemResource("ninja_right ("+i+").png").toString();
+			right.add(new Image(rightString,70,80,false,false));
 		}
 		super.speed = 2;
 		setNinja();
@@ -93,18 +96,5 @@ public class Minion1 extends Monster {
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
-	public double calculateSin(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double sin = k/cha;
-		return sin;
-	}
-	public double calculateCos(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double cos = c/cha;
-		return cos;
-	}
+	
 }
