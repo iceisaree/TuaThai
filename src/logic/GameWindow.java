@@ -37,12 +37,14 @@ public class GameWindow extends Canvas {
 	private Boss1 boss1;
 	private Boss2 boss21,boss22,boss23,boss24;
 	private Boss3 boss31,boss32,boss33,boss34,boss35,boss36,boss37,boss38;
+	private boolean result1,result2,result3,result4;
 	private boolean alreadyAddBoss1 = false;
 	private boolean alreadyAddBoss2 = false;
 	private boolean alreadyAddBoss3 = false;
 	private boolean addedBoss = false;
 	private static AnimationTimer gamewindowanimation;
 	private PlayerDetail playerDetail;
+	private boolean haveBoss;
 	Random rand = new Random();
 	int value = 0;
 	public AudioClip cowgirlskill1sound = new AudioClip(ClassLoader.getSystemResource("cowgirlskill1.wav").toString());
@@ -58,7 +60,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		score = 0;
+		score = 590;
 		this.primaryStage.setScene(scene);
 		addAll();
 		bggamesound.play();
@@ -247,6 +249,7 @@ public static AnimationTimer getGamewindowanimation() {
 			int exp2 = RenderableHolder.getinstance().setVisible2();
 			int exp = RenderableHolder.getinstance().setVisible();
 			isBossDead = RenderableHolder.getinstance().setVisibleBoss();
+			
 			if(!isBossDead) {
 				addedBoss = false;
 			}
@@ -276,6 +279,7 @@ public static AnimationTimer getGamewindowanimation() {
 			if (cooldownCowgirl2!=0) cooldownCowgirl2--;
 			
 			isGameEnd();
+			haveBoss = RenderableHolder.getinstance().haveBossInList();
 			if (alreadyAddBoss1 && addedBoss) {
 				
 			}
@@ -298,7 +302,6 @@ public static AnimationTimer getGamewindowanimation() {
 			}
 			if (score >= 900 && alreadyAddBoss3==false) {
 				addBoss(2);
-				alreadyAddBoss3 = true;
 				addedBoss = true;
 				bggamesound.stop();
 				bosssound.play();
@@ -308,26 +311,26 @@ public static AnimationTimer getGamewindowanimation() {
 			//if (checkAllBoss2Dead()==true && alreadyAddBoss3==false) bosssound.stop();
 
 			
-			
+			alreadyAddAllBoss = alreadyAddBoss3;
 
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
 			playerDetail.setCooldownCowgirl(cooldownCowgirl1, cooldownCowgirl2);
 		
 			playerDetail.setScore(score);
 			RenderableHolder.getinstance().updatePos(control);
-			alreadyAddAllBoss = (checkAllBoss3Dead()&&(!addedBoss));
+			
 
 	}
-	public boolean checkAllBoss2Dead() {
-		boolean result = (boss21.isVisible()&&boss22.isVisible()&&boss23.isVisible()&&boss24.isVisible());
-		return !result;
+	public boolean AllBoss3Dead() {
+		boolean result1 = boss31.isDead()&&boss32.isDead();
+		boolean result2 = boss33.isDead()&&boss34.isDead();
+		boolean result3 = boss35.isDead()&&boss36.isDead();
+		boolean result4 = boss37.isDead()&&boss38.isDead();
+		
+		return result1&&result2&&result3&&result4;
 	}
-	public boolean checkAllBoss3Dead() {
-		boolean result1 = (boss31.isVisible()&&boss32.isVisible());
-		boolean result2 = (boss33.isVisible()&&boss34.isVisible());
-		boolean result3 = (boss35.isVisible()&&boss36.isVisible());
-		boolean result4 = (boss37.isVisible()&&boss38.isVisible());
-		return !(result1&&result2&&result3&&result4);
+	public boolean AllBoss2Dead() {
+		return boss21.isDead()&&boss22.isDead()&&boss23.isDead()&&boss24.isDead();
 	}
 	
 	public void addBoss(int countBoss) {
@@ -360,6 +363,7 @@ public static AnimationTimer getGamewindowanimation() {
 			RenderableHolder.getinstance().add(boss36);
 			RenderableHolder.getinstance().add(boss37);
 			RenderableHolder.getinstance().add(boss38);
+			alreadyAddBoss3 = true;
 		}else {
 			
 		}
@@ -379,14 +383,13 @@ public static AnimationTimer getGamewindowanimation() {
 			minion1 = new Minion1(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion1);
 		}
-		System.out.println(value);
 		if (value==1) {
 			minion2 = new Minion2(knight,cowgirl);
 			RenderableHolder.getinstance().add(minion2);
 			bosssound.stop();
 
 		}
-		if (value==2 && !checkAllBoss2Dead()) {
+		if (value==2) {
 			minion3 = new Minion3(knight,cowgirl);;
 			RenderableHolder.getinstance().add(minion3);
 			bosssound.stop();
@@ -398,7 +401,7 @@ public static AnimationTimer getGamewindowanimation() {
 	addcowgirl();
 	addMinion();
 	
-}
+	}
 	public void addPlayerDetail() {
 		playerDetail = new PlayerDetail();
 		RenderableHolder.getinstance().add(playerDetail);
@@ -416,7 +419,7 @@ public static AnimationTimer getGamewindowanimation() {
 		}
 		// instance alreadyAddAllBoss with true
 		//alreadyAddAllBoss
-		if (alreadyAddAllBoss) {
+		if (alreadyAddAllBoss && AllBoss3Dead()) {
 			RenderableHolder.getinstance().clearList();
 			gamewindowanimation.stop();
 			bggamesound.stop();

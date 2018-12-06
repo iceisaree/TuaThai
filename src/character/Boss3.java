@@ -20,9 +20,9 @@ public class Boss3 extends Boss {
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<11; i++) {
 			leftString = ClassLoader.getSystemResource("dino_left ("+i+").png").toString();
-			left.add(new Image(leftString,100,100,false,false));
+			left.add(new Image(leftString,120,120,false,false));
 			rightString = ClassLoader.getSystemResource("dino_right ("+i+").png").toString();
-			right.add(new Image(rightString,100,100,false,false));
+			right.add(new Image(rightString,120,120,false,false));
 		}
 		setDino();
 	}

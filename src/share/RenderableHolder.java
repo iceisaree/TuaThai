@@ -191,6 +191,14 @@ public class RenderableHolder {
 		}
 	return true;
 	}
+	public boolean haveBossInList() {
+		for (IRenderable e:listRender) {
+			if (e instanceof Boss) {
+				return true;
+			}
+		}
+		return false;
+	}
 	public void clearList() {
 		this.listRender = null;
 		this.listRender = new ArrayList<>();
