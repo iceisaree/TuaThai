@@ -15,10 +15,6 @@ public abstract class Boss extends Entity{
 	protected double Damage;
 	protected double speed;
 	protected boolean isVisible = true;
-	protected List<Image> left = new ArrayList<>();
-	protected List<Image> up = new ArrayList<>();
-	protected List<Image> down = new ArrayList<>();
-	protected List<Image> right = new ArrayList<>();
 	ClassLoader loader = ClassLoader.getSystemClassLoader();
 	public Image monsterPic;
 	protected boolean isDead;
@@ -117,17 +113,6 @@ public abstract class Boss extends Entity{
 		}
 		
 		return isVisible;
-	}
-
-	
-	@Override
-	public void draw(GraphicsContext gc) {
-		//monsterPic = new Image("zombiefemale_Up (1).png");
-		//System.out.println("monster in draw");
-		gc.drawImage(monsterPic, x, y);
-	}
-	public void setImage() {
-		
 	}
 	
 	public double getExp() {

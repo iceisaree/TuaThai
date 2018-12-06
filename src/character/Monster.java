@@ -105,16 +105,6 @@ public abstract class Monster extends Entity{
 
 
 	
-	@Override
-	public void draw(GraphicsContext gc) {
-		//monsterPic = new Image("zombiefemale_Up (1).png");
-		//System.out.println("monster in draw");
-		gc.drawImage(monsterPic, x, y);
-	}
-	public void setImage() {
-		
-	}
-	
 	public double getExp() {
 		return exp;
 	}

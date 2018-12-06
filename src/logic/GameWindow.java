@@ -37,14 +37,13 @@ public class GameWindow extends Canvas {
 	private Boss1 boss1;
 	private Boss2 boss21,boss22,boss23,boss24;
 	private Boss3 boss31,boss32,boss33,boss34,boss35,boss36,boss37,boss38;
-	private boolean result1,result2,result3,result4;
 	private boolean alreadyAddBoss1 = false;
 	private boolean alreadyAddBoss2 = false;
 	private boolean alreadyAddBoss3 = false;
 	private boolean addedBoss = false;
+	private boolean haveBoss;
 	private static AnimationTimer gamewindowanimation;
 	private PlayerDetail playerDetail;
-	private boolean haveBoss;
 	Random rand = new Random();
 	int value = 0;
 	public AudioClip cowgirlskill1sound = new AudioClip(ClassLoader.getSystemResource("cowgirlskill1.wav").toString());
@@ -60,7 +59,7 @@ public class GameWindow extends Canvas {
 		StackPane s = new StackPane();
 		s.getChildren().add(gc.getCanvas());
 		scene = new Scene(s);
-		score = 590;
+		score = 0;
 		this.primaryStage.setScene(scene);
 		addAll();
 		bggamesound.play();
