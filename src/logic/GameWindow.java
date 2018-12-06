@@ -315,13 +315,21 @@ public static AnimationTimer getGamewindowanimation() {
 		
 			playerDetail.setScore(score);
 			RenderableHolder.getinstance().updatePos(control);
-			alreadyAddAllBoss = (alreadyAddBoss3&&(!addedBoss));
+			alreadyAddAllBoss = (checkAllBoss3Dead()&&(!addedBoss));
 
 	}
 	public boolean checkAllBoss2Dead() {
 		boolean result = (boss21.isVisible()&&boss22.isVisible()&&boss23.isVisible()&&boss24.isVisible());
 		return !result;
 	}
+	public boolean checkAllBoss3Dead() {
+		boolean result1 = (boss31.isVisible()&&boss32.isVisible());
+		boolean result2 = (boss33.isVisible()&&boss34.isVisible());
+		boolean result3 = (boss35.isVisible()&&boss36.isVisible());
+		boolean result4 = (boss37.isVisible()&&boss38.isVisible());
+		return !(result1&&result2&&result3&&result4);
+	}
+	
 	public void addBoss(int countBoss) {
 		if (countBoss==0) {
 			boss1 = new Boss1(knight,cowgirl);
@@ -378,7 +386,7 @@ public static AnimationTimer getGamewindowanimation() {
 			bosssound.stop();
 
 		}
-		if (value==2 && checkAllBoss2Dead()) {
+		if (value==2 && !checkAllBoss2Dead()) {
 			minion3 = new Minion3(knight,cowgirl);;
 			RenderableHolder.getinstance().add(minion3);
 			bosssound.stop();
