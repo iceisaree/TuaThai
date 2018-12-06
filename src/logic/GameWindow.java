@@ -387,7 +387,7 @@ public static AnimationTimer getGamewindowanimation() {
 		if (value==2) {
 			minion3 = new Minion3(knight,cowgirl);;
 			RenderableHolder.getinstance().add(minion3);
-			bosssound.stop();
+			if (alreadyAddBoss3==false) bosssound.stop();
 		}
 	}
 	public void addAll() {
