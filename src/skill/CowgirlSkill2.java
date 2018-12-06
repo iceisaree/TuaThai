@@ -21,7 +21,7 @@ public class CowgirlSkill2 extends Entity {
 			skillPic = new Image(skillPic_path,20,20,false,false);
 		}else if (route == 'd') { //90
 			skillPic_path = ClassLoader.getSystemResource("missle_90.png").toString();
-			skillPic = new Image(skillPic_path,20,20,false,false);
+			skillPic = new Image(skillPic_path,30,30,false,false);
 		}else if (route == 'a') { //270
 			skillPic_path = ClassLoader.getSystemResource("missle_270.png").toString();
 			skillPic = new Image(skillPic_path,20,20,false,false);
@@ -30,16 +30,16 @@ public class CowgirlSkill2 extends Entity {
 			skillPic = new Image(skillPic_path,20,20,false,false);
 		}if (route=='e') { //45
 			skillPic_path = ClassLoader.getSystemResource("missle_45.png").toString();
-			skillPic = new Image(skillPic_path,20,20,false,false);
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}else if (route == 'c') { //135
 			skillPic_path = ClassLoader.getSystemResource("missle_135.png").toString();
-			skillPic = new Image(skillPic_path,20,20,false,false);
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}else if (route == 'z') { //225
 			skillPic_path = ClassLoader.getSystemResource("missle_225.png").toString();
-			skillPic = new Image(skillPic_path,20,20,false,false);
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}else if (route == 'q') { //315
 			skillPic_path = ClassLoader.getSystemResource("missle_315.png").toString();
-			skillPic = new Image(skillPic_path,20,20,false,false);
+			skillPic = new Image(skillPic_path,40,40,false,false);
 		}
 	}
 	public void draw(GraphicsContext gc) {
@@ -63,19 +63,19 @@ public class CowgirlSkill2 extends Entity {
 		if(x>950 || x <0 || y>600 || y<0) isVisible = false;
 		if( route=='e') {
 			x+=10;
-			y+=10;
+			y-=10;
 		}
 		if(route=='c') {
 			x+=10;
-			y-=10;
+			y+=10;
 		}
 		if(route=='z') {
 			x-=10;
-			y-=10;
+			y+=10;
 		}
 		if(route=='q') {
 			x-=10;
-			y+=10;
+			y-=10;
 		}
 	}
 
