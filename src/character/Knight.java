@@ -21,6 +21,7 @@ public class Knight extends Character {
 	private int timeOfPics = 0;
 	private Image knightPic;
 	private String control;
+	public String leftString,upString,downString,rightString;
 	private List<Image> left = new ArrayList<>();
 	private List<Image> right = new ArrayList<>();
 	private List<Image> up = new ArrayList<>();
@@ -32,10 +33,14 @@ public class Knight extends Character {
 	public Knight(String name){
 		super();
 		for (int i=1;i<5;i++) {
-			left.add(new Image("knight_Left ("+i+").png",70,80, false, false));
-			up.add(new Image("knight_up ("+i+").png",70,80,false,false));
-			down.add(new Image("knight_up ("+i+").png",70,80,false,false));
-			right.add(new Image("knight_Right ("+i+").png",70,80,false,false));
+			leftString = ClassLoader.getSystemResource("knight_Left ("+i+").png").toString();
+			left.add(new Image(leftString,70,80, false, false));
+			upString = ClassLoader.getSystemResource("knight_Up ("+i+").png").toString();
+			up.add(new Image(upString,70,80,false,false));
+		
+			down.add(new Image(upString,70,80,false,false));
+			rightString = ClassLoader.getSystemResource("knight_Right ("+i+").png").toString();
+			right.add(new Image(rightString,70,80,false,false));
 		}
 		super.HP= 200;
 		setKnight();

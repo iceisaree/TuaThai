@@ -69,6 +69,9 @@ public class Boss2 extends Boss {
 			}
 			else pumpkinPic = left.get(timeOfPics/10);
 		}
+		boolean isCharacterAttacked;
+		isCharacterAttacked = knight.attackPos((int) x,(int)y);
+		isCharacterAttacked = cowgirl.attackPos((int) x,(int)y);
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}

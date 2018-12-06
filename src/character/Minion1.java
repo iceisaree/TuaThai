@@ -68,8 +68,8 @@ public class Minion1 extends Monster {
 	public void updatePos() {
 		if (k==0) {
 			double cos =calculateCos(knight.getX(),knight.getY());
-			x += getSpeed()*calculateCos(cowgirl.getX(),cowgirl.getY());
-			y += getSpeed()*calculateSin(cowgirl.getX(),cowgirl.getY());
+			x += getSpeed()*calculateCos(knight.getX(),knight.getY());
+			y += getSpeed()*calculateSin(knight.getX(),knight.getY());
 			if (knight.isVisible()==false) {
 				k = 1;
 			}

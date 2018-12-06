@@ -205,6 +205,7 @@ public abstract class Monster extends Entity{
 		}
 		return false;
 	}
+	
 	@Override
 	public boolean isVisible() {
 		// TODO Auto-generated method stub

@@ -21,6 +21,7 @@ public class Cowgirls extends Character{
 	private int timeOfPics = 0;
 	public Image CowgirlPic;
 	private String control;
+	private String leftString,rightString;
 	private List<Image> left = new ArrayList<>();
 	private List<Image> right = new ArrayList<>();
 	private List<Image> up = new ArrayList<>();
@@ -29,10 +30,13 @@ public class Cowgirls extends Character{
 	public Cowgirls(){
 		super();
 		for (int i=1;i<5;i++) {
-			left.add(new Image("cowgirl_Left ("+i+").png",90,80, false, false));
-			up.add(new Image("cowgirl_Right ("+i+").png",90,80,false,false));
-			down.add(new Image("cowgirl_Right ("+i+").png",90,80,false,false));
-			right.add(new Image("cowgirl_Right ("+i+").png",90,80,false,false));
+			leftString = ClassLoader.getSystemResource("cowgirl_Left ("+i+").png").toString();
+			rightString = ClassLoader.getSystemResource("cowgirl_Right ("+i+").png").toString();
+			
+			left.add(new Image(leftString,90,80, false, false));
+			up.add(new Image(rightString,90,80,false,false));
+			down.add(new Image(rightString,90,80,false,false));
+			right.add(new Image(rightString,90,80,false,false));
 		}
 		setCowgirlPic();
 		super.speed = 4;

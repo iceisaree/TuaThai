@@ -1,11 +1,8 @@
 package logic;
 
-import share.IRenderable;
 import share.RenderableHolder;
 import character.Cowgirls;
 import character.Knight;
-
-import java.awt.event.KeyEvent;
 import java.util.Random;
 import character.*;
 import javafx.animation.AnimationTimer;
@@ -13,7 +10,6 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
@@ -244,9 +240,6 @@ public static AnimationTimer getGamewindowanimation() {
 					if (addedBoss==false) {
 						addMinion();
 					}
-						
-						
-					
 				}
 			}
 
@@ -292,7 +285,6 @@ public static AnimationTimer getGamewindowanimation() {
 				addedBoss = true;
 				bggamesound.stop();
 				bosssound.play();
-				System.out.println("this is in boss 1");
 			}
 			if (score >= 600 && alreadyAddBoss2==false) {
 				addBoss(1);
@@ -308,8 +300,8 @@ public static AnimationTimer getGamewindowanimation() {
 				bggamesound.stop();
 				bosssound.play();
 			}
-			if (boss1.isDead()==true && alreadyAddBoss2==false) bosssound.stop();
-			if (boss2.isDead()==true && alreadyAddBoss3==false) bosssound.stop();
+			//if (boss1.isVisible()==true && alreadyAddBoss2==false) bosssound.stop();
+			//if (checkAllBoss2Dead()==true && alreadyAddBoss3==false) bosssound.stop();
 			
 			
 			playerDetail.setCooldownKnight(cooldownKnight1,cooldownKnight2);
@@ -319,6 +311,10 @@ public static AnimationTimer getGamewindowanimation() {
 			RenderableHolder.getinstance().updatePos(control);
 			alreadyAddAllBoss = (alreadyAddBoss3&&(!addedBoss));
 
+	}
+	public boolean checkAllBoss2Dead() {
+		boolean result = (boss21.isVisible()&&boss22.isVisible()&&boss23.isVisible()&&boss24.isVisible());
+		return result;
 	}
 	public void addBoss(int countBoss) {
 		if (countBoss==0) {
