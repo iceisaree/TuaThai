@@ -15,10 +15,6 @@ public abstract class Monster extends Entity{
 	protected double Damage;
 	protected double speed;
 	protected boolean isVisible = true;
-	protected List<Image> left = new ArrayList<>();
-	protected List<Image> up = new ArrayList<>();
-	protected List<Image> down = new ArrayList<>();
-	protected List<Image> right = new ArrayList<>();
 	ClassLoader loader = ClassLoader.getSystemClassLoader();
 	public Image monsterPic = new Image("zombiefemale_Up (1).png",90,90,false,false);
 	protected boolean isDead;
@@ -118,72 +114,14 @@ public abstract class Monster extends Entity{
 	public void setImage() {
 		
 	}
-	//didn't use
-	/*public void takedDamage(double damage) {
-||||||| merged common ancestors
-	public void attack(Character other) {
-		other.takedDamage(this.Damage);
-	}
-	@Override
-	public void draw(GraphicsContext gc) {
-		//monsterPic = new Image("zombiefemale_Up (1).png");
-		//System.out.println("monster in draw");
-		gc.drawImage(monsterPic, x, y);
-	}
-	public void setImage() {
-		
-	}
 	
-	public void takedDamage(double damage) {
-=======
-	public void attack(Character other) {
-		other.takedDamage(this.Damage);
-	}
-	public void takedDamage(double damage) {
->>>>>>> 6049b6da91600e94da1d26f8e6524ea198ff71cf
-		if ((this.x < knight.getX()+10 && knight.getX()-10 < this.x) && (this.y < knight.getY()+10 && knight.getY()-10 < this.y)) {
-			this.isVisible = false;
-			if (damage<=0) return;
-			HP -= damage;
-		}
-		if ((this.x < cowgirl.getX()+10 && cowgirl.getX()-10 < this.x) && (this.y < cowgirl.getY()+10 && cowgirl.getY()-10 < this.y)) {
-			this.isVisible = false;
-			if (damage<=0) return;
-			HP -= damage;
-		}
-		if (HP<=0) this.isVisible = false;
-	}*/
 	public double getExp() {
 		return exp;
 	}
 	public double getSpeed() {
 		return speed;
 	}
-	/*public void updatePos() {
-/*
-		//System.out.println("This is in updatePos");
-		//System.out.println("This is in updatePos");
-		//System.out.println("This is in updatePos Monster");
-		//System.out.println(getSpeed()+" "+knight.getX()+" "+knight.getY());
-		x += getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY());
-		y += getSpeed()*knight.getLevel()*calculateSin(knight.getX(),knight.getY());
-		//System.out.println(getSpeed()*knight.getLevel()*calculateCos(knight.getX(),knight.getY())+" "+y+"aaaaaaaaaaa");
-		//x += getSpeed();
-		//y += getSpeed();
-		boolean isKnightAttacked,isCowgirlAttacked;
-		isKnightAttacked = knight.attackPos((int) x,(int)y);
-		isCowgirlAttacked = cowgirl.attackPos((int) x,(int)y);
-		// change HP minus for change damage
-<<<<<<< HEAD
 	
-		System.out.println("this is HP knight : "+knight.getHP());
-		
-		System.out.println("This is HP cowgirl : "+cowgirl.getHP());
-||||||| merged common ancestors
-		//if (isCharacterAttacked) takedDamage(character.getAttack());
-=======
-		//if (isCharacterAttacked) takedDamage(character.getAttack());
-	}*/
 	public double calculateSin(double charX,double charY) {
 		double c = charX - this.x;
 		double k = charY - this.y;
@@ -207,16 +145,6 @@ public abstract class Monster extends Entity{
 	}
 	@Override
 	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		/*if ((this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
-			return false;
-		}
-		if ((this.x <= cowgirl.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
-			return false;
-		}
-		/*if ((this.x <= cowgirlSkill1.getX()+20 && cowgirl.getX()-20 <= this.x) && (this.y <= cowgirl.getY()+10 && cowgirl.getY()-10 <= this.y)) {
-			return false;
-		}*/
 		
 		return isVisible;
 	}

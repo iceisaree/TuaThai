@@ -69,19 +69,5 @@ public class Boss3 extends Boss {
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
-	public double calculateSin(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double sin = k/cha;
-		return sin;
-	}
-	public double calculateCos(double charX,double charY) {
-		double c = charX - this.x;
-		double k = charY - this.y;
-		double cha = Math.sqrt((k*k)+(c*c));
-		double cos = c/cha;
-		return cos;
-	}
 
 }
