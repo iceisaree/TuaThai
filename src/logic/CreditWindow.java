@@ -12,11 +12,11 @@ import javafx.stage.Stage;
 public class CreditWindow extends Canvas {
 	private Stage primaryStage;
 	private Canvas bg;
-	private Image name = new Image("credit.png");
-	private Image back = new Image("backbut.png");
-	private Image backp = new Image("backbutf.png");
-	private Image cowgirl = new Image("cowgirl_Up (1).png",250,200,false,false);
-	private Image knight = new Image("knight_Left (1).png",180,200,false,false);
+	private Image name = new Image(ClassLoader.getSystemResource("credit.png").toString());
+	private Image back = new Image(ClassLoader.getSystemResource("backbut.png").toString());
+	private Image backp = new Image(ClassLoader.getSystemResource("backbutf.png").toString());
+	private Image cowgirl = new Image(ClassLoader.getSystemResource("cowgirl_Up (1).png").toString(),250,200,false,false);
+	private Image knight = new Image(ClassLoader.getSystemResource("knight_Left (1).png").toString(),180,200,false,false);
 	
 	public CreditWindow(Stage primaryStage) {
 		this.primaryStage = primaryStage;

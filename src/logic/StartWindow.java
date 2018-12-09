@@ -23,14 +23,14 @@ public class StartWindow {
 	private Canvas bg;
 	
 	private GraphicsContext gc;
-	private Image background = new Image("forest.png");
-	private Image name = new Image("name3.png");
-	private Image pbutton = new Image("pbutton.png");
-	private Image pbuttonfade = new Image("pbuttonfade.png");
-	private Image exitButton = new Image("ex.png");
-	private Image exitButtonfade = new Image("exfade.png");
-	private Image creditButton = new Image("cr.png");
-	private Image creditButtonfade = new Image("crfade.png");
+	private Image background = new Image(ClassLoader.getSystemResource("forest.png").toString());
+	private Image name = new Image(ClassLoader.getSystemResource("name3.png").toString());
+	private Image pbutton = new Image(ClassLoader.getSystemResource("pbutton.png").toString());
+	private Image pbuttonfade = new Image(ClassLoader.getSystemResource("pbuttonfade.png").toString());
+	private Image exitButton = new Image(ClassLoader.getSystemResource("ex.png").toString());
+	private Image exitButtonfade = new Image(ClassLoader.getSystemResource("exfade.png").toString());
+	private Image creditButton = new Image(ClassLoader.getSystemResource("cr.png").toString());
+	private Image creditButtonfade = new Image(ClassLoader.getSystemResource("crfade.png").toString());
 	public AudioClip soundbg = new AudioClip(ClassLoader.getSystemResource("startgame.mp3").toString());
 	
 	public StartWindow(Stage primaryStage) {
