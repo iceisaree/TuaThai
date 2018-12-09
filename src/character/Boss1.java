@@ -16,7 +16,7 @@ public class Boss1 extends Boss {
 	private String leftString,rightString;
 	
 	public Boss1(Knight knight,Cowgirls cowgirl) {
-		super(200,knight,cowgirl);
+		super(300,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<6; i++) {

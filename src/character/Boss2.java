@@ -15,7 +15,7 @@ public class Boss2 extends Boss {
 	private int timeOfPics = 0;
 	private String leftString,rightString;
 	public Boss2(Knight knight,Cowgirls cowgirl) {
-		super(150,knight,cowgirl);
+		super(200,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
 		for (int i=1; i<6; i++) {
