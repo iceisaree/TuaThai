@@ -6,38 +6,53 @@ import java.util.List;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Minion3 extends Monster {
-	public Image cowboyPic;
+public class Minion extends Monster{
+	public Image minionPic;
 	int k = rand.nextInt(2);
-	protected List<Image> left = new ArrayList<>();
 	protected List<Image> right = new ArrayList<>();
+	protected List<Image> left = new ArrayList<>();
 	private int timeOfPics = 0;
 	private String leftString,rightString;
-	
-	public Minion3(Knight knight,Cowgirls cowgirl) {
+	public Minion(Knight knight,Cowgirls cowgirl,int type) {
 		super(100,20,knight,cowgirl);
 		if (!knight.isVisible()) k=1;
 		if (!cowgirl.isVisible()) k=0;
-		for (int i=1; i<7; i++) {
-			leftString = ClassLoader.getSystemResource("cowboy_left ("+i+").png").toString();
-			left.add(new Image(leftString,70,80,false,false));
-			rightString = ClassLoader.getSystemResource("cowboy_right ("+i+").png").toString();
-			right.add(new Image(rightString,70,80,false,false));
+		if (type==2) {
+			for (int i=1; i<5; i++) {
+				leftString = ClassLoader.getSystemResource("zombiemale_left ("+i+").png").toString();
+				left.add(new Image(leftString,70,80,false,false));
+				rightString = ClassLoader.getSystemResource("zombiemale_right ("+i+").png").toString();
+				right.add(new Image(rightString,70,80,false,false));
+			}
+			super.speed = 0.5;
+		}else if(type==1) {
+			for (int i=1; i<7; i++) {
+				leftString = ClassLoader.getSystemResource("ninja_left ("+i+").png").toString();
+				left.add(new Image(leftString,70,80,false,false));
+				rightString = ClassLoader.getSystemResource("ninja_right ("+i+").png").toString();
+				right.add(new Image(rightString,70,80,false,false));
+			}
+			super.speed = 2;
+		}else if(type==3) {
+			for (int i=1; i<7; i++) {
+				leftString = ClassLoader.getSystemResource("cowboy_left ("+i+").png").toString();
+				left.add(new Image(leftString,70,80,false,false));
+				rightString = ClassLoader.getSystemResource("cowboy_right ("+i+").png").toString();
+				right.add(new Image(rightString,70,80,false,false));
+			}
+			super.speed = 1;
 		}
-		super.speed = 1;
-		setCowboy();
+	
+		setMinion();
 	}
 	
 	public void draw(GraphicsContext gc) {
 		timeOfPics++;
 		if(timeOfPics>=30) timeOfPics = 0; 
-		gc.drawImage(cowboyPic, x, y);
+		gc.drawImage(minionPic, x, y);
 	}
+	
 	@Override
-	/*public void special() {
-	 
-	}
-	@Override*/
 	public boolean isVisible() {
 		// TODO Auto-generated method stub
 		if ((knight.isVisible()==true)&&(this.x <= knight.getX()+20 && knight.getX()-20 <= this.x) && (this.y <= knight.getY()+10 && knight.getY()-10 <= this.y)) {
@@ -56,17 +71,22 @@ public class Minion3 extends Monster {
 		
 		return super.isVisible;
 	}
-	
+	public boolean isDestroyed(int x,int y) {
+		if ((this.x < x+20 && x-20 < this.x) && (this.y < y+20 && y-20 < this.y)) {
+			isVisible = false;
+			return true;
+		}
+		return false;
+	}
 
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
 	}
-	public void setCowboy() {
-		cowboyPic = right.get(0);
+	public void setMinion() {
+		minionPic = right.get(0);
 	}
 	
 	public void updatePos() {
-
 		if (k==0) {
 			double cos =calculateCos(knight.getX(),knight.getY());
 			x += getSpeed()*calculateCos(knight.getX(),knight.getY());
@@ -75,9 +95,9 @@ public class Minion3 extends Monster {
 				k = 1;
 			}
 			if (cos>=0) {
-				cowboyPic = right.get(timeOfPics/10);
+				minionPic = right.get(timeOfPics/10);
 			}
-			else cowboyPic = left.get(timeOfPics/10);
+			else minionPic = left.get(timeOfPics/10);
 		}
 		if (k==1) {
 			double cos =calculateCos(cowgirl.getX(),cowgirl.getY());
@@ -86,10 +106,13 @@ public class Minion3 extends Monster {
 			if (cowgirl.isVisible()==false) {
 				k = 0;
 			}
-			if (cos>=0) cowboyPic = right.get(timeOfPics/10);
-			else cowboyPic = left.get(timeOfPics/10);
+			if (cos>=0) {
+				minionPic = right.get(timeOfPics/10);
+			}
+			else minionPic = left.get(timeOfPics/10);
 		}
 		// change HP minus for change damage
 		//if (isCharacterAttacked) takedDamage(character.getAttack());
 	}
+	
 }

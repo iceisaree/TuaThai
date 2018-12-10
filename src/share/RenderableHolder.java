@@ -38,21 +38,13 @@ public class RenderableHolder {
 				((Cowgirls)e).setControl(control);
 				((Cowgirls)e).updatePos();
 			}
-			if (e instanceof Boss1) {
-				((Boss1) e).updatePos();
-			}
-			if (e instanceof Boss2) {
-				((Boss2) e).updatePos();
-			}
-			if (e instanceof Boss3) {
-				((Boss3) e).updatePos();
-			}
-			if (e instanceof Boss) {
-				((Boss) e).updatePos();
+			if (e instanceof BossGen) {
+				((BossGen) e).updatePos();
 			}
 			if (e instanceof CowgirlSkill1) {
 				((CowgirlSkill1) e).updatePos();
 			}
+			
 			if (e instanceof Monster) {
 				((Monster) e).updatePos();
 			}

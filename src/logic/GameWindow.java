@@ -29,19 +29,17 @@ public class GameWindow extends Canvas {
 	private GraphicsContext gc;
 	private int f;
 	private int score;
-	private Minion1 minion1;
-	private Minion2 minion2;
-	private Minion3 minion3;
+	private Minion minion1,minion2,minion3;
 	private String control="";
 	private char c;
-	private Boss1 boss1;
-	private Boss2 boss21,boss22,boss23,boss24;
-	private Boss3 boss31,boss32,boss33,boss34,boss35,boss36,boss37,boss38;
+	private BossGen boss1;
+	private BossGen boss21,boss22,boss23,boss24;
+	private BossGen boss31,boss32,boss33,boss34,boss35,boss36,boss37,boss38;
 	private boolean alreadyAddBoss1 = false;
 	private boolean alreadyAddBoss2 = false;
 	private boolean alreadyAddBoss3 = false;
 	private boolean addedBoss = false;
-	private boolean haveBoss;
+
 	private static AnimationTimer gamewindowanimation;
 	private PlayerDetail playerDetail;
 	Random rand = new Random();
@@ -278,7 +276,7 @@ public static AnimationTimer getGamewindowanimation() {
 			if (cooldownCowgirl2!=0) cooldownCowgirl2--;
 			
 			isGameEnd();
-			haveBoss = RenderableHolder.getinstance().haveBossInList();
+		
 			if (alreadyAddBoss1 && addedBoss) {
 				
 			}
@@ -330,26 +328,26 @@ public static AnimationTimer getGamewindowanimation() {
 	
 	public void addBoss(int countBoss) {
 		if (countBoss==0) {
-			boss1 = new Boss1(knight,cowgirl);
+			boss1 = new BossGen(knight,cowgirl,1);
 			RenderableHolder.getinstance().add(boss1);
 		}else if(countBoss==1) {
-			boss21 = new Boss2(knight,cowgirl);
-			boss22 = new Boss2(knight,cowgirl);
-			boss23 = new Boss2(knight,cowgirl);
-			boss24 = new Boss2(knight,cowgirl);
+			boss21 = new BossGen(knight,cowgirl,2);
+			boss22 = new BossGen(knight,cowgirl,2);
+			boss23 = new BossGen(knight,cowgirl,2);
+			boss24 = new BossGen(knight,cowgirl,2);
 			RenderableHolder.getinstance().add(boss21);
 			RenderableHolder.getinstance().add(boss22);
 			RenderableHolder.getinstance().add(boss23);
 			RenderableHolder.getinstance().add(boss24);
 		}else if(countBoss==2){
-			boss31 = new Boss3(knight,cowgirl);
-			boss32 = new Boss3(knight,cowgirl);
-			boss33 = new Boss3(knight,cowgirl);
-			boss34 = new Boss3(knight,cowgirl);
-			boss35 = new Boss3(knight,cowgirl);
-			boss36 = new Boss3(knight,cowgirl);
-			boss37 = new Boss3(knight,cowgirl);
-			boss38 = new Boss3(knight,cowgirl);
+			boss31 = new BossGen(knight,cowgirl,3);
+			boss32 = new BossGen(knight,cowgirl,3);
+			boss33 = new BossGen(knight,cowgirl,3);
+			boss34 = new BossGen(knight,cowgirl,3);
+			boss35 = new BossGen(knight,cowgirl,3);
+			boss36 = new BossGen(knight,cowgirl,3);
+			boss37 = new BossGen(knight,cowgirl,3);
+			boss38 = new BossGen(knight,cowgirl,3);
 			RenderableHolder.getinstance().add(boss31);
 			RenderableHolder.getinstance().add(boss32);
 			RenderableHolder.getinstance().add(boss33);
@@ -375,17 +373,17 @@ public static AnimationTimer getGamewindowanimation() {
 	public void addMinion() {
 		//add more minion
 		if (value==0) {
-			minion1 = new Minion1(knight,cowgirl);
+			minion1 = new Minion(knight,cowgirl,1);
 			RenderableHolder.getinstance().add(minion1);
 		}
 		if (value==1) {
-			minion2 = new Minion2(knight,cowgirl);
+			minion2 = new Minion(knight,cowgirl,2);
 			RenderableHolder.getinstance().add(minion2);
 			bosssound.stop();
 
 		}
 		if (value==2) {
-			minion3 = new Minion3(knight,cowgirl);;
+			minion3 = new Minion(knight,cowgirl,3);;
 			RenderableHolder.getinstance().add(minion3);
 			bosssound.stop();
 		}

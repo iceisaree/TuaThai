@@ -35,7 +35,7 @@ public class Knight extends Character {
 		for (int i=1;i<5;i++) {
 			leftString = ClassLoader.getSystemResource("knight_Left ("+i+").png").toString();
 			left.add(new Image(leftString,70,80, false, false));
-			upString = ClassLoader.getSystemResource("knight_Up ("+i+").png").toString();
+			upString = ClassLoader.getSystemResource("knight_up ("+i+").png").toString();
 			up.add(new Image(upString,70,80,false,false));
 		
 			down.add(new Image(upString,70,80,false,false));
