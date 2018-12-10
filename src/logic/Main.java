@@ -10,6 +10,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		StartWindow startwindow = new StartWindow(primaryStage);
 		startwindow.startAnimation();
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 	}

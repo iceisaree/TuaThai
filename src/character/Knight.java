@@ -28,7 +28,7 @@ public class Knight extends Character {
 	private List<Image> down = new ArrayList<>();
 	
 	private int exp;
-	private int [] indexExp = {10,20,30,40,50,60,70,80,90,100,2000,3000,4000,5000,60000};
+	private int [] indexExp = {30,50,80,100,120,200,300,500,2000,3000,4000,5000,60000};
 	private String name;
 	public Knight(String name){
 		super();
