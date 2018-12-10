@@ -19,9 +19,9 @@ public class Minion extends Monster{
 		if (!cowgirl.isVisible()) k=0;
 		if (type==2) {
 			for (int i=1; i<5; i++) {
-				leftString = ClassLoader.getSystemResource("zombiemale_left ("+i+").png").toString();
+				leftString = ClassLoader.getSystemResource("zombiemale_Left ("+i+").png").toString();
 				left.add(new Image(leftString,70,80,false,false));
-				rightString = ClassLoader.getSystemResource("zombiemale_right ("+i+").png").toString();
+				rightString = ClassLoader.getSystemResource("zombiemale_Right ("+i+").png").toString();
 				right.add(new Image(rightString,70,80,false,false));
 			}
 			super.speed = 0.5;
